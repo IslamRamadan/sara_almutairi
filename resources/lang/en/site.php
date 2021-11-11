@@ -229,7 +229,7 @@ return [
     'depend_city'=>'Depend on city',
     'kwd'=>'KWD',
     'del_time '=>'Delivery time',
-    'add_to_wishlist '=>'Add to wishlist',
+    'add_to_wishlist'=>'Add to wishlist',
 
 
 
