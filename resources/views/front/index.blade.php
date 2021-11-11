@@ -4,8 +4,16 @@
 
 @endsection
 @section('content')
-    <?php use App\User;?>
-{{--    {{ dd(Auth::user()->country->name_ar)}}--}}
+    <?php use App\User; ?>
+    {{-- {{ dd(Auth::user()->country->name_ar)}} --}}
+
+    <div class="text-center new1 " style="">
+
+        <h1 class="c-w">
+        </h1>
+        <p class="c-w"></p>
+
+    </div>
     <!-----start carousel --->
     <div id="carouselExampleIndicators" class="carousel slide relative" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -18,20 +26,21 @@
             <?php
             $i = 0;
             ?>
-            @foreach($sliders as $one)
-                <div class="carousel-item  @if($i==0) active @endif ">
-                    <img class=" w-100 h " src="{{asset('storage/'.$one->img)}}" alt="1 slide" style="height: 70vh">
-                    @if(app()->getLocale() == 'en')
+            @foreach ($sliders as $one)
+                <div class="carousel-item  @if ($i == 0) active @endif ">
+                    <img class=" w-100 h " src="{{ asset('storage/' . $one->img) }}" alt="1 slide" style="height: 70vh">
+                    @if (app()->getLocale() == 'en')
                         <div class="abs w-100">
-                            <p class="c-w mr-0">{{$one->description_en}}</p>
-                            <h1 class="">  {{$one->name_en}}</h1>
+                            <p class="c-w mr-0">{{ $one->description_en }}</p>
+                            <h1 class=""> {{ $one->name_en }}</h1>
                             <button class=" btn btn-danger">@lang('site.shop_now') <i class="far fa-heart"></i></button>
-                        </div>                    @else
+                    </div> @else
                         <div class="abs w-100">
-                            <p class="c-w mr-0">{{$one->description_ar}}</p>
-                            <h1 class="">  {{$one->name_ar}}</h1>
+                            <p class="c-w mr-0">{{ $one->description_ar }}</p>
+                            <h1 class=""> {{ $one->name_ar }}</h1>
                             <button class=" btn btn-danger">@lang('site.shop_now') <i class="far fa-heart"></i></button>
-                        </div>                    @endif
+                        </div>
+                    @endif
 
 
                 </div>
@@ -53,9 +62,6 @@
     </div>
     <!--- end head --->
     <br>
-    <div class="container-fluid pad-0 ">
-        <img src="{{asset('front/img/bg.png')}}" class="w-100">
-    </div>
 
     <div class="container pad-0 ">
 
@@ -72,39 +78,39 @@
         <div class="row">
 
             <div class="col-12 pad-0">
-                <ul class="tablinks  row MyServices mr-0 pad-0 text-center" style="list-style-type: none;justify-content: center;flex-wrap:wrap">
+                <ul class="tablinks  row MyServices mr-0 pad-0 text-center"
+                    style="list-style-type: none;justify-content: center;flex-wrap:wrap">
 
-                    @if($system_basic_categories->count()  > 0)
+                    @if ($system_basic_categories->count() > 0)
 
-                        @foreach($system_basic_categories as $b)
+                        @foreach ($system_basic_categories as $b)
 
 
                             <li class="in active col-md-6 col-6 col-lg-4">
                                 <div class=" product relative">
-                                    {{--                                    <div class="  heart "><i class="far fa-heart "></i></div>--}}
+                                    {{-- <div class="  heart "><i class="far fa-heart "></i></div> --}}
 
-                                    <a href="{{route('category' ,[1, $b->id])}}" class="">
-                                        <img src="{{asset('/storage/'.$b->image_url)}}"
-                                             onerror="this.onerror=null;this.src='{{asset('front/img/5.jpg')}}'"
-                                             width="100%"  class="show-img">
-                                        <img
-                                            src="{{asset('/storage/'.$b->image_url)}}"
-                                            onerror="this.onerror=null;this.src='{{asset('front/img/5.jpg')}}'"
+                                    <a href="{{ route('category', [1, $b->id]) }}" class="">
+                                        <img src="{{ asset('/storage/' . $b->image_url) }}"
+                                            onerror="this.onerror=null;this.src='{{ asset('front/img/5.jpg') }}'"
+                                            width="100%" class="show-img">
+                                        <img src="{{ asset('/storage/' . $b->image_url) }}"
+                                            onerror="this.onerror=null;this.src='{{ asset('front/img/5.jpg') }}'"
                                             width="100%" class="hide-img">
 
                                     </a>
-                                    {{--                                    <p class="mr-0">--}}
-                                    {{--                                    --}}
-                                    {{--                                    </p>--}}
-                                    {{--                                    <h6>  <a href="{{route('product' ,$b->id)}}">   {{$b->basic_category->name_en}}--}}
-                                    {{--                                            ---}}
-                                    {{--                                            {{$b->category->name_en}}</a></h6>--}}
+                                    {{-- <p class="mr-0"> --}}
+                                    {{--  --}}
+                                    {{-- </p> --}}
+                                    {{-- <h6>  <a href="{{route('product' ,$b->id)}}">   {{$b->basic_category->name_en}} --}}
+                                    {{-- - --}}
+                                    {{-- {{$b->category->name_en}}</a></h6> --}}
                                     <h5 style="padding: 10px ;background: black;
-    color: white;">
-                                        @if(app()->getLocale() == 'en')
-                                            {{$b->name_en}}
+        color: white;">
+                                        @if (app()->getLocale() == 'en')
+                                            {{ $b->name_en }}
                                         @else
-                                            {{$b->name_ar}}
+                                            {{ $b->name_ar }}
                                         @endif
 
                                     </h5>
@@ -127,102 +133,225 @@
         <br>
         <h2 class="text-center  d-flex justify-content-between">
             <b></b>
-            <span style="font-size: 20px">@lang('site.best_prod')</span>
+            <span>Fashion world
+
+            </span>
             <b></b>
         </h2>
         <br><br>
 
-        <div class="row">
+        <div class="row ">
 
-            <div class="col-12 pad-0">
-                <ul class="tablinks  row MyServices mr-0 pad-0 text-center" style="list-style-type: none">
+            <div class="col-lg-3 col-md-3 col-sm-12 pad-0 fashion">
+                <br>
+                <h1>New Arrival</h1>
 
-                    @if($best_selling->count()  > 0)
+                <p>Discover what's new in fashion </p>
+                <button class="gq gr gs dg ck dh di cn gt c gu gv cq p cr gw gx gy">
+                    <div class="text-center"> New In</div>
+                </button>
+            </div>
 
-                        @foreach($best_selling as $b)
+            <div class="col-lg-9 col-md-9 col-sm-12   pad-0">
+                {{-- <ul class="tablinks  row MyServices mr-0 pad-0 text-center">
+                    <li class="in active col-12 col-lg-12">
+                        <div class=" product relative">
+                            <div class="  heart "><i class="far fa-heart "></i></div>
 
+                            <a href="product.html" class="">
+                                <img src="{{ asset('front/img/6.jpg') }}" width="100%" class="show-img">
+                                <img src="{{ asset('front/img/5.jpg') }}" width="100%" class="hide-img">
 
-                            <li class="in active  col-md-6 col-6 col-lg-4">
-                                <div class=" product relative">
-                                    <a href="#"  class="heart addToWishList text-dark" data-product-id="{{$b->id}}">
-                                        <i class="far fa-heart "></i>
-                                    </a>
-                                    <a href="{{route('product' , $b->product->id)}}" class="">
-                                        <img src="{{asset('/storage/'.$b->product->img)}}"
-                                             onerror="this.onerror=null;this.src='{{asset('front/img/5.jpg')}}'"
-                                             width="100%" class="show-img">
+                            </a>
+                            <p class="mr-0">hhhhh</p>
+                            <h6> <a href="product.html">CH-L1 </a></h6>
+                            <h5>30.000 KWD
+                            </h5>
+                        </div>
+                    </li>
+                    <li class="col-6 col-lg-4">
+                        <div class=" product relative">
+                            <div class="  heart "><i class="far fa-heart "></i></div>
 
-                                        @if( $img= App\ProdImg::where('product_id',$b->product->id)->first() )
-                                            <img src="{{asset($img->img)}}"
-                                            width="100%" class="hide-img">
-                                            @else
-                                            <img src="{{asset('/storage/'.$b->product->img)}}"
-                                                 width="100%" class="hide-img">
-                                            @endif
+                            <a href="product.html" class="">
+                                <img src="{{ asset('front/img/3.jpg') }}" width="100%" class="show-img">
+                                <img src="{{ asset('front/img/5.jpg') }}" width="100%" class="hide-img">
 
-                                    </a>
-                                    <p class="mr-0">
-                                        <a href="{{route('product' , $b->product->id)}}">
-                                            {{$b->product->title_en}}
+                            </a>
+                            <p class="mr-0">abayat</p>
+                            <h6> <a href="product.html">CH-L1 </a></h6>
+                            <h5>30.000 KWD
+                            </h5>
+                        </div>
+                    </li>
+                    <li class="col-6 col-lg-4">
+                        <div class=" product relative">
+                            <div class="  heart "><i class="far fa-heart "></i></div>
 
-                                        </a>
-                                    </p>
+                            <a href="product.html" class="">
+                                <img src="{{ asset('front/img/6.jpg') }}" width="100%" class="show-img">
+                                <img src="{{ asset('front/img/4.jpg') }}" width="100%" class="hide-img">
 
-                                    @if(Lang::locale()=='ar')
-                                        <h6><a href="{{route('product' ,$b->product->id)}}">   {{$b->product->basic_category->name_ar}}
-                                                -
-                                                {{$b->product->category->name_ar}}</a></h6>
-                                    @else
-                                        <h6><a href="{{route('product' ,$b->product->id)}}">   {{$b->product->basic_category->name_en}}
-                                                -
-                                                {{$b->product->category->name_en}}</a></h6>
+                            </a>
+                            <p class="mr-0">abayat</p>
+                            <h6> <a href="product.html">CH-L1 </a></h6>
+                            <h5>30.000 KWD
+                            </h5>
+                        </div>
+                    </li>
+                    <li class="col-6 col-lg-4">
+                        <div class=" product relative">
+                            <div class="  heart "><i class="far fa-heart "></i></div>
 
-                                    @endif
+                            <a href="product.html" class="">
+                                <img src="{{ asset('front/img/3.jpg') }}" width="100%" class="show-img">
+                                <img src="{{ asset('front/img/5.jpg') }}" width="100%" class="hide-img">
 
+                            </a>
+                            <p class="mr-0">abayat</p>
+                            <h6> <a href="product.html">CH-L1 </a></h6>
+                            <h5>30.000 KWD
+                            </h5>
+                        </div>
+                    </li>
+                    <li class="col-6 col-lg-4">
+                        <div class=" product relative">
+                            <div class="  heart "><i class="far fa-heart "></i></div>
 
-                                    {{--<h5>   {{$b->price}} KWD--}}
-                                    {{--</h5>--}}
-                                    @auth()
-                                    <h5>   {{Auth::user()->getPrice($b->product->price)}} {{ Auth::user()->country->currency->code}}
-                                    </h5>
-                                            @endauth
+                            <a href="product.html" class="">
+                                <img src="{{ asset('front/img/6.jpg') }}" width="100%" class="show-img">
+                                <img src="{{ asset('front/img/4.jpg') }}" width="100%" class="hide-img">
 
-                                            @guest()
-                                                @if(Cookie::get('name') )
-                                                    {{number_format( $b->product->price/ App\Country::find(Cookie::get('name'))->currency->rate,2)}}
-                                                    {{App\Country::find(Cookie::get('name'))->currency->code}}
-                                                @else
-                                                    {{ $b->product->price}} KWD
+                            </a>
+                            <p class="mr-0">abayat</p>
+                            <h6> <a href="product.html">CH-L1 </a></h6>
+                            <h5>30.000 KWD
+                            </h5>
+                        </div>
+                    </li>
+                    <li class="col-6 col-lg-4">
+                        <div class=" product relative">
+                            <div class="  heart "><i class="far fa-heart "></i></div>
 
-                                                @endif
-                                            @endguest
+                            <a href="product.html" class="">
+                                <img src="{{ asset('front/img/3.jpg') }}" width="100%" class="show-img">
+                                <img src="{{ asset('front/img/5.jpg') }}" width="100%" class="hide-img">
+
+                            </a>
+                            <p class="mr-0">abayat</p>
+                            <h6> <a href="product.html">CH-L1 </a></h6>
+                            <h5>30.000 KWD
+                            </h5>
+                        </div>
+
+                    </li>
+                </ul> --}}
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        @for ($i=0;$i<5;$i++)
+
+                        <div class="swiper-slide">
+                            <div class=" product relative">
+                                <div class="  heart "><i class="far fa-heart "></i></div>
+                                <div style="flex-direction: column;display: flex">
+                                <div>
+                                <a href="product.html" class="">
+                                    <img src="{{ asset('front/img/3.jpg') }}" width="100%" class="show-img">
+                                    <img src="{{ asset('front/img/5.jpg') }}" width="100%" class="hide-img">
+
+                                </a>
                                 </div>
-                            </li>
+
+                                <div>
+                                <p class="mr-0">abayat</p>
+                                <h6> <a href="product.html">CH-L1 </a></h6>
+                                <h5>30.000 KWD
+                                </h5>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        @endfor
+
+                    </div>
+
+                    {{-- <div class="swiper-pagination"></div> --}}
+                </div>
 
 
-                        @endforeach
 
-                    @endif
-                </ul>
+
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+        <br><br>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 ml-auto order-md-2 align-self-center">
+                <div class="site-block-cover-content text-center">
+                    <!-- <h2 class="sub-title">#The world talk about fasion</h2> -->
+                    <h1>Find out what's new in the fasion world</h1>
+                    <a href="product.html" class="btn bg-main mt-5">read more</a>
+                </div>
+            </div>
+            <div class="col-md-6 order-1 align-self-end">
+                <img src="{{asset('front/img/4.jpg')}}" alt="Image" class="img-fluid" data-pagespeed-url-hash="799042288" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
             </div>
         </div>
-
     </div>
-
-
-
-
-    <!-----start  --->
     <br><br>
-    <div class="container-fluid pad-0 ">
-        <img src="{{asset('front/img/bg.png')}}" class="w-100">
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 ml-auto order-md-2 align-self-center">
+                <div class="site-block-cover-content text-center">
+                    <!-- <h2 class="sub-title">#The world talk about fasion</h2> -->
+                    <h1>Find out what's new in the fasion world</h1>
+                    <a href="product.html" class="btn bg-main mt-5">read more</a>
+                </div>
+            </div>
+            <div class="col-md-6 order-1 align-self-end">
+                <img src="{{asset('front/img/5.jpg')}}" alt="Image" class="img-fluid" data-pagespeed-url-hash="799042288" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+            </div>
+        </div>
     </div>
-    <br>
+    <br><br>
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 ml-auto order-md-2 align-self-center">
+                <div class="site-block-cover-content text-center">
+                    <!-- <h2 class="sub-title">#The world talk about fasion</h2> -->
+                    <h1>Find out what's new in the fasion world</h1>
+                    <a href="product.html" class="btn bg-main mt-5">read more</a>
+                </div>
+            </div>
+            <div class="col-md-6 order-1 align-self-end">
+                <img src="{{asset('front/img/6.jpg')}}" alt="Image" class="img-fluid" data-pagespeed-url-hash="799042288" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+            </div>
+        </div>
+    </div>
+
+
+
+    <br><br>
+
     <div class="container ">
-        <h2 class="text-center  d-flex justify-content-between">
-            <b></b>
-            <span style="font-size: 20px"> @lang('site.new_arrival')</span>
-            <b></b></h2>
+
         <br><br>
         <div class="container1 shadow pad-0 ">
             <div id="carouselExample" class="carousel slide " data-ride="carousel">
@@ -232,94 +361,86 @@
                     <li data-target="#carouselExample" data-slide-to="2"></li>
                     <li data-target="#carouselExample" data-slide-to="3"></li>
                 </ol>
-                {{--<div class="carousel-inner">--}}
-                {{--@php--}}
-                {{--$i = 0;--}}
-                {{--@endphp--}}
-                {{--@foreach($new_arrive as $one)--}}
-                {{--<div class="carousel-item  @if($i==0) active @endif ">--}}
-                {{--<div class="col-sm-6 pad-0">--}}
-                {{--<a href="product.html">  <img class="w-100" src="{{asset('storage/'.$one->img)}}" ></a>--}}
-                {{--<br><br> <br><br>--}}
-                {{--</div>--}}
-                {{--<div class="col-sm-6 ">--}}
-                {{--<br><br><br>--}}
-                {{--<h3 class="text-right"><a href="product.html" class="main-color">{{$one->title_ar}}}</a>--}}
-                {{--</h3>--}}
-                {{--<div class="is-divider"></div>--}}
-                {{--<h4 class="text-right">{{$one->price}}}</h4>--}}
-                {{--<a href="img.html"> <img src="{{asset('storage/'.$one->height_img)}}" class="w-100"></a>--}}
-                {{--<a href="product.html" class="btn bg-main float-right">read more</a><br><br>  <br><br>--}}
-                {{--</div>--}}
-
-
-                {{--</div>--}}
-                {{--@php--}}
-                {{--$i ++;--}}
-                {{--@endphp--}}
-                {{--@endforeach--}}
-
-
-                {{--</div>--}}
                 <div class="carousel-inner">
-                    <?php
-                    $i = 0;
-                    ?>
-                    @foreach($new_arrive as $one)
-                        <div class="carousel-item @if($i==0) active @endif ">
-                            <div class="row">
-                                <div class="col-sm-6 pad-0">
-                                    <a href="{{route('product' , $one->id)}}">
-                                        <img class="w-100" src="{{asset('storage/'.$one->img)}}"
-                                             onerror="this.onerror=null;this.src='{{asset('front/img/5.jpg')}}'"
-                                        ></a>
-                                    <br><br> <br><br>
-                                </div>
-                                <div class="col-sm-6 ">
-                                    <br><br><br>
-                                    @if(app()->getLocale() == 'en')
-                                        <h3 class="text-right"><a href="{{route('product' , $one->id)}}"
-                                                                  class="main-color">
-                                                {{$one->title_en}} </a>
-                                        </h3>
-                                    @else
-                                        <h3 class="text-right"><a href="{{route('product' , $one->id)}}"
-                                                                  class="main-color">{{$one->title_ar}} </a>
-                                        </h3>
-                                    @endif
-
-                                    <div class="is-divider"></div>
-                                    <h4 class="text-right">
-
-                                        @auth()
-                                               {{Auth::user()->getPrice($one->price)}} {{ Auth::user()->country->currency->code}}
-
-                                        @endauth
-
-                                        @guest()
-                                            @if(Cookie::get('name') )
-                                                {{number_format($one->price/ App\Country::find(Cookie::get('name'))->currency->rate,2)}}
-                                                {{App\Country::find(Cookie::get('name'))->currency->code}}
-                                            @else
-                                                &nbsp;{{$one->price}}KWD
-
-                                            @endif
-                                        @endguest
-                                    </h4>
-                                    {{--<a href="{{asset('front/img/size.jpeg')}}">--}}
-                                        {{--<img--}}
-                                            {{--src="{{asset('front/img/size.jpeg')}}"--}}
-                                            {{--class="w-100"></a>--}}
-                                    <a href="{{route('product' , $one->id)}}" class="btn bg-main float-left">read
-                                        more</a><br><br> <br><br>
-                                </div>
+                    <div class="carousel-item  active">
+                        <div class="row">
+                            <div class="col-sm-6 pad-0">
+                                <a href="product.html"> <img class="w-100" src="{{asset('front/img/11.jpg')}}"></a>
 
                             </div>
+                            <div class="col-sm-6 text-center p-3">
+
+                                <h3 class="text-right"><a href="product.html" class="main-color">The week of fashion </a>
+                                </h3>
+                                <div class="is-divider"></div>
+                                <h4 class="text-right">shop now</h4>
+                                <h4 class="text-right">shop now</h4>
+                                <h4 class="text-right">shop now</h4>
+                                <h4 class="text-right">shop now</h4>
+
+                                <a href="product.html" class="btn bg-main text-center mt-5">read more</a><br><br> <br><br>
+                            </div>
+
                         </div>
-                        <?php
-                        $i++;
-                        ?>
-                    @endforeach
+                    </div>
+                    <div class="carousel-item  ">
+                        <div class="row">
+                            <div class="col-sm-6 pad-0">
+                                <a href="product.html"> <img class="w-100" src="{{asset('front/img/11.jpg')}}"></a>
+                            </div>
+                            <div class="col-sm-6 text-center p-3">
+                                <h3 class="text-right"><a href="product.html" class="main-color">The week of fashion </a>
+                                </h3>
+                                <div class="is-divider"></div>
+                                <h4 class="text-right">shop now</h4>
+                                <h4 class="text-right">shop now</h4>
+                                <h4 class="text-right">shop now</h4>
+                                <h4 class="text-right">shop now</h4>
+
+                                <a href="product.html" class="btn bg-main text-center mt-5">read more</a><br><br> <br><br>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="carousel-item  ">
+                        <div class="row">
+                            <div class="col-sm-6 pad-0">
+                                <a href="product.html"> <img class="w-100" src="{{asset('front/img/11.jpg')}}"></a>
+                            </div>
+                            <div class="col-sm-6 text-center p-3">
+                                <h3 class="text-right"><a href="product.html" class="main-color">The week of fashion </a>
+                                </h3>
+                                <div class="is-divider"></div>
+                                <h4 class="text-right">shop now</h4>
+                                <h4 class="text-right">shop now</h4>
+                                <h4 class="text-right">shop now</h4>
+                                <h4 class="text-right">shop now</h4>
+
+                                <a href="product.html" class="btn bg-main text-center mt-5">read more</a><br><br> <br><br>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="carousel-item  ">
+                        <div class="row">
+                            <div class="col-sm-6 pad-0">
+                                <a href="product.html"> <img class="w-100" src="{{asset('front/img/11.jpg')}}"></a>
+                            </div>
+                            <div class="col-sm-6 text-center p-3">
+                                <h3 class="text-right"><a href="product.html" class="main-color">The week of fashion </a>
+                                </h3>
+                                <div class="is-divider"></div>
+                                <h4 class="text-right">shop now</h4>
+                                <h4 class="text-right">shop now</h4>
+                                <h4 class="text-right">shop now</h4>
+                                <h4 class="text-right">shop now</h4>
+
+                                <a href="product.html" class="btn bg-main text-center mt-5">read more</a><br><br> <br><br>
+                            </div>
+
+                        </div>
+                    </div>
+
 
                 </div>
                 <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
@@ -331,85 +452,78 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-        </div>
-        <br><br><br>
+        </div> <br><br><br>
     </div>
     <!-----start  --->
-    <div class="text-center new " style="">
-        <h1 class="c-w"> NEWSLETTER
-        </h1>
-        <p class="c-w">Sign up for newsletter to get updates about new design and new products.</p>
 
-        <a href="{{route('register')}}" class=" btn btn-danger">@lang('site.signup') </a>
-    </div>
 
-    <div class="country ">
 
-        <div class="relative">
 
-            <video class="h-100 w-100 " autoplay controls muted>
-                <source src="{{asset('front/img/video.mp4')}}" type="video/mp4">
-            </video>
-            <div class="abs-shop text-center">
-                <button class=" btn btn-danger close-country  ">shop now <i class="far fa-heart"></i></button>
-            </div>
 
-            <br>
-        </div>
-    </div>
-<script>
 
-    $(document).on('click','.addToWishList',function (e) {
 
-        e.preventDefault();
-        @guest()
-        //                    $('.not-loggedin-modal').css('display','block');
-        //                    console.log('You are guest'
 
-        {{--            {{\RealRashid\SweetAlert\Facades\Alert::error('error', 'Please Login first!')}}--}}
-        Swal.fire({
-            icon: 'error',
-            title: 'Login first!',
-        })
-        @endguest
-        @auth
-        $.ajax({
-            type: 'get',
-            url:"{{route('wishlist.store')}}",
-            data:{
+
+
+
+
+
+
+
+
+
+
+    <script>
+        $(document).on('click', '.addToWishList', function(e) {
+
+            e.preventDefault();
+            @guest()
+                // $('.not-loggedin-modal').css('display','block');
+                // console.log('You are guest'
+
+                {{-- {{\RealRashid\SweetAlert\Facades\Alert::error('error', 'Please Login first!')}} --}}
+                Swal.fire({
+                icon: 'error',
+                title: 'Login first!',
+                })
+            @endguest
+            @auth
+                $.ajax({
+                type: 'get',
+                url:"{{ route('wishlist.store') }}",
+                data:{
                 'productId':$(this).attr('data-product-id'),
-            },
-            success:function (data) {
+                },
+                success:function (data) {
                 if (data.message){
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Added successfully!',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                    {{--{{\RealRashid\SweetAlert\Facades\Alert::error('ok', 'ok!')}}--}}
+                Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Added successfully!',
+                showConfirmButton: false,
+                timer: 1500
+                })
+                {{-- {{\RealRashid\SweetAlert\Facades\Alert::error('ok', 'ok!')}} --}}
 
                 }
                 else {
-//                        alert('This product already in you wishlist');
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'info',
-                        title: 'This product already in you wishlist',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
+                // alert('This product already in you wishlist');
+                Swal.fire({
+                position: 'center',
+                icon: 'info',
+                title: 'This product already in you wishlist',
+                showConfirmButton: false,
+                timer: 1500
+                })
 
-                    {{--                        {{\RealRashid\SweetAlert\Facades\Alert::error('no', 'this product added already!')}}--}}
+                {{-- {{\RealRashid\SweetAlert\Facades\Alert::error('no', 'this product added already!')}} --}}
 
                 }
-            }
+                }
+                });
+            @endauth
+
+
         });
-        @endauth
-
-
-    });
-
-</script>
+    </script>
 @endsection

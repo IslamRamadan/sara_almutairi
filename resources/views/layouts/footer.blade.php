@@ -121,6 +121,8 @@
 <script src="{{ asset('front/js/counterup.min.js') }}"></script>
 <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 
 
 <script>
@@ -166,6 +168,16 @@
 
     });
 </script>
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView:3,
+      spaceBetween: 30,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+  </script>
 
 @yield('script')
 </body>

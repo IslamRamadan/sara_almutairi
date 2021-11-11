@@ -4,7 +4,8 @@
 >
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{-- <meta name="viewport" content="width=device-width, initial-scale=1"> --}}
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
     <link rel="stylesheet" href="{{asset('front/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('front/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('front/css/animate.css')}}">
@@ -13,6 +14,7 @@
     <!-- slick css-->
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/slick.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/slick-theme.css')}}"/>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
           integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <!-- Scripts -->

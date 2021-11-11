@@ -159,3 +159,13 @@
             width: 57%;
         } */
     }
+    
+    @media (min-width: 0px) and (max-width: 768px) {
+        .fashion {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
