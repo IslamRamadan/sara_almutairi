@@ -118,6 +118,7 @@ Route::group(
         Route::resource('products','Backend\ProductController');
         Route::resource('contact_us','Backend\ContactUsController');
         Route::resource('orders','Backend\OrderController');
+        Route::resource('posts','Backend\PostController');
 //islam 26 august
 
 
@@ -146,6 +147,7 @@ Route::group(
         Route::post('custom_sizes/update/{id}','Backend\SizeController@updateSize')->name('sizes.update.size');
         Route::post('custom_heights/update/{id}','Backend\HeightController@updateHeight')->name('heights.update.height');
         Route::post('custom_products/update/{id}','Backend\ProductController@updateProduct')->name('products.update.product');
+        Route::post('custom_posts/update/{id}','Backend\PostController@updatePost')->name('posts.update.post');
 //=======
         Route::post('currencies_users/update','Backend\CurrencyController@updateCurrency')->name('currencies.update.currency');
 //>>>>>>> Stashed changes

@@ -197,7 +197,7 @@
 
 
                 <li class="nav-item mr-3 "><a class="nav-link " href="{{route('wishlist.view')}}"><i class="far fa-heart sml-fa" style="font-size: 25px;"></i>  </a></li>
-                <li class="nav-item mr-3" id="cart-hover"><a class="nav-link " href="account.html"><i class="fas fa-shopping-cart sml-fa" style="font-size: 25px;"></i><span class='badge badge-warning' id='lblCartCount'> {{Session::has('cart_details')?
+                <li class="nav-item mr-3" id="cart-hover"><a class="nav-link " href="{{route('cart')}}"><i class="fas fa-shopping-cart sml-fa" style="font-size: 25px;"></i><span class='badge badge-warning' id='lblCartCount'> {{Session::has('cart_details')?
 Session::get('cart_details')['totalQty'] :'0'}} </span>
                     </a>
                     <div class=" ul2  bg-w  text-right " style="padding: 10px;width: 300px">
