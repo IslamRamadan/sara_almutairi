@@ -223,10 +223,10 @@
     </div>
 
     <div class="container">
-        <div class="row">
+        <div class="row dir-rtl">
 
 
-            <div class="col-md-3 d-md-block d-none ">
+            <div class="col-lg-3 col-md-4 d-md-block d-none ">
                 @if($type == 1)
                     <a
                         style="font-size: 20px;display: flex;
@@ -266,7 +266,7 @@
                     </div>
                 @endif
                 <br>
-                <h4>@lang('site.recently_viewed')
+                <h4 class="text-dir">@lang('site.recently_viewed')
                 </h4>
                 <div class="is-divider"></div>
                 @if($last_views->count()  > 0)
@@ -318,7 +318,7 @@
                     @endforeach
                 @endif
             </div>
-            <div class="col-md-9 pad-0 ">
+            <div class="col-lg-9 col-md-8 pad-0 ">
                 <div class="row text-center">
                     @if($category->products->count() > 0)
                         @foreach($category->products as $p)

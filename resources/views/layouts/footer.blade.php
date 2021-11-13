@@ -1,12 +1,12 @@
 <!--- end  --->
-<footer class="container-fluid">
+<footer class="container-fluid dir-rtl">
     <div class="container">
-        <div class="row">
+        <div class="row res-mobile text-dir">
 
             <div class="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="{{ asset('/storage/' . $my_setting->logo) }}" style="mix-blend-mode: multiply;
                     " alt="" width="180" class="mb-3">
                 {{-- <p class="font-italic text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p> --}}
-                <ul class="list-inline mt-4">
+                <ul class="list-inline mt-4" style="direction: ltr">
                     @if (\App\Settings::all()->first()->whatsapp)
                         <li class="list-inline-item"><a href="https://wa.me/{{$my_setting->whatsapp}}" target="_blank" title="whatsapp"><i
                                     class="fab fa-whatsapp fa-2x"></i></a></li>
@@ -74,17 +74,17 @@
             </div> --}}
 
             <div class="col-md-4">
-                <h5>@lang('site.contact_us')
+                <h5 class="font-weight-bold">@lang('site.contact_us')
                 </h5>
-                <p> <a href=""> @lang('site.privacy_policy') </a>
-                <p> <a href=""> @lang('site.mywishlist') </a>
-                <p> <a href=""> @lang('site.payment') </a>
-                <p> <a href=""> @lang('site.contact_us') </a>
+                <p> <a href="{{ route('policy') }}"> @lang('site.privacy_policy') </a>
+                <p> <a href="{{ route('wishlist.view') }}"> @lang('site.mywishlist') </a>
+                <p> <a href="{{ route('checkout') }}"> @lang('site.payment') </a>
+                <p> <a href="{{ route('contact.us') }}"> @lang('site.contact_us') </a>
 
 
             </div>
             <div class="col-md-4">
-                <h5>@lang('site.location')
+                <h5 class="font-weight-bold">@lang('site.location')
                 </h5>
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1781287.9077480363!2d48.65696112404058!3d29.30938918651801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3fc5363fbeea51a1%3A0x74726bcd92d8edd2!2z2KfZhNmD2YjZitiq4oCO!5e0!3m2!1sar!2seg!4v1585667151145!5m2!1sar!2seg"
@@ -170,8 +170,24 @@
 </script>
 <script>
     var swiper = new Swiper(".mySwiper", {
-        slidesPerView:3,
-      spaceBetween: 30,
+        breakpoints: {
+            // when window width is >= 320px
+            320: {
+                slidesPerView: 2,
+                spaceBetween: 20
+            },
+            // when window width is >= 480px
+            770: {
+                slidesPerView: 2,
+                spaceBetween: 30
+            },
+            // when window width is >= 640px
+            1000: {
+                slidesPerView: 3,
+                spaceBetween: 30
+            }
+        },
+        freeMode: true,
       pagination: {
         el: ".swiper-pagination",
         clickable: true,

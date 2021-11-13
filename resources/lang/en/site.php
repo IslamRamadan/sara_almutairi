@@ -228,8 +228,19 @@ return [
     'num_heights'=>'Number of heights',
     'depend_city'=>'Depend on city',
     'kwd'=>'KWD',
+    'fashion_world'=>'Fashion world',
     'del_time '=>'Delivery time',
     'add_to_wishlist'=>'Add to wishlist',
+    'discover_new'=>'Discover what\'s new in fashion',
+    'new_in'=>'New in',
+    'read_more'=>'Read more',
+    'week_fasion'=>'The week of fasion',
+    'kwd'=>'KWD',
+    'kwd'=>'KWD',
+    'kwd'=>'KWD',
+    'kwd'=>'KWD',
+    'kwd'=>'KWD',
+    'kwd'=>'KWD',
 
 
 

@@ -72,7 +72,8 @@
             height: 200px;
         }
         .MyServices img {
-            height: 200px;
+            /* height: 200px; */
+            height: 300px;
         }
         .container1 .pad-0 img {
             height: 50vh;
@@ -152,6 +153,30 @@
         .col-xs-12.col-sm-12 {
             padding: 0;
         }
+        .site-block-cover-content.text-center h1 {
+            font-size: 20px;
+        }
+        .site-block-cover-content.text-center {
+            margin-bottom: 15px;
+        }
+        a.btn.bg-main.mt-5 {
+            margin-top: 10px!important;
+        }
+        .row.res-mobile {
+            text-align: center !important;
+        }
+        .product.relative h5 {
+            font-size: 15px;
+        }
+        .vitem {
+            font-size: 10px;
+        }
+        .product.relative p {
+            font-size: 15px;
+        }
+        .product.relative h6 {
+            font-size: 14px;
+        }
     }
     
     @media (min-width: 321px) and (max-width: 320px) {
@@ -160,7 +185,7 @@
         } */
     }
     
-    @media (min-width: 0px) and (max-width: 768px) {
+    @media (min-width: 0px) and (max-width: 767px) {
         .fashion {
             margin-bottom: 30px;
             display: flex;

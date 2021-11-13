@@ -20,7 +20,7 @@
                         </p>
                 @else
 
-            <div class="col-lg-8 col-md-12 d-md-block d-none">
+            <div class="col-lg-8 col-md-12 d-md-block ">
 
                 <div class="table_block table-responsive dir-rtl" >
                     <table class="table ">
@@ -169,7 +169,7 @@
             </div>
 
                 @endif
-            <div class="col-sm-12 d-md-none d-block">
+            {{-- <div class="col-sm-12 d-md-none d-block" >
                 @foreach(Session::get('cart') as $cart_parent)
                     @foreach($cart_parent as $key => $cart_child)
                 <div class="row border  text-center"><br>
@@ -192,33 +192,13 @@
                              style="display: flex;align-items: center;justify-content: center"
                         >
                             <a rel="nofollow" class="btn btn-default " href="#" onclick="changeProduct(-1 ,{{$cart_child['product_id']}},{{$cart_child['product_height_id']}})">&ndash;</a>
-                            <input type="number" style="width: 40px; border: 0;border-radius: 10px"
+                            <input type="number" style="text-align:center ;width: 40px; border: 0;border-radius: 10px"
                                    class="count"
                                    value="{{$cart_child['quantity']}}" name="quantity">
                             <a rel="nofollow" class="btn btn-default " href="#"  onclick="changeProduct(1 ,{{$cart_child['product_id']}},{{$cart_child['product_height_id']}})">+</a>
                         </div>
-{{--                        <br>--}}
-{{--                        <br>--}}
-{{--                        <button class="col-12 text-center"--}}
-{{--                                type="submit"--}}
-{{--                                style="background-color: transparent;border: 0;">--}}
-{{--                            <a   class=""><i class="fas fa-archive active"  ></i></a>--}}
-{{--                        </button>--}}
-                    </form>
 
-{{--                    <form class=" product-count col-12"--}}
-{{--                          action="{{route('remove.from.shopping.cart' , [$cart_child['product_id'] , $cart_child['product_height_id']])}}"--}}
-{{--                          method="post">--}}
-{{--                        @csrf--}}
-{{--                        <a rel="nofollow" class="btn btn-default btn-minus" href="#" title="Subtract">&ndash;</a>--}}
-{{--                        <input type="text" disabled="" size="2" autocomplete="off" class="cart_quantity_input form-control grey count" value="1" name="quantity">--}}
-{{--                        <a rel="nofollow" class="btn btn-default btn-plus" href="#" title="Add">+</a>--}}
-{{--                        <button class="col-12 text-left"--}}
-{{--                                type="submit"--}}
-{{--                                style="background-color: transparent;border: 0;">--}}
-{{--                            <a   class=""><i class="fas fa-archive active"  ></i></a>--}}
-{{--                        </button>--}}
-{{--                    </form>--}}
+                    </form>
 
                     <p class="col-12 font-weight-bold">total:
                         @auth()
@@ -243,7 +223,7 @@
                 </div>
                     @endforeach
                 @endforeach
-            </div>
+            </div> --}}
             @else
                 <div class="col-lg-8 col-md-12 d-md-block d-none">
                     <p>@lang('site.no_data')</p>

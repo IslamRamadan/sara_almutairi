@@ -273,7 +273,7 @@
                     @if(\App\BasicCategory::find($product->basic_category_id)->products->count() > 0)
                         @foreach(\App\BasicCategory::find($product->basic_category_id)->products as $p)
                             @if($p->id != $product->id)
-                                <li class="col-4 col-lg-4" style="list-style:none;">
+                                <li class=" col-lg-4 col-md-6 col-sm-12" style="list-style:none;">
                                     <div class=" product relative text-dir">
                                         {{--<div class="  heart "><i class="far fa-heart "></i></div>--}}
                                         <a href="#"  class="heart addToWishList text-light" data-product-id="{{$p->id}}">

@@ -2714,15 +2714,15 @@ fieldset:disabled a.btn {
 
 .btn-danger:hover {
     color: #fff;
-    background-color: #d0211c;
-    border-color: #c51f1a;
+    background-color: #df7122;
+    border-color: #df7122;
 }
 
 .btn-danger:focus,
 .btn-danger.focus {
     color: #fff;
-    background-color: #d0211c;
-    border-color: #c51f1a;
+    background-color: #df7122;
+    border-color: #df7122;
     box-shadow: 0 0 0 0.2rem rgba(231, 82, 78, 0.5);
 }
 
@@ -2737,8 +2737,8 @@ fieldset:disabled a.btn {
 .btn-danger:not(:disabled):not(.disabled).active,
 .show>.btn-danger.dropdown-toggle {
     color: #fff;
-    background-color: #c51f1a;
-    border-color: #b91d19;
+    background-color: background-color: #df7122;
+    border-color: #df7122;
 }
 
 .btn-danger:not(:disabled):not(.disabled):active:focus,

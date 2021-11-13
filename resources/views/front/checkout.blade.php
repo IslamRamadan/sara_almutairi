@@ -9,7 +9,7 @@
 
         <div class="container-fluid "><br><br>
             <div class="row pad  dir-rtl">
-                <div class="col-sm-8 ">
+                <div class="col-12 col-lg-8 ">
                     <div class=" border text-dir ">
                         <div class="bg-b row mr-0" style="padding-top: 8px">
                             <h3 class=" col-12">@lang('site.shipping_details')</h3>
@@ -193,7 +193,7 @@
                     </div>
                 </div>
                 @if(count(Session::get('cart')) < 1)
-                    <div class="col-sm-4 ">
+                    <div class="col-12 col-lg-4 ">
                         <div class=" border text-dir">
                             <div class="bg-b row mr-0">
                                 <h3 class=" col-12 "
@@ -204,7 +204,7 @@
                             <br>
                         </div>
                         @else
-                            <div class="col-sm-4 ">
+                            <div class="col-12 col-lg-4 ">
                                 <div class=" border text-dir" style="text-align: left">
                                     <div class="bg-b row mr-0"style="padding-top: 8px">
                                         <h3 class=" col-12 " style="text-align: center"> @lang('site.order_summary')</h3>
@@ -254,7 +254,7 @@
                                         @endforeach
                                     @endforeach
                                     <div class="row  dir-rtl">
-                                        <div class="col-12" style="text-align: left">
+                                        <div class="col-12 mt-3" style="text-align: left">
                                             @if(Session::has('cart_details'))
                                                 <p style="display:flex;justify-content: space-between">
 
