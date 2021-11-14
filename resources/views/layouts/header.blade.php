@@ -529,7 +529,7 @@
 
             <div>
                 @auth
-                <a class="nav-link " href="{{ route('/') }}" style="padding-top: 12px;;margin-left:40px"> <img
+                <a class="nav-link " href="{{ route('/') }}" style="padding-top: 12px;;margin-left:10px"> <img
                     src="{{ asset('/storage/' . $my_setting->logo) }}" width="50"></a>
                 @endauth
                 @guest
@@ -573,7 +573,7 @@
             <ul class="navbar nav pad-0">
                 @auth()
                     <li class="nav-item ">
-                        <a class="nav-link " href="{{ route('myaccount') }}"> <i class="fas fa-user " style="color:#ec7d23"></i> </a>
+                        <a class="nav-link " href="{{ route('myaccount') }}"> <i class="fas fa-user sml-fa" style="color:#ec7d23"></i> </a>
                     </li>
                 @endauth
 
