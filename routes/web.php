@@ -119,6 +119,7 @@ Route::group(
         Route::resource('contact_us','Backend\ContactUsController');
         Route::resource('orders','Backend\OrderController');
         Route::resource('posts','Backend\PostController');
+        Route::resource('news','Backend\NewsController');
 //islam 26 august
 
 
@@ -126,6 +127,7 @@ Route::group(
         Route::get('/product_galaries/{id}', 'Backend\productGalaryController@index')->name("product_galaries.index");
         Route::post('/product_galaries/store/{id}', 'Backend\productGalaryController@store')->name("product_galaries.store");
         Route::delete('/product_galaries/destroy/{id}', 'Backend\productGalaryController@destroy')->name("product_galaries.destroy");
+        Route::get('/news/destroy/{id}', 'Backend\NewsController@destroy')->name("news.destroy");
 
 
         Route::get('/ajax-subcat','Backend\ProductController@ajaxcat');
@@ -148,6 +150,7 @@ Route::group(
         Route::post('custom_heights/update/{id}','Backend\HeightController@updateHeight')->name('heights.update.height');
         Route::post('custom_products/update/{id}','Backend\ProductController@updateProduct')->name('products.update.product');
         Route::post('custom_posts/update/{id}','Backend\PostController@updatePost')->name('posts.update.post');
+        Route::post('custom_news/update/{id}','Backend\NewsController@updateNews')->name('news.update.news');
 //=======
         Route::post('currencies_users/update','Backend\CurrencyController@updateCurrency')->name('currencies.update.currency');
 //>>>>>>> Stashed changes

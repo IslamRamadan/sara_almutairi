@@ -158,7 +158,7 @@
 
                         @else
                             {{$product->price}}
-                            KWD
+                            @lang('site.kwd')
                         @endif
 
                         @else
@@ -266,7 +266,7 @@
                     {{--                            </a>--}}
                     {{--                            <p class="mr-0">abayat</p>--}}
                     {{--                            <h6>  <a href="product.html">CH-L1 </a></h6>--}}
-                    {{--                            <h5>30.000 KWD--}}
+                    {{--                            <h5>30.000 @lang('site.kwd')--}}
                     {{--                            </h5>--}}
                     {{--                        </div>--}}
                     {{--                    </li>--}}
@@ -325,7 +325,7 @@
 
                                                 @else
                                                     {{$p->price}}
-                                                    KWD
+                                                    @lang('site.kwd')
                                                 @endif
                                             @endguest
                                         </h4>
@@ -347,7 +347,7 @@
                     {{--                            </a>--}}
                     {{--                            <p class="mr-0">abayat</p>--}}
                     {{--                            <h6>  <a href="product.html">CH-L1 </a></h6>--}}
-                    {{--                            <h5>30.000 KWD--}}
+                    {{--                            <h5>30.000 @lang('site.kwd')--}}
                     {{--                            </h5>--}}
                     {{--                        </div>--}}
                     {{--                    </li>--}}
@@ -362,7 +362,7 @@
                     {{--                            </a>--}}
                     {{--                            <p class="mr-0">abayat</p>--}}
                     {{--                            <h6>  <a href="product.html">CH-L1 </a></h6>--}}
-                    {{--                            <h5>30.000 KWD--}}
+                    {{--                            <h5>30.000 @lang('site.kwd')--}}
                     {{--                            </h5>--}}
                     {{--                        </div>--}}
                     {{--                    </li>--}}
@@ -377,7 +377,7 @@
                     {{--                            </a>--}}
                     {{--                            <p class="mr-0">abayat</p>--}}
                     {{--                            <h6>  <a href="product.html">CH-L1 </a></h6>--}}
-                    {{--                            <h5>30.000 KWD--}}
+                    {{--                            <h5>30.000 @lang('site.kwd')--}}
                     {{--                            </h5>--}}
                     {{--                        </div>--}}
                     {{--                    </li>--}}
@@ -392,7 +392,7 @@
                     {{--                            </a>--}}
                     {{--                            <p class="mr-0">abayat</p>--}}
                     {{--                            <h6>  <a href="product.html">CH-L1 </a></h6>--}}
-                    {{--                            عع                       <h5>30.000 KWD--}}
+                    {{--                            عع                       <h5>30.000 @lang('site.kwd')--}}
                     {{--                            </h5>--}}
                     {{--                        </div>--}}
 

@@ -6,7 +6,7 @@
 @section('content')
     <!-----start  --->
     <div class="container-fluid pad-0 m-3">
-        <h1 class="title text-center">@lang('site.my_account')hhhhhhhhh
+        <h1 class="title text-center">@lang('site.my_account')
         </h1>
     </div>
 

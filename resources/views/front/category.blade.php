@@ -181,7 +181,7 @@
 {{--                        </div>--}}
 {{--                        <div class="col-9">--}}
 {{--                            <h6><a href="product.html" class="main-color">CH-L1 </a></h6>--}}
-{{--                            <h5>30.000 KWD--}}
+{{--                            <h5>30.000 @lang('site.kwd')--}}
 {{--                            </h5></div>--}}
 {{--                    </div>--}}
 {{--                    <hr>--}}
@@ -191,7 +191,7 @@
 {{--                        </div>--}}
 {{--                        <div class="col-9">--}}
 {{--                            <h6><a href="product.html" class="main-color">CH-L1 </a></h6>--}}
-{{--                            <h5>30.000 KWD--}}
+{{--                            <h5>30.000 @lang('site.kwd')--}}
 {{--                            </h5></div>--}}
 
 
@@ -304,7 +304,7 @@
                                                 {{number_format($b->product->price / App\Country::find(Cookie::get('name'))->currency->rate,2) }}
                                                 {{App\Country::find(Cookie::get('name'))->currency->code}}
                                             @else
-                                                {{$b->product->price}} KWD
+                                                {{$b->product->price}} @lang('site.kwd')
 
                                             @endif
                                         @endguest
@@ -398,7 +398,7 @@
                                                 {{App\Country::find(Cookie::get('name'))->currency->code}}
                                             @else
                                                 {{$p->price}}
-                                                KWD
+                                                @lang('site.kwd')
                                             @endif
                                         @endguest
 

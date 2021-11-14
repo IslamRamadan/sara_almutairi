@@ -237,7 +237,7 @@
                                                                 {{App\Country::find(Cookie::get('name'))->currency->code}}
                                                             @else
                                                                 {{ \App\Product::find($cart_child['product_id'])['price']}}
-                                                                kwd
+                                                                @lang('site.kwd')
                                                             @endif
                                                         @endguest
 
@@ -273,7 +273,7 @@
                                 </span>
 {{--                                                    <input type="hidden" value="{{Session::get('cart_details')['totalPrice']}}" id="total_value">--}}
                                                     <span>
-{{--                                                        {{Session::get('cart_details')['totalPrice']}} KWD--}}
+{{--                                                        {{Session::get('cart_details')['totalPrice']}} @lang('site.kwd')--}}
                                                         @auth()
                                                             {{Auth::user()->getPrice(Session::get('cart_details')['totalPrice'])}} {{ Auth::user()->country->currency->code}}
                                                         @endauth
@@ -282,7 +282,7 @@
                                                                 {{number_format(Session::get('cart_details')['totalPrice']/ App\Country::find(Cookie::get('name'))->currency->rate,2) }}
                                                                 {{App\Country::find(Cookie::get('name'))->currency->code}}
                                                             @else
-                                                                {{Session::get('cart_details')['totalPrice']}} KWD
+                                                                {{Session::get('cart_details')['totalPrice']}} @lang('site.kwd')
                                                             @endif
                                                         @endguest
                                                     </span></p>
@@ -310,7 +310,7 @@
                                 </span>
                                                     <input type="hidden" value="{{Session::get('cart_details')['totalPrice']}}" id="total_value">
                                                     <span id="total">
-{{--                                                        {{Session::get('cart_details')['totalPrice']}} KWD--}}
+{{--                                                        {{Session::get('cart_details')['totalPrice']}} @lang('site.kwd')--}}
                                                     </span></p>
 
 

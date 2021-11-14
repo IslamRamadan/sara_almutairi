@@ -107,7 +107,7 @@ Session::get('cart_details')['totalQty'] ." items":''}} @lang('site.cc')</p>
                             </td>
                             <td >
                                 {{$order->total_price}}
-                                KWD
+                                @lang('site.kwd')
 
                             </td>
                             <td >
@@ -174,7 +174,7 @@ Session::get('cart_details')['totalQty'] ." items":''}} @lang('site.cc')</p>
                             <p class="col-12">The date of Order :    {{$order->created_at->toFormattedDateString()}}</p>
 
                             <p class="col-12">price:  {{Auth::user()->getPrice($order->total_price)}}
-                                KWD
+                                @lang('site.kwd')
                             </p>
                             <p class="col-12"> Order status:
 

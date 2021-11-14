@@ -103,7 +103,7 @@ Session::get('cart_details')['totalQty'] ." items":''}} @lang('site.cc')</p>
 {{--                                        <p>  color: </p>--}}
                                     </td>
                                     <td >
-                                        <span> {{ Auth::user()->getPrice($wih->price)}} kwd</span>
+                                        <span> {{ Auth::user()->getPrice($wih->price)}} @lang('site.kwd')</span>
                                     </td>
                                     <td class="subtotal text-center" data-title="SUBTOTAL">
                                         <a href="#" class="removeFromWishList text-danger" data-product-id="{{$wih->id}}" >
@@ -142,7 +142,7 @@ Session::get('cart_details')['totalQty'] ." items":''}} @lang('site.cc')</p>
                     <br>
 
 
-                    <p class="col-12">price: {{Auth::user()->getPrice($wih->price)}} kwd</p>
+                    <p class="col-12">price: {{Auth::user()->getPrice($wih->price)}} @lang('site.kwd')</p>
 
                     <p class="col-12 text-left">
                         <a href="#" class="removeFromWishList text-danger d-flex justify-content-center" data-product-id="{{$wih->id}}" >

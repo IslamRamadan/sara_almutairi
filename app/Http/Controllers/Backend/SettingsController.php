@@ -88,7 +88,7 @@ class SettingsController extends Controller
     {
         if(Settings::all()->count() > 0){
             $setting = Settings::all()->first();
-            $setting->update($request->except('logo'));
+            $setting->update($request->except('logo','footer_logo','ad_image'));
 
             if ($request->hasfile('logo')) {
                 // $images .= 'yes';
@@ -115,10 +115,66 @@ class SettingsController extends Controller
                 $setting->save();
 
             }
+            //logo of footer start
+            if ($request->hasfile('footer_logo')) {
+                // $images .= 'yes';
+
+                $image = $request->file('footer_logo');
+                $original_name = strtolower(trim($image->getClientOriginalName()));
+                $file_name = time() . rand(100, 999) . $original_name;
+                $path = 'uploads/logos/images/';
+
+                if (!Storage::exists($path)) {
+                    Storage::disk('public')->makeDirectory($path);
+                }
+
+//            return (storage_path('app/public/'.$cat->image_url));
+
+                if($setting->footer_logo != null){
+                    if(file_exists(storage_path('app/public/'.$setting->footer_logo)))
+                    {
+                        unlink(storage_path('app/public/'.$setting->footer_logo));
+                    }
+                }
+
+                $setting->footer_logo = $image->storeAs($path, $file_name, 'public');
+                $setting->save();
+
+            }
+            //logo of footer end
+
+            //logo of ad img
+            if ($request->hasfile('ad_image')) {
+                // $images .= 'yes';
+
+                $image = $request->file('ad_image');
+                $original_name = strtolower(trim($image->getClientOriginalName()));
+                $file_name = time() . rand(100, 999) . $original_name;
+                $path = 'uploads/logos/images/';
+
+                if (!Storage::exists($path)) {
+                    Storage::disk('public')->makeDirectory($path);
+                }
+
+//            return (storage_path('app/public/'.$cat->image_url));
+
+                if($setting->ad_image != null){
+                    if(file_exists(storage_path('app/public/'.$setting->ad_image)))
+                    {
+                        unlink(storage_path('app/public/'.$setting->ad_image));
+                    }
+                }
+
+                $setting->ad_image = $image->storeAs($path, $file_name, 'public');
+                $setting->save();
+
+            }
+            //logo of ad img end
+
 
         } else {
 
-            $setting = Settings::create($request->except('logo'));
+            $setting = Settings::create($request->except('logo','footer_logo','ad_image'));
 
             if ($request->hasfile('logo')) {
                 // $images .= 'yes';
@@ -145,6 +201,62 @@ class SettingsController extends Controller
                 $setting->save();
 
             }
+
+
+            if ($request->hasfile('ad_image')) {
+                // $images .= 'yes';
+
+                $image = $request->file('ad_image');
+                $original_name = strtolower(trim($image->getClientOriginalName()));
+                $file_name = time() . rand(100, 999) . $original_name;
+                $path = 'uploads/logos/images/';
+
+                if (!Storage::exists($path)) {
+                    Storage::disk('public')->makeDirectory($path);
+                }
+
+//            return (storage_path('app/public/'.$cat->image_url));
+
+                if($setting->ad_image != null){
+                    if(file_exists(storage_path('app/public/'.$setting->ad_image)))
+                    {
+                        unlink(storage_path('app/public/'.$setting->ad_image));
+                    }
+                }
+
+                $setting->ad_image = $image->storeAs($path, $file_name, 'public');
+                $setting->save();
+
+            }
+
+
+            if ($request->hasfile('footer_logo')) {
+                // $images .= 'yes';
+
+                $image = $request->file('footer_logo');
+                $original_name = strtolower(trim($image->getClientOriginalName()));
+                $file_name = time() . rand(100, 999) . $original_name;
+                $path = 'uploads/logos/images/';
+
+                if (!Storage::exists($path)) {
+                    Storage::disk('public')->makeDirectory($path);
+                }
+
+//            return (storage_path('app/public/'.$cat->image_url));
+
+                if($setting->footer_logo != null){
+                    if(file_exists(storage_path('app/public/'.$setting->footer_logo)))
+                    {
+                        unlink(storage_path('app/public/'.$setting->footer_logo));
+                    }
+                }
+
+                $setting->footer_logo = $image->storeAs($path, $file_name, 'public');
+                $setting->save();
+
+            }
+
+
         }
 
 

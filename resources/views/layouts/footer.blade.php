@@ -8,28 +8,28 @@
                 {{-- <p class="font-italic text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p> --}}
                 <ul class="list-inline mt-4" style="direction: ltr">
                     @if (\App\Settings::all()->first()->whatsapp)
-                        <li class="list-inline-item"><a href="https://wa.me/{{$my_setting->whatsapp}}" target="_blank" title="whatsapp"><i
-                                    class="fab fa-whatsapp fa-2x"></i></a></li>
+                        <li class="list-inline-item"><a href="https://wa.me/{{ $my_setting->whatsapp }}" target="_blank"
+                                title="whatsapp"><i class="fab fa-whatsapp fa-2x"></i></a></li>
                     @endif
                     @if (\App\Settings::all()->first()->facebook)
-                        <li class="list-inline-item"><a href="{{$my_setting->facebook}}" target="_blank" title="facebook"><i
-                                    class="fab fa-facebook fa-2x"></i></a></li>
+                        <li class="list-inline-item"><a href="{{ $my_setting->facebook }}" target="_blank"
+                                title="facebook"><i class="fab fa-facebook fa-2x"></i></a></li>
                     @endif
                     @if (\App\Settings::all()->first()->email)
-                        <li class="list-inline-item"><a href="mailto:{{$my_setting->email}}" target="_blank" title="Gmail"><i
-                                    class="far fa-envelope fa-2x"></i></a></li>
+                        <li class="list-inline-item"><a href="mailto:{{ $my_setting->email }}" target="_blank"
+                                title="Gmail"><i class="far fa-envelope fa-2x"></i></a></li>
                     @endif
                     @if (\App\Settings::all()->first()->twitter)
-                        <li class="list-inline-item"><a href="{{$my_setting->twitter}}" target="_blank" title="twitter"><i
-                                    class="fab fa-twitter fa-2x"></i></a></li>
+                        <li class="list-inline-item"><a href="{{ $my_setting->twitter }}" target="_blank"
+                                title="twitter"><i class="fab fa-twitter fa-2x"></i></a></li>
                     @endif
                     @if (\App\Settings::all()->first()->youtube)
-                        <li class="list-inline-item"><a href="{{$my_setting->youtube}}" target="_blank" title="youtube"><i
-                                    class="fab fa-youtube fa-2x"></i></a></li>
+                        <li class="list-inline-item"><a href="{{ $my_setting->youtube }}" target="_blank"
+                                title="youtube"><i class="fab fa-youtube fa-2x"></i></a></li>
                     @endif
                     @if (\App\Settings::all()->first()->instagram)
-                        <li class="list-inline-item"><a href="{{$my_setting->instagram}}" target="_blank" title="instagram"><i
-                                    class="fab fa-instagram fa-2x"></i></a></li>
+                        <li class="list-inline-item"><a href="{{ $my_setting->instagram }}" target="_blank"
+                                title="instagram"><i class="fab fa-instagram fa-2x"></i></a></li>
                     @endif
                     @if (\App\Settings::all()->first()->telegram)
                         <li class="list-inline-item"><a href="#" target="_blank" title="telegram"><i
@@ -188,12 +188,15 @@
             }
         },
         freeMode: true,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
+        autoplay: {
+            delay: 500,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
     });
-  </script>
+</script>
 
 @yield('script')
 </body>

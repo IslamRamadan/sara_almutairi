@@ -154,10 +154,18 @@
 <body>
     <div class="vwrap">
         <div class="vmove">
-            <div class="vitem">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-            <div class="vitem">Aliquam consequat varius consequat.</div>
-            <div class="vitem">Fusce dapibus turpis vel nisi malesuada sollicitudin.</div>
-            <div class="vitem">Pellentesque auctor molestie orci ut blandit.</div>
+
+            @foreach (App\News::where('appearance',1)->get() as $news )
+            <div class="vitem">
+                @if (app()->getLocale() == 'en')
+                {{ $news->content_en }}
+                @else
+                    {{ $news->content_ar }}
+                @endif
+
+
+            </div>
+            @endforeach
         </div>
     </div>
     <div class="container-fluid pad-0 bg-dark  head-flex">
@@ -520,9 +528,15 @@
             </div>
 
             <div>
-                <a class="nav-link " href="{{ route('/') }}" style="padding-top: 12px;"> <img
-                        src="{{ asset('/storage/' . $my_setting->logo) }}" width="50"></a>
+                @auth
+                <a class="nav-link " href="{{ route('/') }}" style="padding-top: 12px;;margin-left:40px"> <img
+                    src="{{ asset('/storage/' . $my_setting->logo) }}" width="50"></a>
+                @endauth
+                @guest
+                <a class="nav-link " href="{{ route('/') }}" style="padding-top: 12px"> <img
+                    src="{{ asset('/storage/' . $my_setting->logo) }}" width="50"></a>
 
+                @endguest
 
             </div>
 
@@ -559,12 +573,12 @@
             <ul class="navbar nav pad-0">
                 @auth()
                     <li class="nav-item ">
-                        <a class="nav-link " href="{{ route('myaccount') }}"> <i class="fas fa-user "></i> </a>
+                        <a class="nav-link " href="{{ route('myaccount') }}"> <i class="fas fa-user " style="color:#ec7d23"></i> </a>
                     </li>
                 @endauth
 
                 <li class="nav-item"><a class="nav-link " href="{{ route('cart') }}"><i
-                            class="fas fa-shopping-cart sml-fa" style="font-size: 25px;"></i><span
+                            class="fas fa-shopping-cart sml-fa" style="font-size: 25px;color:#ec7d23"></i><span
                             class='badge badge-warning' id='lblCartCount'>
                             {{                             Session::has('cart_details') ? Session::get('cart_details')['totalQty'] : '0' }}
                         </span>

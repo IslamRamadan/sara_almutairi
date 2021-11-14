@@ -39,6 +39,21 @@
             </div>
 
             <div class="form-group">
+                <label for="footer_logo">
+                    @lang('site.footer_logo')
+                </label>
+                <input value="{{ $setting->footer_logo}}"  type="file" name="footer_logo"
+                       class="form-control @error('footer_logo') is-invalid @enderror" id="footer_logo">
+            </div>
+            <div class="form-group">
+                <label for="ad_image">
+                    @lang('site.ad_image')
+                </label>
+                <input value="{{ $setting->ad_image}}"  type="file" name="ad_image"
+                       class="form-control @error('ad_image') is-invalid @enderror" id="ad_image">
+            </div>
+
+            <div class="form-group">
                 <label for="site_des_ar">
                     @lang('site.page_details_ar')
 

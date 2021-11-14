@@ -10,10 +10,10 @@
     <div class="text-dir new1 " style="">
 
         <h1 class="c-w">
-            
+
         </h1>
         <p class="c-w ">
-            
+
         </p>
 
     </div>
@@ -169,7 +169,7 @@
                             </a>
                             <p class="mr-0">hhhhh</p>
                             <h6> <a href="product.html">CH-L1 </a></h6>
-                            <h5>30.000 KWD
+                            <h5>30.000 @lang('site.kwd')
                             </h5>
                         </div>
                     </li>
@@ -184,7 +184,7 @@
                             </a>
                             <p class="mr-0">abayat</p>
                             <h6> <a href="product.html">CH-L1 </a></h6>
-                            <h5>30.000 KWD
+                            <h5>30.000 @lang('site.kwd')
                             </h5>
                         </div>
                     </li>
@@ -199,7 +199,7 @@
                             </a>
                             <p class="mr-0">abayat</p>
                             <h6> <a href="product.html">CH-L1 </a></h6>
-                            <h5>30.000 KWD
+                            <h5>30.000 @lang('site.kwd')
                             </h5>
                         </div>
                     </li>
@@ -214,7 +214,7 @@
                             </a>
                             <p class="mr-0">abayat</p>
                             <h6> <a href="product.html">CH-L1 </a></h6>
-                            <h5>30.000 KWD
+                            <h5>30.000 @lang('site.kwd')
                             </h5>
                         </div>
                     </li>
@@ -229,7 +229,7 @@
                             </a>
                             <p class="mr-0">abayat</p>
                             <h6> <a href="product.html">CH-L1 </a></h6>
-                            <h5>30.000 KWD
+                            <h5>30.000 @lang('site.kwd')
                             </h5>
                         </div>
                     </li>
@@ -244,7 +244,7 @@
                             </a>
                             <p class="mr-0">abayat</p>
                             <h6> <a href="product.html">CH-L1 </a></h6>
-                            <h5>30.000 KWD
+                            <h5>30.000 @lang('site.kwd')
                             </h5>
                         </div>
 
@@ -254,7 +254,7 @@
                     <div class="swiper-wrapper">
                         @for ($i=0;$i<5;$i++)
 
-                        <div class="swiper-slide">
+                        <div class="swiper-slide" data-swiper-autoplay="2000">
                             <div class=" product relative">
                                 <div class="  heart "><i class="far fa-heart "></i></div>
                                 <div style="flex-direction: column;display: flex">
@@ -269,7 +269,7 @@
                                 <div>
                                 <p class="mr-0">abayat</p>
                                 <h6> <a href="product.html">CH-L1 </a></h6>
-                                <h5>30.000 KWD
+                                <h5>30.000 @lang('site.kwd')
                                 </h5>
                                 </div>
                             </div>

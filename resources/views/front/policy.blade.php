@@ -53,7 +53,7 @@
 {{--                            <div class="card-header border-bottom pad-0 " id="headingOne" >--}}
 {{--                                <h5 class="mb-0">--}}
 {{--                                    <button class="btn  w-100 text-right nav-link bg-light" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">--}}
-{{--                                        KWD--}}
+{{--                                        @lang('site.kwd')--}}
 {{--                                        <span class="float-left">  <i class="fas fa-chevron-down "></i></span>--}}
 {{--                                    </button>--}}
 {{--                                </h5>--}}
@@ -61,8 +61,8 @@
 
 {{--                            <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion1">--}}
 {{--                                <ul class="list-group">--}}
-{{--                                    <li class="list-group-item"> <a href="">KWD</a></li>--}}
-{{--                                    <li class="list-group-item"><a href="">KWD</a></li>--}}
+{{--                                    <li class="list-group-item"> <a href="">@lang('site.kwd')</a></li>--}}
+{{--                                    <li class="list-group-item"><a href="">@lang('site.kwd')</a></li>--}}
 
 {{--                                </ul>--}}
 {{--                            </div>--}}
