@@ -48,7 +48,8 @@
                     <th width="5%">No</th>
                     <th width="10%">@lang('site.name_arabic')</th>
                     <th width="10%">@lang('site.name_english')</th>
-                    <th width="10%">@lang('site.basic_cat')</th>
+                    <th width="10%">@lang('site.cat_arabic')</th>
+                    <th width="10%">@lang('site.cat_english')</th>
 
                     <th width="20%">@lang('site.action')</th>
                 </tr>
@@ -77,7 +78,8 @@
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                     {data: 'name_ar', name: 'name_ar'},
                     {data: 'name_en', name: 'name_en'},
-                    {data: 'basic_category', name: 'basic_category'},
+                    {data: 'basic_category_ar', name: 'basic_category_ar'},
+                    {data: 'basic_category_en', name: 'basic_category_en'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             });

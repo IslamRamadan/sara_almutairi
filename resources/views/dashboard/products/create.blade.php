@@ -34,6 +34,17 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group ">
+                <div class="col-md-6 ">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="best_selling" value="1" id="best_selling" {{ old('best_selling') ? 'checked' : '' }}>
+
+                        <label class="form-check-label" for="best_selling">
+                            @lang('site.best_selling')
+                        </label>
+                    </div>
+                </div>
+            </div>
 
             <div class="form-group">
                 <div class="col-md-6 ">
@@ -62,7 +73,7 @@
 
 
                         <option value="{{$basic_category->id}}">
-                            {{$basic_category->name_ar}}
+                            {{$basic_category->name_en}} &nbsp; - &nbsp; {{$basic_category->name_ar}}
                         </option>
 
 
@@ -229,7 +240,7 @@
             $.get('/ajax-subcat?cat_id='+cat_id,function (data) {
                 $('#category_id').empty();
                 $.each(data,function (index,subcatObj) {
-                    $('#category_id').append('<option value="'+subcatObj.id+'">'+subcatObj.name_ar+'</option>');
+                    $('#category_id').append('<option value="'+subcatObj.id+'">'+subcatObj.name_en+' - '+subcatObj.name_ar+'</option>');
                 })
             })
 

@@ -171,6 +171,7 @@ class ProductController extends Controller
         $product = Product::create([
             'new' => $request['new']?:0,
             'appearance' => $request['appearance']?:0,
+            'best_selling' => $request['best_selling']?:0,
             'featured' => $request['featured']?:0,
             'basic_category_id' => $request['basic_category_id'],
             'category_id' => $request['category_id'],
@@ -398,6 +399,7 @@ class ProductController extends Controller
             $product = $product->update([
                 'new' => $request['new']?:0,
                 'appearance' => $request['appearance']?:0,
+                'best_selling' => $request['best_selling']?:0,
                 'featured' => $request['featured']?:0,
                 'basic_category_id' => $request['basic_category_id'],
                 'category_id' => $request['category_id'],
@@ -454,6 +456,7 @@ class ProductController extends Controller
             $product = $product->update([
                 'new' => $request['new']?:0,
                 'appearance' => $request['appearance']?:0,
+                'best_selling' => $request['best_selling']?:0,
                 'featured' => $request['featured']?:0,
                 'basic_category_id' => $request['basic_category_id'],
                 'category_id' => $request['category_id'],

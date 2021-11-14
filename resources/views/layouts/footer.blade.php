@@ -99,7 +99,7 @@
 <div class="container-fluid pad-0 bg-dark  text-center">
     <div class="container  ">
         <br>
-        <p class="c-w mr-0">Copyright 2021 © ABATI SAKBAH
+        <p class="c-w mr-0">Copyright 2021 © SARA MERDAS
             Design by <a href="">bluezone</a>
         </p>
         <br>
@@ -189,7 +189,7 @@
         },
         freeMode: true,
         autoplay: {
-            delay: 500,
+            delay: 1500,
         },
         pagination: {
             el: ".swiper-pagination",

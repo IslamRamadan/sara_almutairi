@@ -155,20 +155,22 @@
     <div class="vwrap">
         <div class="vmove">
 
-            @foreach (App\News::where('appearance',1)->get() as $news )
-            <div class="vitem">
-                @if (app()->getLocale() == 'en')
-                {{ $news->content_en }}
-                @else
-                    {{ $news->content_ar }}
-                @endif
+            @foreach (App\News::where('appearance', 1)->get() as $news)
+                <div class="vitem">
+                    @if (app()->getLocale() == 'en')
+                        {{ $news->content_en }}
+                    @else
+                        {{ $news->content_ar }}
+                    @endif
 
 
-            </div>
+                </div>
             @endforeach
         </div>
     </div>
-    <div class="container-fluid pad-0 bg-dark  head-flex">
+
+
+    <div class="container-fluid pad-0 bg-white  head-flex">
         <!-- <div class="container  "> -->
         <div class="align-self-center ml-4">
             <ul class="navbar-nav1  mr-auto ">
@@ -176,14 +178,31 @@
                 <li class="nav-item "><a class="nav-link " href="{{ route('myaccount') }}"><i
                             class="far fa-user sml-fa" style="font-size: 30px;"></i> </a></li>
                 <li class="nav-item relative ul1 align-self-center custom-nav-icon d-flex">
-                    @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                    @if (app()->getLocale() == 'en')
+                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            @if ($localeCode == 'en')
+                                @continue
+                            @endif
 
-                        <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
-                            href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                            {{ $properties['native'] }}
-                        </a>
+                            <a class="nav-link" rel="alternate" hreflang="{{ $localeCode }}"
+                                href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                               التحويل الى {{ $properties['native'] }}
+                               <span class="LocaleSwitch2__diamond-divider"></span>
+                               <img src="{{ asset('front/img/kuwait.png') }}" width="20">
+                            </a>
+                        @endforeach
+                    @else
+                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            @if ($localeCode == 'ar')
+                                @continue
+                            @endif
 
-                    @endforeach
+                        <a class="nav-link " rel="alternate" hreflang="{{ $localeCode }}"
+                        href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"  style="font-size: 12px"> <img src="{{ asset('front/img/en.png') }}" width="20"><span class="LocaleSwitch2__diamond-divider"></span> Switch to Arabic </a>
+
+                        @endforeach
+                    @endif
+
                     {{-- <a class="nav-link " href="{{route('/')}}" style="font-size: 12px"> <img src="{{asset('front/img/en.png')}}" width="20"><span class="LocaleSwitch2__diamond-divider"></span> Switch to Arabic </a> --}}
 
 
@@ -220,10 +239,10 @@
 
                     <li class="nav-item mr-3 "><a class="nav-link " href="{{ route('wishlist.view') }}"><i
                                 class="far fa-heart sml-fa" style="font-size: 25px;"></i> </a></li>
-                    <li class="nav-item mr-3" id="cart-hover"><a class="nav-link " href="{{ route('cart') }}"><i
-                                class="fas fa-shopping-cart sml-fa" style="font-size: 25px;"></i><span
-                                class='badge badge-warning' id='lblCartCount'>
-                                {{                                 Session::has('cart_details') ? Session::get('cart_details')['totalQty'] : '0' }}
+                    <li class="nav-item mr-3" id="cart-hover"><a class="nav-link "
+                            href="{{ route('cart') }}"><i class="fas fa-shopping-cart sml-fa"
+                                style="font-size: 25px;"></i><span class='badge badge-warning' id='lblCartCount'>
+                                {{ Session::has('cart_details') ? Session::get('cart_details')['totalQty'] : '0' }}
                             </span>
                         </a>
                         <div class=" ul2  bg-w  text-right " style="padding: 10px;width: 300px">
@@ -318,7 +337,7 @@
     <nav class="d-md-none d-block bg-b ">
 
         <div class=" d-flex justify-content-between ">
-            <div class="relative">
+            <div class="relative" style="align-self: center">
                 <div class="nav-link">
                     <button class="navbar-toggler  btn bg-none " type="button">
                         <i class=" fas fa-bars c-w " style="font-size: 18px"></i>
@@ -450,30 +469,31 @@
                         @endif
 
                         @if (\App\Settings::all()->first()->instagram)
-                        <li class="nav-item "><a href="{{ $my_setting->instagram }}" target="_blank"
-                            title="instagram"><i class="fab fa-instagram"></i> </a>
-                        </li>
+                            <li class="nav-item "><a href="{{ $my_setting->instagram }}" target="_blank"
+                                    title="instagram"><i class="fab fa-instagram"></i> </a>
+                            </li>
                         @endif
 
 
 
                         @if (\App\Settings::all()->first()->twitter)
-                        <li class="nav-item "><a class=" " href="{{$my_setting->twitter}}" target="_blank" title="twitter"><i
-                            class="fab fa-twitter"></i>
-                         </a></li>
+                            <li class="nav-item "><a class=" " href="{{ $my_setting->twitter }}"
+                                    target="_blank" title="twitter"><i class="fab fa-twitter"></i>
+                                </a></li>
                         @endif
 
 
-                            @if (\App\Settings::all()->first()->email)
-                            <li class="nav-item "><a class=" " href="mailto:{{$my_setting->email}}" target="_blank" title="email"><i
-                                class="far fa-envelope"></i>
-                        </a></li>
+                        @if (\App\Settings::all()->first()->email)
+                            <li class="nav-item "><a class=" " href="mailto:{{ $my_setting->email }}"
+                                    target="_blank" title="email"><i class="far fa-envelope"></i>
+                                </a></li>
                         @endif
 
                         @if (\App\Settings::all()->first()->whatsapp)
-                        <li class="nav-item "><a class=" " href="https://wa.me/{{$my_setting->whatsapp}}" target="_blank" title="call us"><i
-                            class="fab fa-whatsapp"></i> </a>
-                        </li>
+                            <li class="nav-item "><a class=" "
+                                    href="https://wa.me/{{ $my_setting->whatsapp }}" target="_blank" title="call us"><i
+                                        class="fab fa-whatsapp"></i> </a>
+                            </li>
                         @endif
 
                     </ul>
@@ -483,7 +503,7 @@
                     @else
 
                         <a class="nav-link  border-bottom" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
+                                                             document.getElementById('logout-form').submit();">
                             <div><span> log out</span></div>
                         </a>
 
@@ -529,12 +549,12 @@
 
             <div>
                 @auth
-                <a class="nav-link " href="{{ route('/') }}" style="padding-top: 12px;;margin-left:10px"> <img
-                    src="{{ asset('/storage/' . $my_setting->logo) }}" width="50"></a>
+                    <a class="nav-link " href="{{ route('/') }}" style="padding-top: 12px;;margin-left:10px"> <img
+                            src="{{ asset('/storage/' . $my_setting->logo) }}" width="60"></a>
                 @endauth
                 @guest
-                <a class="nav-link " href="{{ route('/') }}" style="padding-top: 12px"> <img
-                    src="{{ asset('/storage/' . $my_setting->logo) }}" width="50"></a>
+                    <a class="nav-link " href="{{ route('/') }}" style="padding-top: 12px"> <img
+                            src="{{ asset('/storage/' . $my_setting->logo) }}" width="60"></a>
 
                 @endguest
 
@@ -573,14 +593,15 @@
             <ul class="navbar nav pad-0">
                 @auth()
                     <li class="nav-item ">
-                        <a class="nav-link " href="{{ route('myaccount') }}"> <i class="fas fa-user sml-fa" style="color:#ec7d23"></i> </a>
+                        <a class="nav-link " href="{{ route('myaccount') }}"> <i class="fas fa-user sml-fa"
+                                style="color:#ec7d23"></i> </a>
                     </li>
                 @endauth
 
                 <li class="nav-item"><a class="nav-link " href="{{ route('cart') }}"><i
                             class="fas fa-shopping-cart sml-fa" style="font-size: 25px;color:#ec7d23"></i><span
                             class='badge badge-warning' id='lblCartCount'>
-                            {{                             Session::has('cart_details') ? Session::get('cart_details')['totalQty'] : '0' }}
+                            {{ Session::has('cart_details') ? Session::get('cart_details')['totalQty'] : '0' }}
                         </span>
                     </a> </li>
 

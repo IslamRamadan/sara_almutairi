@@ -50,7 +50,8 @@ class homeController extends Controller
 //        return  $request->paymentId;
         $sliders = Slider::all();
         $new_arrive = Product::orderBy('created_at', 'desc')->where('new', 1)
-            ->offset(0)->limit(4)->get();
+            ->offset(0)->limit(6)->get();
+            // dd($new_arrive);
         return view('front.index', compact('sliders', 'new_arrive'));
     }
 
@@ -119,6 +120,7 @@ class homeController extends Controller
     {
 //        $prod_img=ProdImg::where('product_id',$id)->first()->img;
 //        dd($prod_img);
+        $last_views = Product::where('best_selling',1)->orderBy('updated_at' ,  'DESC')->take(3)->get();
         if ($type == 1) {
             $category = BasicCategory::findOrFail($id);
 
@@ -130,7 +132,7 @@ class homeController extends Controller
             Alert::error('خطأ', 'هذا القسم غير متوفر حاليا');
             return back();
         }
-        return view('front.category', compact('category', 'type'));
+        return view('front.category', compact('category', 'type','last_views'));
     }
 
     public function checkout()

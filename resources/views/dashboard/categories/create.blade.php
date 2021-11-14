@@ -46,7 +46,7 @@
 
 
                         <option value="{{$basic_category->id}}">
-                            {{$basic_category->name_ar}}
+                            {{$basic_category->name_en}}&nbsp; - &nbsp; {{$basic_category->name_ar}}
                         </option>
 
 

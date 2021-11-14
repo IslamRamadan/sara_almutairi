@@ -82,16 +82,16 @@
         <div class="row">
 
             <div class="col-12 pad-0">
-                <ul class="tablinks  row MyServices mr-0 pad-0 text-center"
+                <ul class="tablinks  row MyServices mr-0 pad-0 text-center swiper mySwiper"
                     style="list-style-type: none;justify-content: center;flex-wrap:wrap">
-
+                <div class="swiper-wrapper">
                     @if ($system_basic_categories->count() > 0)
 
                         @foreach ($system_basic_categories as $b)
 
 
-                            <li class="in active col-md-6 col-6 col-lg-4">
-                                <div class=" product relative">
+                            <li class="swiper-slide in active col-md-6 col-6 col-lg-4">
+                                <div class=" product relative" style="display:flex;flex-direction:column">
                                     {{-- <div class="  heart "><i class="far fa-heart "></i></div> --}}
 
                                     <a href="{{ route('category', [1, $b->id]) }}" class="">
@@ -103,12 +103,7 @@
                                             width="100%" class="hide-img">
 
                                     </a>
-                                    {{-- <p class="mr-0"> --}}
-                                    {{--  --}}
-                                    {{-- </p> --}}
-                                    {{-- <h6>  <a href="{{route('product' ,$b->id)}}">   {{$b->basic_category->name_en}} --}}
-                                    {{-- - --}}
-                                    {{-- {{$b->category->name_en}}</a></h6> --}}
+                                     <div>
                                     <h5 style="padding: 10px ;background: black;
         color: white;">
                                         @if (app()->getLocale() == 'en')
@@ -119,12 +114,14 @@
 
                                     </h5>
                                 </div>
+                                </div>
                             </li>
 
 
                         @endforeach
 
                     @endif
+                </div>
                 </ul>
             </div>
         </div>
@@ -137,12 +134,13 @@
         <br>
         <h2 class="text-center  d-flex justify-content-between">
             <b></b>
-            <span>@lang('site.fashion_world')
+            <span class="d-none d-md-block">@lang('site.fashion_world')
 
             </span>
             <b></b>
         </h2>
-        <br><br>
+        <br class="d-none d-md-block">
+        <br class="d-none d-md-block">
 
         <div class="row dir-rtl">
 
@@ -157,129 +155,101 @@
             </div>
 
             <div class="col-lg-8 col-md-8 col-sm-12   pad-0">
-                {{-- <ul class="tablinks  row MyServices mr-0 pad-0 text-center">
-                    <li class="in active col-12 col-lg-12">
-                        <div class=" product relative">
-                            <div class="  heart "><i class="far fa-heart "></i></div>
 
-                            <a href="product.html" class="">
-                                <img src="{{ asset('front/img/6.jpg') }}" width="100%" class="show-img">
-                                <img src="{{ asset('front/img/5.jpg') }}" width="100%" class="hide-img">
-
-                            </a>
-                            <p class="mr-0">hhhhh</p>
-                            <h6> <a href="product.html">CH-L1 </a></h6>
-                            <h5>30.000 @lang('site.kwd')
-                            </h5>
-                        </div>
-                    </li>
-                    <li class="col-6 col-lg-4">
-                        <div class=" product relative">
-                            <div class="  heart "><i class="far fa-heart "></i></div>
-
-                            <a href="product.html" class="">
-                                <img src="{{ asset('front/img/3.jpg') }}" width="100%" class="show-img">
-                                <img src="{{ asset('front/img/5.jpg') }}" width="100%" class="hide-img">
-
-                            </a>
-                            <p class="mr-0">abayat</p>
-                            <h6> <a href="product.html">CH-L1 </a></h6>
-                            <h5>30.000 @lang('site.kwd')
-                            </h5>
-                        </div>
-                    </li>
-                    <li class="col-6 col-lg-4">
-                        <div class=" product relative">
-                            <div class="  heart "><i class="far fa-heart "></i></div>
-
-                            <a href="product.html" class="">
-                                <img src="{{ asset('front/img/6.jpg') }}" width="100%" class="show-img">
-                                <img src="{{ asset('front/img/4.jpg') }}" width="100%" class="hide-img">
-
-                            </a>
-                            <p class="mr-0">abayat</p>
-                            <h6> <a href="product.html">CH-L1 </a></h6>
-                            <h5>30.000 @lang('site.kwd')
-                            </h5>
-                        </div>
-                    </li>
-                    <li class="col-6 col-lg-4">
-                        <div class=" product relative">
-                            <div class="  heart "><i class="far fa-heart "></i></div>
-
-                            <a href="product.html" class="">
-                                <img src="{{ asset('front/img/3.jpg') }}" width="100%" class="show-img">
-                                <img src="{{ asset('front/img/5.jpg') }}" width="100%" class="hide-img">
-
-                            </a>
-                            <p class="mr-0">abayat</p>
-                            <h6> <a href="product.html">CH-L1 </a></h6>
-                            <h5>30.000 @lang('site.kwd')
-                            </h5>
-                        </div>
-                    </li>
-                    <li class="col-6 col-lg-4">
-                        <div class=" product relative">
-                            <div class="  heart "><i class="far fa-heart "></i></div>
-
-                            <a href="product.html" class="">
-                                <img src="{{ asset('front/img/6.jpg') }}" width="100%" class="show-img">
-                                <img src="{{ asset('front/img/4.jpg') }}" width="100%" class="hide-img">
-
-                            </a>
-                            <p class="mr-0">abayat</p>
-                            <h6> <a href="product.html">CH-L1 </a></h6>
-                            <h5>30.000 @lang('site.kwd')
-                            </h5>
-                        </div>
-                    </li>
-                    <li class="col-6 col-lg-4">
-                        <div class=" product relative">
-                            <div class="  heart "><i class="far fa-heart "></i></div>
-
-                            <a href="product.html" class="">
-                                <img src="{{ asset('front/img/3.jpg') }}" width="100%" class="show-img">
-                                <img src="{{ asset('front/img/5.jpg') }}" width="100%" class="hide-img">
-
-                            </a>
-                            <p class="mr-0">abayat</p>
-                            <h6> <a href="product.html">CH-L1 </a></h6>
-                            <h5>30.000 @lang('site.kwd')
-                            </h5>
-                        </div>
-
-                    </li>
-                </ul> --}}
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        @for ($i=0;$i<5;$i++)
+                        @foreach ($new_arrive as $p)
+
 
                         <div class="swiper-slide" data-swiper-autoplay="2000">
                             <div class=" product relative">
-                                <div class="  heart "><i class="far fa-heart "></i></div>
+                                <div class="  heart ">
+                                    <a href="#" class="addToWishList text-white" data-product-id="{{$p->id}}">
+                                        <i class="far fa-heart "></i>
+                                    </a>
+
+                                </div>
                                 <div style="flex-direction: column;display: flex">
                                 <div>
-                                <a href="product.html" class="">
-                                    <img src="{{ asset('front/img/3.jpg') }}" width="100%" class="show-img">
-                                    <img src="{{ asset('front/img/5.jpg') }}" width="100%" class="hide-img">
+                                    <a href="{{route('product',$p->id)}}" class="test">
 
-                                </a>
+                                        <img src="{{ asset(  '/storage/'.$p->img)}}"
+                                             onerror="this.onerror=null;this.src='{{asset('front/img//3.jpg')}}'"
+                                             width="100%" class="show-img">
+                                       @if( $img= App\ProdImg::where('product_id',$p->id)->first() )
+                                            <img src="{{asset($img->img)}}"
+                                                 width="100%" class="hide-img">
+                                        @else
+                                            <img src="{{asset('/storage/'.$p->img)}}"
+                                                 width="100%" class="hide-img">
+                                        @endif
+                                    </a>
                                 </div>
 
                                 <div>
-                                <p class="mr-0">abayat</p>
-                                <h6> <a href="product.html">CH-L1 </a></h6>
-                                <h5>30.000 @lang('site.kwd')
+                                    <p class="mr-0">
+                                        <a href="{{route('product' , $p->id)}}">
+                                            @if(Lang::locale()=='ar')
+                                                {{$p->title_ar}}
+
+                                            @else
+
+                                                {{$p->title_en}}
+
+                                            @endif
+
+
+                                        </a>
+                                    </p>
+                                    <h6><a href="{{route('product' ,$p->id)}}">
+
+
+                                        @if(Lang::locale()=='ar')
+                                            {{-- {{$p->basic_category->name_ar}}
+                                            -
+                                            {{$p->category->name_ar}} --}}
+                                            <?php $pieces = explode(" ", $p->description_ar);
+                                              $first_part = implode(" ", array_splice($pieces, 0, 4));  ?>
+                                    {{$first_part}}
+                                        @else
+
+                                            {{-- {{$p->basic_category->name_en}}
+                                            -
+                                            {{$p->category->name_en}} --}}
+                                            <?php $pieces = explode(" ", $p->description_en);
+                                              $first_part = implode(" ", array_splice($pieces, 0, 4));  ?>
+                                    {{$first_part}}
+                                        @endif
+
+
+                                    </a></h6>
+                                    <h5>
+
+
+                                        @auth()
+                                            {{Auth::user()->getPrice($p->price )}} {{ Auth::user()->country->currency->code}}
+                                        @endauth
+                                        @guest()
+                                            @if(Cookie::get('name') )
+                                                {{number_format($p->price / App\Country::find(Cookie::get('name'))->currency->rate,2) }}
+                                                {{App\Country::find(Cookie::get('name'))->currency->code}}
+                                            @else
+                                                {{$p->price}}
+                                                @lang('site.kwd')
+                                            @endif
+                                        @endguest
+
+                                    </h5>
                                 </h5>
                                 </div>
                             </div>
                             </div>
                         </div>
-                        @endfor
+
+                        @endforeach
 
                     </div>
 
-                    {{-- <div class="swiper-pagination"></div> --}}
                 </div>
 
 
@@ -297,7 +267,16 @@
         </div>
         <br><br>
     </div>
+<div class="container pad-0 d-md-none">
+    <h2 class="text-center  d-flex justify-content-between">
+        <b></b>
+        <span>@lang('site.fashion_world')
 
+        </span>
+        <b></b>
+    </h2>
+    <br>
+</div>
     <div class="container dir-rtl" style="max-width: 1000px">
 
         <div class="row">

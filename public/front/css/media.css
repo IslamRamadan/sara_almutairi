@@ -73,7 +73,7 @@
         }
         .MyServices img {
             /* height: 200px; */
-            height: 300px;
+            height: 200px;
         }
         .container1 .pad-0 img {
             height: 50vh;
@@ -135,7 +135,7 @@
     }
     
     @media (min-width: 0px) and (max-width: 767px) {
-        .container-fluid.pad-0.bg-dark.head-flex {
+        .container-fluid.pad-0.bg-white.head-flex {
             display: none;
         }
     }
@@ -166,16 +166,22 @@
             text-align: center !important;
         }
         .product.relative h5 {
-            font-size: 15px;
+            font-size: 14px;
         }
         .vitem {
             font-size: 10px;
         }
         .product.relative p {
-            font-size: 15px;
+            font-size: 12px;
         }
         .product.relative h6 {
-            font-size: 14px;
+            font-size: 13px;
+        }
+        .carousel-inner {
+            height: 54%;
+        }
+        .new1 {
+            display: none;
         }
     }
     

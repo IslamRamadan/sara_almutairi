@@ -896,7 +896,7 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-.container-fluid.pad-0.bg-dark.head-flex {
+.container-fluid.pad-0.bg-white.head-flex {
     height: 72 px;
     display: flex;
 }

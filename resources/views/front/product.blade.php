@@ -13,7 +13,7 @@
                 {{--<i class="far fa-heart "></i></div>--}}
 
                 {{--<div class="   ">--}}
-                <a href="#"  class="heart addToWishList text-dark" data-product-id="{{$product->id}}">
+                <a href="#"  class="heart addToWishList text-white" data-product-id="{{$product->id}}">
                     <i class="far fa-heart "></i>
                 </a>
                 {{--</div><!---->--}}
@@ -255,148 +255,104 @@
 
             <div class="col-12">
                 <ul class="tablinks  row MyServices mr-0 pad-0 text-center justify-content-center">
-                    {{--                    <li class="in active col-4 col-lg-4">--}}
-                    {{--                        <div class=" product relative">--}}
-                    {{--                            <div class="  heart "><i class="far fa-heart "></i></div>--}}
-
-                    {{--                            <a href="product.html" class="">--}}
-                    {{--                                <img src="{{asset('front/img//6.jpg')}}" width="100%" class="show-img">--}}
-                    {{--                                <img src="{{asset('front/img//5.jpg')}}" width="100%" class="hide-img">--}}
-
-                    {{--                            </a>--}}
-                    {{--                            <p class="mr-0">abayat</p>--}}
-                    {{--                            <h6>  <a href="product.html">CH-L1 </a></h6>--}}
-                    {{--                            <h5>30.000 @lang('site.kwd')--}}
-                    {{--                            </h5>--}}
-                    {{--                        </div>--}}
-                    {{--                    </li>--}}
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
                     @if(\App\BasicCategory::find($product->basic_category_id)->products->count() > 0)
                         @foreach(\App\BasicCategory::find($product->basic_category_id)->products as $p)
                             @if($p->id != $product->id)
-                                <li class=" col-lg-4 col-md-6 col-sm-12" style="list-style:none;">
-                                    <div class=" product relative text-dir">
-                                        {{--<div class="  heart "><i class="far fa-heart "></i></div>--}}
-                                        <a href="#"  class="heart addToWishList text-light" data-product-id="{{$p->id}}">
+                            <div class="swiper-slide" data-swiper-autoplay="2000">
+                                <div class=" product relative">
+                                    <div class="  heart ">
+                                        <a href="#" class="addToWishList text-white" data-product-id="{{$p->id}}">
                                             <i class="far fa-heart "></i>
                                         </a>
-                                        <a href="{{route('product' , $p->id)}}" class="test">
-                                            <img src="{{asset('/storage/'.$p->img)}}"
-                                                 onerror="this.onerror=null;this.src='{{asset('front/img/5.jpg')}}'"
+
+                                    </div>
+                                    <div style="flex-direction: column;display: flex">
+                                    <div>
+                                        <a href="{{route('product',$p->id)}}" class="test">
+
+                                            <img src="{{ asset(  '/storage/'.$p->img)}}"
+                                                 onerror="this.onerror=null;this.src='{{asset('front/img//3.jpg')}}'"
                                                  width="100%" class="show-img">
-                                            {{--<img src="{{asset('/storage/'.$p->height_img)}}"--}}
-                                            {{--onerror="this.onerror=null;this.src='{{asset('front/img/5.jpg')}}'"--}}
-                                            {{--width="100%" class="hide-img">--}}
-                                            @if( $img= App\ProdImg::where('product_id',$p->id)->first() )
+                                           @if( $img= App\ProdImg::where('product_id',$p->id)->first() )
                                                 <img src="{{asset($img->img)}}"
                                                      width="100%" class="hide-img">
                                             @else
                                                 <img src="{{asset('/storage/'.$p->img)}}"
                                                      width="100%" class="hide-img">
                                             @endif
-
                                         </a>
-                                        @if(Lang::locale()=='ar')
-                                            <p class="mr-0">
-                                                {{$p->title_ar}}
-                                            </p>
-                                            <h6>  <a href="{{route('product' , $p->id)}}">    {{ $product->basic_category->name_ar}}
-                                                    -
-                                                    {{ $product->category->name_ar}}
-                                                </a></h6>
-                                        @else
-                                            <p class="mr-0">
-                                                {{$p->title_en}}
-                                            </p>
-                                            <h6>  <a href="{{route('product' , $product->id)}}">    {{ $product->basic_category->name_en}}
-                                                    -
-                                                    {{ $product->category->name_en}}
-                                                </a></h6>
+                                    </div>
 
-                                        @endif
+                                    <div>
+                                        <p class="mr-0">
+                                            <a href="{{route('product' , $p->id)}}">
+                                                @if(Lang::locale()=='ar')
+                                                    {{$p->title_ar}}
+
+                                                @else
+
+                                                    {{$p->title_en}}
+
+                                                @endif
 
 
+                                            </a>
+                                        </p>
+                                        <h6><a href="{{route('product' ,$p->id)}}">
 
-                                        <h4 style="font-size: 20px;font-weight: 600;">
 
+                                            @if(Lang::locale()=='ar')
+                                                {{-- {{$p->basic_category->name_ar}}
+                                                -
+                                                {{$p->category->name_ar}} --}}
+                                                <?php $pieces = explode(" ", $p->description_ar);
+                                                  $first_part = implode(" ", array_splice($pieces, 0, 4));  ?>
+                                        {{$first_part}}
+                                            @else
+
+                                                {{-- {{$p->basic_category->name_en}}
+                                                -
+                                                {{$p->category->name_en}} --}}
+                                                <?php $pieces = explode(" ", $p->description_en);
+                                                  $first_part = implode(" ", array_splice($pieces, 0, 4));  ?>
+                                        {{$first_part}}
+                                            @endif
+
+
+                                        </a></h6>
+                                        <h5>
+
+
+                                            @auth()
+                                                {{Auth::user()->getPrice($p->price )}} {{ Auth::user()->country->currency->code}}
+                                            @endauth
                                             @guest()
                                                 @if(Cookie::get('name') )
-                                                    {{number_format($p->price / App\Country::find(Cookie::get('name'))->currency->rate,2)}}
+                                                    {{number_format($p->price / App\Country::find(Cookie::get('name'))->currency->rate,2) }}
                                                     {{App\Country::find(Cookie::get('name'))->currency->code}}
-
                                                 @else
                                                     {{$p->price}}
                                                     @lang('site.kwd')
                                                 @endif
                                             @endguest
-                                        </h4>
+
+                                        </h5>
+                                    </h5>
                                     </div>
-                                </li>
+                                </div>
+                                </div>
+                            </div>
                             @endif
                         @endforeach
+                    </div>
+
+                </div>
                     @else
                         لا يوجد
                     @endif
-                    {{--                    <li class="col-4 col-lg-4">--}}
-                    {{--                        <div class=" product relative">--}}
-                    {{--                            <div class="  heart "><i class="far fa-heart "></i></div>--}}
 
-                    {{--                            <a href="product.html" class="">--}}
-                    {{--                                <img src="{{asset('front/img//6.jpg')}}" width="100%" class="show-img">--}}
-                    {{--                                <img src="{{asset('front/img//4.jpg')}}" width="100%" class="hide-img">--}}
-
-                    {{--                            </a>--}}
-                    {{--                            <p class="mr-0">abayat</p>--}}
-                    {{--                            <h6>  <a href="product.html">CH-L1 </a></h6>--}}
-                    {{--                            <h5>30.000 @lang('site.kwd')--}}
-                    {{--                            </h5>--}}
-                    {{--                        </div>--}}
-                    {{--                    </li>--}}
-                    {{--                    <li  class="col-4 col-lg-4">--}}
-                    {{--                        <div class=" product relative">--}}
-                    {{--                            <div class="  heart "><i class="far fa-heart "></i></div>--}}
-
-                    {{--                            <a href="product.html" class="">--}}
-                    {{--                                <img src="{{asset('front/img//3.jpg')}}" width="100%" class="show-img">--}}
-                    {{--                                <img src="{{asset('front/img//5.jpg')}}" width="100%" class="hide-img">--}}
-
-                    {{--                            </a>--}}
-                    {{--                            <p class="mr-0">abayat</p>--}}
-                    {{--                            <h6>  <a href="product.html">CH-L1 </a></h6>--}}
-                    {{--                            <h5>30.000 @lang('site.kwd')--}}
-                    {{--                            </h5>--}}
-                    {{--                        </div>--}}
-                    {{--                    </li>--}}
-                    {{--                    <li  class="col-4 col-lg-4">--}}
-                    {{--                        <div class=" product relative">--}}
-                    {{--                            <div class="  heart "><i class="far fa-heart "></i></div>--}}
-
-                    {{--                            <a href="product.html" class="">--}}
-                    {{--                                <img src="{{asset('front/img//6.jpg')}}" width="100%" class="show-img">--}}
-                    {{--                                <img src="{{asset('front/img//4.jpg')}}" width="100%" class="hide-img">--}}
-
-                    {{--                            </a>--}}
-                    {{--                            <p class="mr-0">abayat</p>--}}
-                    {{--                            <h6>  <a href="product.html">CH-L1 </a></h6>--}}
-                    {{--                            <h5>30.000 @lang('site.kwd')--}}
-                    {{--                            </h5>--}}
-                    {{--                        </div>--}}
-                    {{--                    </li>--}}
-                    {{--                    <li class="col-4 col-lg-4">--}}
-                    {{--                        <div class=" product relative">--}}
-                    {{--                            <div class="  heart "><i class="far fa-heart "></i></div>--}}
-
-                    {{--                            <a href="product.html" class="">--}}
-                    {{--                                <img src="{{asset('front/img//3.jpg')}}" width="100%" class="show-img">--}}
-                    {{--                                <img src="{{asset('front/img//5.jpg')}}" width="100%" class="hide-img">--}}
-
-                    {{--                            </a>--}}
-                    {{--                            <p class="mr-0">abayat</p>--}}
-                    {{--                            <h6>  <a href="product.html">CH-L1 </a></h6>--}}
-                    {{--                            عع                       <h5>30.000 @lang('site.kwd')--}}
-                    {{--                            </h5>--}}
-                    {{--                        </div>--}}
-
-                    {{--                    </li>--}}
                 </ul>
             </div>
         </div>

@@ -10,7 +10,7 @@ class Product extends Model
     protected $table = 'products';
     protected $fillable = [
         'title_en'  , 'title_ar' , 'description_en','description_ar',
-        'appearance','featured','new','price','delivery_period','img','height_img',
+        'appearance','best_selling','featured','new','price','delivery_period','img','height_img',
         'basic_category_id','category_id'
 
     ];

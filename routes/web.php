@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Console\Input\Input;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,8 @@ Route::group(
         Route::get('design' , function (){
            return view('dashboard.design');
         });
+
+
 
 //        Route::get('rest' , 'HomeController@rest');
     Route::get('home', function () {

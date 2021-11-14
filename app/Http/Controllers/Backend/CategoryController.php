@@ -25,8 +25,12 @@ class CategoryController extends Controller
 
             return Datatables::of($data)
                 ->addIndexColumn()
-                ->addColumn('basic_category', function ($artist) {
+
+                ->addColumn('basic_category_ar', function ($artist) {
                     return $artist->basicCategory->name_ar;
+                })
+                ->addColumn('basic_category_en', function ($artist) {
+                    return $artist->basicCategory->name_en;
                 })
                 ->addColumn('action', function ($row) {
                     $action = '

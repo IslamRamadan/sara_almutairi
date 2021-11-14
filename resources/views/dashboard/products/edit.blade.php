@@ -48,6 +48,20 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group ">
+                <div class="col-md-6 ">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="best_selling" value="1" id="best_selling"
+                        @if($product->best_selling == 1 )  {{ "checked" }} @endif
+
+                        >
+
+                        <label class="form-check-label" for="best_selling">
+                            @lang('site.best_selling')
+                        </label>
+                    </div>
+                </div>
+            </div>
 
             <div class="form-group">
                 <div class="col-md-6 ">
@@ -78,7 +92,7 @@
                         <option value="{{$basic_category->id}}"
                         @if($basic_category->id == $product->basic_category_id )  {{ "selected" }} @endif
                         >
-                            {{$basic_category->name_ar}}
+                        {{$basic_category->name_en}} &nbsp; - &nbsp; {{$basic_category->name_ar}}
                         </option>
 
 
@@ -98,7 +112,7 @@
                         <option value="{{$category->id}}"
                         @if($category->id == $product->category_id )  {{ "selected" }} @endif
                         >
-                            {{$category->name_ar}}
+                            {{$category->name_en}} &nbsp; - &nbsp; {{$category->name_ar}}
                         </option>
 
 
@@ -274,7 +288,7 @@ var cat_id= e.target.value;
 $.get('/ajax-subcat?cat_id='+cat_id,function (data) {
 $('#category_id').empty();
 $.each(data,function (index,subcatObj) {
-$('#category_id').append('<option value="'+subcatObj.id+'">'+subcatObj.name_ar+'</option>');
+$('#category_id').append('<option value="'+subcatObj.id+'">'+subcatObj.name_en+' - '+subcatObj.name_ar+'</option>');
 })
 })
 

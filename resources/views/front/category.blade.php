@@ -49,7 +49,7 @@
     </div>
     <!-----start  --->
     <div class="container ">
-        <div class="row">
+        <div class="row dir-rtl text-dir">
             <div class="col-md-4 center">
                 <h2 style="margin-top: 20px">
                     @if(app()->getLocale() == 'en')
@@ -59,7 +59,7 @@
                     @endif
                 </h2>
                 <nav class="navbar navbar-expand pad-0 center">
-                    <ul class="navbar-nav center">
+                    <ul class="navbar-nav center" style="padding-inline-start: 0px">
                         <li class="nav-item "><a class="nav-link c-light" href="{{route('/')}}">
 
                                 @if(app()->getLocale() == 'en')
@@ -266,7 +266,7 @@
                     </div>
                 @endif
                 <br>
-                <h4 class="text-dir">@lang('site.recently_viewed')
+                <h4 class="text-dir">@lang('site.best_selling')
                 </h4>
                 <div class="is-divider"></div>
                 @if($last_views->count()  > 0)
@@ -274,20 +274,20 @@
                     @foreach($last_views as $b)
 
                         @if($b)
-                                @if($b->product)
+                                {{-- @if($b->product) --}}
                             <div class=" row text-dir">
                                 <div class="col-3 pad-0">
-                                    <a href="{{route('product' , $b->product->id)}}"><img src="{{asset('/storage/'.$b->product->img)}}"
+                                    <a href="{{route('product' , $b->id)}}"><img src="{{asset('/storage/'.$b->img)}}"
                                          onerror="this.onerror=null;this.src='{{asset('front/img/5.jpg')}}'"
                                          style="width: 100%"></a>
                                 </div>
                                 <div class="col-9">
-                                    <h6 style="font-weight:bold"><a href="{{route('product' , $b->product->id)}}" class="main-color">
+                                    <h6 style="font-weight:bold"><a href="{{route('product' , $b->id)}}" class="main-color">
                                             @if(Lang::locale()=='ar')
-                                                {{$b->product->title_ar}}
+                                                {{$b->title_ar}}
 
                                             @else
-                                                {{$b->product->title_en}}
+                                                {{$b->title_en}}
 
 
                                             @endif
@@ -297,21 +297,21 @@
                                     <h5>
 
                                         @auth()
-                                            {{Auth::user()->getPrice($b->product->price )}} {{ Auth::user()->country->currency->code}}
+                                            {{Auth::user()->getPrice($b->price )}} {{ Auth::user()->country->currency->code}}
                                         @endauth
                                         @guest()
                                             @if(Cookie::get('name') )
-                                                {{number_format($b->product->price / App\Country::find(Cookie::get('name'))->currency->rate,2) }}
+                                                {{number_format($b->price / App\Country::find(Cookie::get('name'))->currency->rate,2) }}
                                                 {{App\Country::find(Cookie::get('name'))->currency->code}}
                                             @else
-                                                {{$b->product->price}} @lang('site.kwd')
+                                                {{$b->price}} @lang('site.kwd')
 
                                             @endif
                                         @endguest
                                     </h5></div>
                             </div>
                             <hr>
-                                @endif
+                                {{-- @endif --}}
                             @endif
 
 
@@ -329,7 +329,7 @@
                                 <div class=" product relative text-dir">
 
                                     <div class="  heart ">
-                                        <a href="#" class="addToWishList text-danger" data-product-id="{{$p->id}}">
+                                        <a href="#" class="addToWishList text-white" data-product-id="{{$p->id}}">
                                             <i class="far fa-heart "></i>
                                         </a>
 
@@ -340,9 +340,7 @@
                                         <img src="{{ asset(  '/storage/'.$p->img)}}"
                                              onerror="this.onerror=null;this.src='{{asset('front/img//3.jpg')}}'"
                                              width="100%" class="show-img">
-                                        {{--                                        <img src="{{asset('front/img//3.jpg')}}" width="100%" class="show-img">--}}
-                                        {{--                                        <img src="{{asset('front/img//5.jpg')}}" width="100%" class="hide-img">--}}
-                                        @if( $img= App\ProdImg::where('product_id',$p->id)->first() )
+                                       @if( $img= App\ProdImg::where('product_id',$p->id)->first() )
                                             <img src="{{asset($img->img)}}"
                                                  width="100%" class="hide-img">
                                         @else
