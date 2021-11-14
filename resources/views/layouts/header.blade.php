@@ -170,7 +170,7 @@
     </div>
 
 
-    <div class="container-fluid pad-0 bg-white  head-flex">
+    <div class="container-fluid pad-0 bg-white  head-flex d-md-flex d-sm-none" >
         <!-- <div class="container  "> -->
         <div class="align-self-center ml-4">
             <ul class="navbar-nav1  mr-auto ">
