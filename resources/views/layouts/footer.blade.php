@@ -188,9 +188,9 @@
             }
         },
         freeMode: true,
-        autoplay: {
-            delay: 1500,
-        },
+        // autoplay: {
+        //     delay: 1500,
+        // },
         pagination: {
             el: ".swiper-pagination",
             clickable: true,

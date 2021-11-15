@@ -19,7 +19,7 @@
 body {
     /* font-family: 'Nunito';
     ; */
-    font-family: 'Almarai', sans-serif !important;
+    font-family: 'Nunito', sans-serif !important;
     text-transform: capitalize;
     color: #444444;
     overflow-x: hidden;
@@ -93,7 +93,7 @@ a.bg-main {
 }
 
 .bg-b nav li>a {
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 
 .c-w {
@@ -299,7 +299,7 @@ a span:hover {
 }
 
 h1 {
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 
 .container1 {
