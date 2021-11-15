@@ -269,7 +269,7 @@
 
                                     </div>
                                     <div style="flex-direction: column;display: flex">
-                                    <div>
+                                    <div >
                                         <a href="{{route('product',$p->id)}}" class="test">
 
                                             <img src="{{ asset(  '/storage/'.$p->img)}}"
@@ -285,7 +285,7 @@
                                         </a>
                                     </div>
 
-                                    <div>
+                                    <div class="text-dir">
                                         <p class="mr-0">
                                             <a href="{{route('product' , $p->id)}}">
                                                 @if(Lang::locale()=='ar')

@@ -186,7 +186,7 @@
                                     </a>
                                 </div>
 
-                                <div>
+                                <div class="text-dir">
                                     <p class="mr-0">
                                         <a href="{{route('product' , $p->id)}}">
                                             @if(Lang::locale()=='ar')
