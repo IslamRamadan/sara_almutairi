@@ -45,16 +45,16 @@
                 <table class="table align-items-center justify-content-center mb-0 data-table  text-secondary text-xs ">
                     <thead>
                     <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ID</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">@lang('site.title_arabic') </th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">@lang('site.title_english')</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">@lang('site.description_arabic')</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">@lang('site.description_english')</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">@lang('site.appearance')</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">@lang('site.currency_code')</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">@lang('site.flag_img')</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">@lang('site.action')</th>
+                        <th class="text-uppercase text-secondary  font-weight-bolder opacity-7">No</th>
+                        <th class="text-uppercase text-secondary  font-weight-bolder opacity-7 ps-2">ID</th>
+                        <th class="text-uppercase text-secondary  font-weight-bolder opacity-7 ps-2">@lang('site.content_ar') </th>
+                        <th class="text-uppercase text-secondary  font-weight-bolder opacity-7 ps-2">@lang('site.content_en')</th>
+                        {{-- <th class="text-uppercase text-secondary  font-weight-bolder opacity-7 ps-2">@lang('site.description_ar') </th>
+                        <th class="text-uppercase text-secondary  font-weight-bolder opacity-7 ps-2">@lang('site.description_en')</th> --}}
+                        {{-- <th class="text-uppercase text-secondary  font-weight-bolder opacity-7 ps-2">@lang('site.appear')</th> --}}
+                        <th class="text-uppercase text-secondary  font-weight-bolder opacity-7 ps-2">@lang('site.img')</th>
+                        <th class="text-uppercase text-secondary  font-weight-bolder opacity-7 ps-2">@lang('site.img')</th>
+                        <th class="text-uppercase text-secondary  font-weight-bolder opacity-7 ps-2">@lang('site.action')</th>
 
                     </tr>
                     </thead>
@@ -287,18 +287,21 @@
             var table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('countries.index') }}",
+                ajax: "{{ route('posts.index') }}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                     {data: 'id', name: 'id'},
-                    {data: 'name_ar', name: 'name_ar'},
-                    {data: 'name_en', name: 'name_en'},
-                    {data: 'country_code', name: 'country_code'},
-                    {data: 'code', name: 'code'},
-                    {data: 'currency_name', name: 'currency_name'},
-                    {data: 'currency_code', name: 'currency_code'},
-                    {data: 'image', name: 'image' , render: function( data, type, full, meta ) {
-                            return "<img src=\"" + data + "\"   border=\"0\"  class=\"img-rounded\" align=\"center\"  height=\"50\"/>";
+                    {data: 'title_en', name: 'title_en'},
+                    {data: 'title_ar', name: 'title_ar'},
+                    // {data: 'description_en', name: 'description_en'},
+                    // {data: 'description_ar', name: 'description_ar'},
+                    // {data: 'appearance', name: 'appearance'},
+
+                    {data: 'image1', name: 'image1' , render: function( data, type, full, meta ) {
+                            return "<img src=\"" + data + "\"   border=\"0\"  class=\"img-rounded\" align=\"center\"  height=\"60\"/>";
+                        }},
+                    {data: 'image2', name: 'image2' , render: function( data, type, full, meta ) {
+                            return "<img src=\"" + data + "\"   border=\"0\"  class=\"img-rounded\" align=\"center\"  height=\"60\"/>";
                         }},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]

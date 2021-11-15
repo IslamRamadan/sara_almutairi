@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row res-mobile text-dir">
 
-            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="{{ asset('/storage/' . $my_setting->logo) }}" style="mix-blend-mode: multiply;
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="{{ asset('/storage/' . $my_setting->footer_logo) }}" style="mix-blend-mode: multiply;
                     " alt="" width="180" class="mb-3">
                 {{-- <p class="font-italic text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p> --}}
                 <ul class="list-inline mt-4" style="direction: ltr">
@@ -191,6 +191,33 @@
         autoplay: {
             delay: 1500,
         },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
+    var swiper = new Swiper(".mySwiper1", {
+        breakpoints: {
+            // when window width is >= 320px
+            320: {
+                slidesPerView: 2,
+                spaceBetween: 20
+            },
+            // when window width is >= 480px
+            770: {
+                slidesPerView: 3,
+                spaceBetween: 30
+            },
+            // when window width is >= 640px
+            1000: {
+                slidesPerView: 4,
+                spaceBetween: 30
+            }
+        },
+        freeMode: true,
+        // autoplay: {
+        //     delay: 1500,
+        // },
         pagination: {
             el: ".swiper-pagination",
             clickable: true,

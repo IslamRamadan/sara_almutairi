@@ -36,7 +36,7 @@ class BasicCategoryController extends Controller
 <a class="btn btn-success"  href="' . route('basic_categories.edit', $row->id) . '" id="edit-user" >Edit </a>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 ';
-//<a href="' . url('basic_categories/destroy', $row->id) . '" class="btn btn-danger">Delete</a>
+$action.=' <a href="' . url('basic_categories/destroy', $row->id) . '" class="btn btn-danger">Delete</a>';
 
 
                     return $action;

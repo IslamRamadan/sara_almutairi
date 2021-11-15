@@ -7,7 +7,7 @@
     <?php use App\User; ?>
     {{-- {{ dd(Auth::user()->country->name_ar)}} --}}
 
-    <div class="text-dir new1 " style="">
+    <div class="text-dir new1 " style="background-image:url({{ asset('/storage/' . $my_setting->ad_image) }})">
 
         <h1 class="c-w">
 
@@ -81,7 +81,7 @@
 
         <div class="row">
 
-            <div class="col-12 pad-0">
+            <div class="col-12 m-auto pad-0">
                 <ul class="tablinks  row MyServices mr-0 pad-0 text-center swiper mySwiper"
                     style="list-style-type: none;justify-content: center;flex-wrap:wrap">
                 <div class="swiper-wrapper">
@@ -90,7 +90,7 @@
                         @foreach ($system_basic_categories as $b)
 
 
-                            <li class="swiper-slide in active col-md-6 col-6 col-lg-4">
+                            <li class="swiper-slide in active col-md-4 col-6 col-lg-3">
                                 <div class=" product relative" style="display:flex;flex-direction:column">
                                     {{-- <div class="  heart "><i class="far fa-heart "></i></div> --}}
 
@@ -104,8 +104,7 @@
 
                                     </a>
                                      <div>
-                                    <h5 style="padding: 10px ;background: black;
-        color: white;">
+                                    <h5 style="padding: 7px ;">
                                         @if (app()->getLocale() == 'en')
                                             {{ $b->name_en }}
                                         @else
@@ -277,168 +276,38 @@
     </h2>
     <br>
 </div>
+    @foreach ($posts as $post)
+
     <div class="container dir-rtl" style="max-width: 1000px">
 
         <div class="row">
             <div class="col-md-6 ml-auto order-md-2 align-self-center">
                 <div class="site-block-cover-content text-center">
                     <!-- <h2 class="sub-title">#The world talk about fasion</h2> -->
-                    <h1>@lang('site.discover_new')</h1>
-                    <a href="product.html" class="btn bg-main mt-5">@lang('site.read_more')</a>
+                    @if (app()->getLocale() == 'en')
+                    <h1>{{$post->title_en}}</h1>
+                    @else
+                    <h1>{{$post->title_ar}}</h1>
+                    @endif
+
+
+                    <a href="{{route('post',$post->id)}}" class="btn bg-main mt-5">@lang('site.read_more')</a>
                 </div>
             </div>
             <div class="col-md-6 order-1 align-self-end">
-                <img src="{{asset('front/img/4.jpg')}}" alt="Image" class="img-fluid" data-pagespeed-url-hash="799042288" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                <img src="{{ asset('/storage/' . $post->img1) }}" alt="Image" class="img-fluid" data-pagespeed-url-hash="799042288" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
             </div>
         </div>
     </div>
     <br><br>
 
-
-
-    <div class="container dir-rtl" style="max-width: 1000px">
-        <div class="row">
-            <div class="col-md-6 ml-auto order-md-2 align-self-center">
-                <div class="site-block-cover-content text-center">
-                    <!-- <h2 class="sub-title">#The world talk about fasion</h2> -->
-                    <h1>@lang('site.discover_new')</h1>
-                    <a href="product.html" class="btn bg-main mt-5">@lang('site.read_more')</a>
-                </div>
-            </div>
-            <div class="col-md-6 order-1 align-self-end">
-                <img src="{{asset('front/img/5.jpg')}}" alt="Image" class="img-fluid" data-pagespeed-url-hash="799042288" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-            </div>
-        </div>
-    </div>
-    <br><br>
+    @endforeach
 
 
 
-    <div class="container dir-rtl" style="max-width: 1000px">
-        <div class="row">
-            <div class="col-md-6 ml-auto order-md-2 align-self-center">
-                <div class="site-block-cover-content text-center">
-                    <!-- <h2 class="sub-title">#The world talk about fasion</h2> -->
-                    <h1>@lang('site.discover_new')</h1>
-                    <a href="product.html" class="btn bg-main mt-5">@lang('site.read_more')</a>
-                </div>
-            </div>
-            <div class="col-md-6 order-1 align-self-end">
-                <img src="{{asset('front/img/6.jpg')}}" alt="Image" class="img-fluid" data-pagespeed-url-hash="799042288" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-            </div>
-        </div>
-    </div>
 
 
 
-    <br><br>
-
-    <div class="container ">
-
-        <br><br>
-        <div class="container1 shadow pad-0 ">
-            <div id="carouselExample" class="carousel slide dir-rtl" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExample" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExample" data-slide-to="1"></li>
-                    <li data-target="#carouselExample" data-slide-to="2"></li>
-                    <li data-target="#carouselExample" data-slide-to="3"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item  active">
-                        <div class="row">
-                            <div class="col-sm-6 pad-0">
-                                <a href="product.html"> <img class="w-100" src="{{asset('front/img/11.jpg')}}"></a>
-
-                            </div>
-                            <div class="col-sm-6 text-center p-3">
-
-                                <h3 class="text-right"><a href="product.html" class="main-color">@lang('site.week_fasion') </a>
-                                </h3>
-                                <div class="is-divider"></div>
-                                <h4 class="text-right">@lang('site.shop_now')</h4>
-                                <h4 class="text-right">@lang('site.shop_now')</h4>
-                                <h4 class="text-right">@lang('site.shop_now')</h4>
-                                <h4 class="text-right">@lang('site.shop_now')</h4>
-
-                                <a href="product.html" class="btn bg-main text-center mt-5">@lang('site.read_more')</a><br><br> <br><br>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="carousel-item  ">
-                        <div class="row">
-                            <div class="col-sm-6 pad-0">
-                                <a href="product.html"> <img class="w-100" src="{{asset('front/img/11.jpg')}}"></a>
-                            </div>
-                            <div class="col-sm-6 text-center p-3">
-
-                                <h3 class="text-right"><a href="product.html" class="main-color">@lang('site.week_fasion') </a>
-                                </h3>
-                                <div class="is-divider"></div>
-                                <h4 class="text-right">@lang('site.shop_now')</h4>
-                                <h4 class="text-right">@lang('site.shop_now')</h4>
-                                <h4 class="text-right">@lang('site.shop_now')</h4>
-                                <h4 class="text-right">@lang('site.shop_now')</h4>
-
-                                <a href="product.html" class="btn bg-main text-center mt-5">@lang('site.read_more')</a><br><br> <br><br>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="carousel-item  ">
-                        <div class="row">
-                            <div class="col-sm-6 pad-0">
-                                <a href="product.html"> <img class="w-100" src="{{asset('front/img/11.jpg')}}"></a>
-                            </div>
-                            <div class="col-sm-6 text-center p-3">
-
-                                <h3 class="text-right"><a href="product.html" class="main-color">@lang('site.week_fasion') </a>
-                                </h3>
-                                <div class="is-divider"></div>
-                                <h4 class="text-right">@lang('site.shop_now')</h4>
-                                <h4 class="text-right">@lang('site.shop_now')</h4>
-                                <h4 class="text-right">@lang('site.shop_now')</h4>
-                                <h4 class="text-right">@lang('site.shop_now')</h4>
-
-                                <a href="product.html" class="btn bg-main text-center mt-5">@lang('site.read_more')</a><br><br> <br><br>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="carousel-item  ">
-                        <div class="row">
-                            <div class="col-sm-6 pad-0">
-                                <a href="product.html"> <img class="w-100" src="{{asset('front/img/11.jpg')}}"></a>
-                            </div>
-                            <div class="col-sm-6 text-center p-3">
-
-                                <h3 class="text-right"><a href="product.html" class="main-color">@lang('site.week_fasion') </a>
-                                </h3>
-                                <div class="is-divider"></div>
-                                <h4 class="text-right">@lang('site.shop_now')</h4>
-                                <h4 class="text-right">@lang('site.shop_now')</h4>
-                                <h4 class="text-right">@lang('site.shop_now')</h4>
-                                <h4 class="text-right">@lang('site.shop_now')</h4>
-
-                                <a href="product.html" class="btn bg-main text-center mt-5">@lang('site.read_more')</a><br><br> <br><br>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-                <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div> <br><br><br>
-    </div>
     <!-----start  --->
 
 

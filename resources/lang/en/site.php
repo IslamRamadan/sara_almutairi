@@ -242,8 +242,23 @@ return [
     'news_en'=>'News in English',
     'news_edit'=>'Edit News',
     'best_selling'=>'Best selling',
-    'kwd'=>'KWD',
-    'kwd'=>'KWD',
+
+    'new_post'=>'New post',
+    'description_ar1'=>'Second Arabic content description ',
+    'description_en1'=>'Second English content description ',
+    // 'description_en1'=>'KWD',
+    // 'content_ar'=>'KWD',
+    // 'content_ar'=>'KWD',
+    // 'content_ar'=>'KWD',
+    // 'content_ar'=>'KWD',
+    // 'content_ar'=>'KWD',
+    // 'content_ar'=>'KWD',
+    // 'content_ar'=>'KWD',
+    // 'content_ar'=>'KWD',
+    // 'content_ar'=>'KWD',
+    // 'content_ar'=>'KWD',
+    // 'content_ar'=>'KWD',
+    // 'content_ar'=>'KWD',
 
 
 

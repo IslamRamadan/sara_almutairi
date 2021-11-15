@@ -64,9 +64,9 @@
         </div>
 
         <br/>
-        <div class="row">
-            <div class="col-lg-12 margin-tb" style="text-align: center">
-                <div class="col-12">
+        <div class="row m-auto">
+            {{-- <div class="col-lg-12 margin-tb" style="text-align: center"> --}}
+                <div class="col-4">
                     <h6 style="font-weight: bold">
                         @lang('site.username')
 
@@ -77,7 +77,7 @@
                     </p>
                 </div>
 
-                <div class="col-12">
+                <div class="col-4">
                     <h6 style="font-weight: bold">
                         @lang('site.email')
 
@@ -88,7 +88,7 @@
                     </p>
                 </div>
 
-                <div class="col-12">
+                <div class="col-4">
                     <h6 style="font-weight: bold">
                         @lang('site.phone')
 
@@ -99,7 +99,7 @@
                     </p>
                 </div>
 
-                <div class="col-12">
+                <div class="col-4">
                     <h6 style="font-weight: bold">
                         @lang('site.country')
 
@@ -110,7 +110,7 @@
                     </p>
                 </div>
 
-                <div class="col-12">
+                <div class="col-4">
                     <h6 style="font-weight: bold">
                         @lang('site.region')
                     </h6>
@@ -120,7 +120,7 @@
                     </p>
                 </div>
 
-                <div class="col-12">
+                <div class="col-4">
                     <h6 style="font-weight: bold">
                         @lang('site.user_type')
                     </h6>
@@ -130,17 +130,7 @@
                     </p>
                 </div>
 
-                <div class="col-12">
-                    <h6 style="font-weight: bold">
 
-
-                        @lang('site.address1')
-                    </h6>
-
-                    <p class="text text-primary">
-                        {{$order->address1}}
-                    </p>
-                </div>
 
 {{--                <div class="col-12">--}}
 {{--                    <h6 style="font-weight: bold">--}}
@@ -165,7 +155,7 @@
 {{--                    </p>--}}
 {{--                </div>--}}
 
-                <div class="col-12">
+                <div class="col-4">
                     <h6 style="font-weight: bold">
                         Total Price
                     </h6>
@@ -175,7 +165,7 @@
                     </p>
                 </div>
 
-                <div class="col-12">
+                <div class="col-4">
                     <h6 style="font-weight: bold">
                         @lang('site.ttl_qut')
 
@@ -183,6 +173,17 @@
 
                     <p class="text text-primary">
                         {{$order->total_quantity}}
+                    </p>
+                </div>
+                <div class="col-12">
+                    <h6 style="font-weight: bold">
+
+
+                        @lang('site.address1')
+                    </h6>
+
+                    <p class="text text-primary">
+                        {{$order->address1}}
                     </p>
                 </div>
                 <hr>

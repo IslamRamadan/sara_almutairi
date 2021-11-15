@@ -332,7 +332,6 @@ h1 {
 }
 
 .new1 {
-    background: url(../img/13.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -982,4 +981,79 @@ span.b {
 
 .swiper-slide:nth-child(3n) {
     width: 40%;
+}
+
+.blog-img {
+    position: relative;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.blog-date {
+    background-color: rgba(224, 44, 43, 0.9);
+    border-radius: 15px 0 0;
+    bottom: 0;
+    color: #fff;
+    font-weight: 500;
+    padding: 10px;
+    position: absolute;
+    right: 10%;
+    text-align: center;
+    z-index: 9;
+}
+
+.blog-date>span {
+    align-items: center;
+    border: 1px solid #fff;
+    border-radius: 50px;
+    display: flex;
+    height: 70px;
+    justify-content: center;
+    width: 70px;
+}
+
+.blog-content h2 {
+    font-size: 30px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.blog-date-categori {
+    margin: 9px 0 10px;
+}
+
+.blog-date-categori li {
+    display: inline-block;
+    list-style: outside none none;
+    margin-right: 20px;
+    position: relative;
+}
+
+.text-content-img {
+    margin-top: 40px;
+}
+
+.text-single>p {
+    margin: 0 0 14px;
+}
+
+.text-single>p:last-child {
+    margin: 0 0 0px;
+}
+
+.content-img>img {
+    width: 100%;
+}
+
+.blog-img img {
+    width: 80%;
+    height: 66vh;
+    object-fit: cover;
+}
+
+.blog-content {
+    margin: auto;
+    width: 80%;
 }

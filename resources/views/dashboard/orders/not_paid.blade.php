@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.app')
-@section('page_title')  @lang('site.paid')  @endsection
+@section('page_title')  Not Paid Orders  @endsection
 
 @section('style')
     <script src="https://code.jquery.com/jquery-3.6.0.js"
@@ -32,7 +32,7 @@
 
         <div class="card-header pb-0">
             <h6>
-                @lang('site.paid')
+            @lang('site.not_paid')
             </h6>
         </div>
         <div class="card-body px-0 pt-0 pb-2">
@@ -69,7 +69,7 @@
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('orders.index') }}",
+            ajax: "{{ route('orders.not_paid') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'id', name: 'id'},

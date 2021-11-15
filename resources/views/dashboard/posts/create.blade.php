@@ -1,92 +1,85 @@
 @extends('dashboard.layouts.app')
-@section('page_title')  Add Country  @endsection
+@section('page_title')  Add Post  @endsection
 
 @section('content')
-    <form class="card col-md-6 col-12" style="margin: auto" action="{{route('countries.store')}}" method="post" enctype="multipart/form-data">
+    <form class="card col-md-6 col-12" style="margin: auto" action="{{route('posts.store')}}" method="post" enctype="multipart/form-data">
         @csrf
 
         <div class="card-body">
 
             <div class="form-group">
-                <label for="name_ar">
+                <label for="title_ar">
 
-                    @lang('site.country_ar')
+                    @lang('site.title_ar')
 
                 </label>
-                <input value="{{ old('name_ar') }}"  type="text" name="name_ar"
-                       class="form-control @error('name_ar') is-invalid @enderror" id="name_ar">
+                <input value="{{ old('title_ar') }}"  type="text" name="title_ar"
+                       class="form-control @error('title_ar') is-invalid @enderror" id="title_ar">
             </div>
 
             <div class="form-group">
-                <label for="name_en">
+                <label for="title_en">
 
-                    @lang('site.country_en')
+                    @lang('site.title_en')
 
                 </label>
-                <input value="{{ old('name_en') }}"  type="text" name="name_en"
-                       class="form-control @error('name_en') is-invalid @enderror" id="name_en">
+                <input value="{{ old('title_en') }}"  type="text" name="title_en"
+                       class="form-control @error('title_en') is-invalid @enderror" id="title_en">
             </div>
-
-
             <div class="form-group">
-                <label for="country_code">
-                    @lang('site.country_ap')
+                <label for="name">
 
-
-
+                    @lang('site.description_ar')
                 </label>
-                <input value="{{ old('country_code') }}"  type="text" name="country_code"
-                       class="form-control @error('country_code') is-invalid @enderror" id="country_code">
-            </div>
-
-
-
-            <div class="form-group">
-                <label for="code">
-
-                    @lang('site.country_code')   [ Like 00965 ]
-
-                </label>
-                <input value="{{ old('code') }}"  type="number" name="code"
-                       class="form-control @error('code') is-invalid @enderror" id="code">
-            </div>
-
-
-
-
-{{--            <div class="form-group">--}}
-{{--                <label for="delivery">--}}
-{{--                    @lang('site.ship_cost')--}}
-{{--                </label>--}}
-{{--                <input value="{{ old('delivery') }}"  type="number" name="delivery"--}}
-{{--                       class="form-control @error('delivery') is-invalid @enderror" id="delivery">--}}
-{{--            </div>--}}
-
-
-
-            <div class="form-group">
-                <label for="currency_id">
-                    @lang('site.currency')
-                </label>
-
-                <select name="currency_id"    class="form-control @error('currency_id') is-invalid @enderror" id="currency_id">
-                    @foreach($currencies as $currency)
-                        <option value="{{$currency->id}}">
-                            {{$currency->name}}
-                        </option>
-                    @endforeach
-                </select>
+                <textarea name="description_ar" class="form-control @error('description_ar') is-invalid @enderror" id="description_ar">{{ old('description_ar') }}</textarea>
             </div>
 
 
             <div class="form-group">
-                <label for="image_url">
-                    @lang('site.flag_img')
+                <label for="name">
+
+                    @lang('site.description_en')
+                </label>
+                <textarea name="description_en" class="form-control @error('description_en') is-invalid @enderror" id="description_ar">{{ old('description_en') }}</textarea>
+
+            </div>
+
+            <div class="form-group">
+                <label for="name">
+
+                    @lang('site.description_ar1')
+                </label>
+                <textarea name="description_ar1" class="form-control @error('description_ar1') is-invalid @enderror" id="description_ar1">{{ old('description_ar1') }}</textarea>
+            </div>
+
+
+            <div class="form-group">
+                <label for="name">
+
+                    @lang('site.description_en1')
+                </label>
+                <textarea name="description_en1" class="form-control @error('description_en1') is-invalid @enderror" id="description_ar">{{ old('description_en1') }}</textarea>
+
+            </div>
+
+
+            <div class="form-group">
+                <label for="img1">
+                    @lang('site.img')
 
 
                 </label>
-                <input value="{{ old('image_url') }}"  type="file" name="image_url"
-                       class="@error('image_url') is-invalid @enderror form-control" id="image_url">
+                <input value="{{ old('img1') }}"  type="file" name="img1"
+                       class="@error('img1') is-invalid @enderror form-control" id="img1">
+            </div>
+            <div class="form-group">
+                <label for="img2">
+                    @lang('site.img')
+
+
+                </label>
+                <input value="{{ old('img2') }}"  type="file" name="img2"
+                       class="@error('img2') is-invalid @enderror form-control" id="img2">
             </div>
 
 

@@ -41,6 +41,7 @@ Route::group(
     Route::get('/','front\homeController@home')->name('/');
 //    Route::get('/account','front\homeController@account')->name('account');
     Route::get('/cart','front\homeController@cart')->name('cart');
+    Route::get('/post/{id}','front\homeController@post')->name('post');
     Route::get('/category/{type}/{id}','front\homeController@category')->name('category');
     Route::get('/checkout','front\homeController@checkout')->name('checkout');
     Route::group(['middleware' => ['auth']], function () {
@@ -121,6 +122,7 @@ Route::group(
         Route::resource('products','Backend\ProductController');
         Route::resource('contact_us','Backend\ContactUsController');
         Route::resource('orders','Backend\OrderController');
+        Route::get('/order/notpaid','Backend\OrderController@not_paid')->name('orders.not_paid');
         Route::resource('posts','Backend\PostController');
         Route::resource('news','Backend\NewsController');
 //islam 26 august

@@ -18,7 +18,7 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Order::latest()->get();
+            $data = Order::where('status',1)->latest()->get();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('status', function ($artist) {
@@ -60,6 +60,54 @@ class OrderController extends Controller
         }
 
         return view('dashboard.orders.index');
+    }
+    public function not_paid(Request $request)
+    {
+        // dd('ok');
+        // dd($data);
+        if ($request->ajax()) {
+            $data = Order::where('status',0)->latest()->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('status', function ($artist) {
+                    if($artist->status == 0){
+
+                        return 'غير مدفوع';
+                    }
+                    if($artist->status == 1){
+                        return 'تم الدفع';
+                    }
+                    if($artist->status == 2){
+                        return 'تم الأستلام';
+                    }
+                })
+                ->addColumn('action', function($row){
+//                    <a class="btn btn-success"  href="'.route('countries.edit' , $row->id).'" id="edit-user" >Edit </a>
+                    $action = '
+                        <a class="btn btn-primary"
+                         style="margin:5px"
+                         href="'.route('order.items.view' , $row->id).'" id="edit-user" >Order Items </a>
+
+                     ';
+
+                    if($row->status == 1){
+                    $action .='         <a class="btn btn-success"
+                      style="margin:5px"
+                    href="'.route('orders.received' , $row->id).'" id="edit-user" >Recevied </a>';
+                    }
+
+                    $action .='
+                        <meta name="csrf-token" content="{{ csrf_token() }}">';
+//                        <a href="'.url('countries/destroy' , $row->id).'" class="btn btn-danger">Delete</a>
+
+                    return $action;
+
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('dashboard.orders.not_paid');
     }
 
     public function receive($order_id){

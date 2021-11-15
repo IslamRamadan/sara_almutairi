@@ -4,6 +4,7 @@ namespace App\Http\Controllers\front;
 
 use App\BasicCategory;
 use App\Cart;
+use App\Post;
 use App\Category;
 use App\ContactUs;
 use App\Country;
@@ -51,8 +52,10 @@ class homeController extends Controller
         $sliders = Slider::all();
         $new_arrive = Product::orderBy('created_at', 'desc')->where('new', 1)
             ->offset(0)->limit(6)->get();
+        $posts = Post::orderBy('created_at', 'desc')->where('appearance', 1)
+            ->offset(0)->limit(3)->get();
             // dd($new_arrive);
-        return view('front.index', compact('sliders', 'new_arrive'));
+        return view('front.index', compact('sliders', 'new_arrive','posts'));
     }
 
     public function account()
@@ -63,6 +66,12 @@ class homeController extends Controller
     public function cart()
     {
         return view('front.cart');
+    }
+    public function post($id)
+    {
+        $post=Post::findOrfail($id);
+        // dd($post);
+        return view('front.post',compact('post'));
     }
 
     public function contactUs()
