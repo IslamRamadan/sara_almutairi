@@ -210,7 +210,7 @@
                 </form>
 
                 <a id="add_cart" class="btn bg-main " style="width: 100%;background: #000000 !important;">@lang('site.add_to_cart')</a>
-                <a id="add_cart" class="btn bg-main addToWishList" data-product-id="{{$product->id}}" style="margin:10px 0px;width: 100%;background: #ec7d23 !important;">@lang('site.add_to_wishlist')</a>
+                <a  class="btn bg-main addToWishList" data-product-id="{{$product->id}}" style="margin:10px 0px;width: 100%;background: #ec7d23 !important;">@lang('site.add_to_wishlist')</a>
 
 
             </div>
@@ -408,8 +408,11 @@
 
                 if((size == 0) || (height == 0)){
                     Swal.fire({
-                        icon: 'error',
+                        icon: '?',
                         title: 'يرجي إختيار الحجم والمقاس ',
+                        confirmButtonColor: '#ec7d23',
+                        position:'bottom-start',
+                        showCloseButton: true,
                     })
                 } else {
                     addToCart(product , quantity , height , size);
@@ -442,7 +445,7 @@
                             icon: 'success',
                             title: 'تمت الإضافه الي السله',
                             animation: false,
-                            position: 'bottom',
+                            position: 'bottom-start',
                             showConfirmButton: false,
                             timer: 3000,
                             timerProgressBar: true,
@@ -460,11 +463,22 @@
                     error:function (error) {
 
 
-                        // console.log(error);
+                        console.log(error);
                         Swal.fire({
-                            icon: 'error',
                             title: 'لم تكتمل العمليه ',
+                            icon: '?',
+                            confirmButtonColor: '#ec7d23',
+                            position:'bottom-start',
+                            showCloseButton: true,
                         })
+                        // Swal.fire({
+                        //         title: 'لم تكتمل العمليه ',
+                        //         icon: '؟',
+                        //         iconHtml: '؟',
+                        //         confirmButtonText: 'ok',
+                        //         showCancelButton: false,
+                        //         showCloseButton: true
+                        //         })
                     }
                 });
             }
@@ -503,8 +517,11 @@
 
             {{--            {{\RealRashid\SweetAlert\Facades\Alert::error('error', 'Please Login first!')}}--}}
             Swal.fire({
-                icon: 'error',
+                icon: '?',
                 title:'Login first!',
+                confirmButtonColor: '#ec7d23',
+                position:'bottom-start',
+                showCloseButton: true,
             })
             @endguest
             @auth
@@ -517,9 +534,11 @@
                 success:function (data) {
                     if (data.message){
                         Swal.fire({
-                            position: 'center',
-                            icon: 'success',
+                            icon: '?',
                             title: 'Added successfully!',
+                            confirmButtonColor: '#ec7d23',
+                            position:'bottom-start',
+                            showCloseButton: true,
                             showConfirmButton: false,
                             timer: 1500
                         })
@@ -529,9 +548,11 @@
                     else {
 //                        alert('This product already in you wishlist');
                         Swal.fire({
-                            position: 'center',
-                            icon: 'info',
                             title: 'This product already in you wishlist',
+                            icon: '?',
+                            confirmButtonColor: '#ec7d23',
+                            position:'bottom-start',
+                            showCloseButton: true,
                             showConfirmButton: false,
                             timer: 1500
                         })

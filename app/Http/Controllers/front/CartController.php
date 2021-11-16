@@ -704,6 +704,7 @@ $prod_height = ProdHeight::find($product_height_id);
      */
     public function store(Request $request)
     {
+
         //ORDER STORE
         $messeges = [
 
@@ -724,7 +725,7 @@ $prod_height = ProdHeight::find($product_height_id);
 
             'name' => ['required'],
 
-            'email' => ['required', 'email'],
+            // 'email' => ['required', 'email'],
 
             'country_id' => ['required'],
 
@@ -743,6 +744,10 @@ $prod_height = ProdHeight::find($product_height_id);
             Alert::error($validator->errors()->first(), '');
             return back();
         }
+        if($request->email==null){
+            $request->merge(['email'=>'no@gmail.com']);
+        }
+
 
 //        dd($request);
 
@@ -1012,8 +1017,8 @@ $prod_height = ProdHeight::find($product_height_id);
             'MobileCountryCode'  => $country_code,
             'CustomerMobile'     => $phone,
             'CustomerEmail'      => $email,
-            'CallBackUrl'        => 'https://abati-sakbah.com/payment_callback',
-            'ErrorUrl'           =>  'https://abati-sakbah.com/payment_error', //or 'https://example.com/error.php'
+            'CallBackUrl'        => 'http://127.0.0.1:8000/payment_callback',
+            'ErrorUrl'           =>  'http://127.0.0.1:8000/payment_error', //or 'https://example.com/error.php'
             //'Language'           => 'en', //or 'ar'
 //            'CustomerReference'  => $order->id,
 //            'CustomerCivilId'    => $order->national_id,
@@ -1183,7 +1188,7 @@ $prod_height = ProdHeight::find($product_height_id);
              * */
         Mail::send('email.donePay',['name' => $order->name,'order_id'=>$request->paymentId,'total_price'=>$order->total_price,'total_quantity'=>$order->total_quantity,'invoice_link'=>$order->invoice_link], function($message) use($order){
             $message->to($order->email)
-                ->from('sales@easyshop-qa.com', 'Abati sakbah')
+                ->from('sales@easyshop-qa.com', 'Sara Merdas')
                 ->subject('Pay done');
         });
 
@@ -1212,6 +1217,7 @@ $prod_height = ProdHeight::find($product_height_id);
     }
 
     public function errorUrl(Request $request){
+        dd($request->all());
         $payment_id = $request->paymentId;
 
         Alert::error('Payment Not Completed !' , '');

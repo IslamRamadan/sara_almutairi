@@ -337,8 +337,12 @@
 
                 {{-- {{\RealRashid\SweetAlert\Facades\Alert::error('error', 'Please Login first!')}} --}}
                 Swal.fire({
-                icon: 'error',
-                title: 'Login first!',
+
+                icon: '?',
+                title:'Login first!',
+                confirmButtonColor: '#ec7d23',
+                position:'bottom-start',
+                showCloseButton: true,
                 })
             @endguest
             @auth
@@ -351,8 +355,10 @@
                 success:function (data) {
                 if (data.message){
                 Swal.fire({
-                position: 'center',
-                icon: 'success',
+                icon: '?',
+                confirmButtonColor: '#ec7d23',
+                position:'bottom-start',
+                showCloseButton: true,
                 title: 'Added successfully!',
                 showConfirmButton: false,
                 timer: 1500
@@ -363,8 +369,10 @@
                 else {
                 // alert('This product already in you wishlist');
                 Swal.fire({
-                position: 'center',
-                icon: 'info',
+                icon: '?',
+                confirmButtonColor: '#ec7d23',
+                position:'bottom-start',
+                showCloseButton: true,
                 title: 'This product already in you wishlist',
                 showConfirmButton: false,
                 timer: 1500

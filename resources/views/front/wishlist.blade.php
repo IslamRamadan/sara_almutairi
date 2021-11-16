@@ -178,9 +178,11 @@ Session::get('cart_details')['totalQty'] ." items":''}} @lang('site.cc')</p>
 
             {{--            {{\RealRashid\SweetAlert\Facades\Alert::error('error', 'Please Login first!')}}--}}
             Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Login first!',
+                icon: '?',
+                title:'Login first!',
+                confirmButtonColor: '#ec7d23',
+                position:'bottom-start',
+                showCloseButton: true,
             })
             @endguest
             @auth
@@ -195,8 +197,10 @@ Session::get('cart_details')['totalQty'] ." items":''}} @lang('site.cc')</p>
                 success:function (data) {
                     if (data.message){
                         Swal.fire({
-                            position: 'center',
-                            icon: 'success',
+                            icon: '?',
+                            confirmButtonColor: '#ec7d23',
+                            position:'bottom-start',
+                            showCloseButton: true,
                             title: 'This product already deleted!',
                             showConfirmButton: false,
                             timer: 1500
@@ -207,8 +211,10 @@ Session::get('cart_details')['totalQty'] ." items":''}} @lang('site.cc')</p>
                     else {
 //                        alert('This product already in you wishlist');
                         Swal.fire({
-                            position: 'center',
-                            icon: 'success',
+                            icon: '?',
+                            confirmButtonColor: '#ec7d23',
+                            position:'bottom-start',
+                            showCloseButton: true,
                             title: 'Deleted successfully!',
                             showConfirmButton: false,
                             timer: 1500

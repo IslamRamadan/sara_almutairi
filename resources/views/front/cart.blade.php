@@ -309,12 +309,12 @@
         function changeProduct(operation ,productId,productHeightId){
 
             //TODO :: TOAST RUNNING
-            Swal.fire({
-                title: '..... جاري التحميل ',
-                html:
-                    '<progress id="file" value="32" max="100"> 32% </progress>',
-                showConfirmButton:false,
-            })
+            // Swal.fire({
+            //     title: '..... جاري التحميل ',
+            //     html:
+            //         '<progress id="file" value="32" max="100"> 32% </progress>',
+            //     showConfirmButton:false,
+            // })
 
             $.ajaxSetup({
                 headers: {
@@ -349,8 +349,11 @@
                 },
                 error: function (error) {
                     Swal.fire({
-                        icon: 'error',
                         title: 'لم تكتمل العمليه ',
+                        icon: '?',
+                        confirmButtonColor: '#ec7d23',
+                        position:'bottom-start',
+                        showCloseButton: true,
                     })
                 }
             });

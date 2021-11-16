@@ -133,6 +133,7 @@ Route::group(
         Route::post('/product_galaries/store/{id}', 'Backend\productGalaryController@store')->name("product_galaries.store");
         Route::delete('/product_galaries/destroy/{id}', 'Backend\productGalaryController@destroy')->name("product_galaries.destroy");
         Route::get('/news/destroy/{id}', 'Backend\NewsController@destroy')->name("news.destroy");
+        Route::get('/posts/destroy/{id}', 'Backend\PostController@destroy')->name("posts.destroy");
 
 
         Route::get('/ajax-subcat','Backend\ProductController@ajaxcat');

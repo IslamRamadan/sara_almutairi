@@ -186,9 +186,9 @@
 
                             <a class="nav-link" rel="alternate" hreflang="{{ $localeCode }}"
                                 href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                               التحويل الى {{ $properties['native'] }}
-                               <span class="LocaleSwitch2__diamond-divider"></span>
-                               <img src="{{ asset('front/img/kuwait.png') }}" width="20">
+                                <img src="{{ asset('front/img/kuwait.png') }}" width="20">
+                                <span class="LocaleSwitch2__diamond-divider"></span>
+                                Switch to Arabic
                             </a>
                         @endforeach
                     @else
@@ -198,7 +198,7 @@
                             @endif
 
                         <a class="nav-link " rel="alternate" hreflang="{{ $localeCode }}"
-                        href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"  style="font-size: 12px"> <img src="{{ asset('front/img/en.png') }}" width="20"><span class="LocaleSwitch2__diamond-divider"></span> Switch to Arabic </a>
+                        href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"  style="font-size: 12px">  التحويل الي الانجليزيه<span class="LocaleSwitch2__diamond-divider"></span><img src="{{ asset('front/img/en.png') }}" width="20"> </a>
 
                         @endforeach
                     @endif
@@ -334,7 +334,10 @@
         </div>
     </div>
 
-    <nav class="d-md-none d-block bg-b ">
+    <nav class="d-md-none d-block bg-b " style="position: fixed;
+    top: 0;
+    z-index: 3;
+    width: -webkit-fill-available;">
 
         <div class=" d-flex justify-content-between ">
             <div class="relative" style="align-self: center">
@@ -345,7 +348,8 @@
                 </div>
 
 
-                <div class="sidbar bg-light text-dir dir-rtl">
+                <div class="sidbar bg-light text-dir dir-rtl" style="overflow: scroll;
+                max-height: 91vh;">
                     <div class="border-bottom">
                         <br>
                         <div class="input-group mb-3">
@@ -414,11 +418,7 @@
                     </div>
                 @endguest --}}
 
-                    <a class="nav-link  border-bottom" href="{{ route('policy') }}">@lang('site.privacy_policy')</a>
-                    <a class="nav-link  border-bottom" href="{{ route('checkout') }}"> @lang('site.payment')</a>
-                    <a class="nav-link  border-bottom" href="{{ route('contact.us') }}">@lang('site.contact_us')</a>
-                    <a class="nav-link  border-bottom" href="{{ route('checkout') }}">@lang('site.checkout')</a>
-                    <a class="nav-link  border-bottom" href="{{ route('cart') }}">@lang('site.shopping_cart')</a>
+
                     @foreach (\App\BasicCategory::all() as $b)
                         <div class="relative ul1">
 
@@ -427,16 +427,16 @@
 
                                 <span class="p-0">
                                     @if (app()->getLocale() == 'en')
-                                        {{ $b->id }}{{ $b->name_en }}
+                                        {{ $b->name_en }}
                                     @else
-                                        {{ $b->id }} {{ $b->name_ar }}
+                                         {{ $b->name_ar }}
                                     @endif
 
                                 </span>
 
 
-                                <i class="fas fa-chevron-down "></i>
 
+                                <i class="fas fa-chevron-down "></i>
                             </a>
                             <div class=" ul2  bg-w  text-dir ">
 
@@ -447,9 +447,9 @@
                                         <a class="dropdown-item" rel="alternate"
                                             href="{{ route('category', [2, $c->id]) }}" style="padding: 10px">
                                             @if (app()->getLocale() == 'en')
-                                                {{ $b->id }}{{ $c->id }} - {{ $c->name_en }}
+                                                 {{ $c->name_en }}
                                             @else
-                                                {{ $b->id }}{{ $c->id }} - {{ $c->name_ar }}
+                                                {{ $c->name_ar }}
                                             @endif
                                         </a>
 
@@ -497,20 +497,7 @@
                         @endif
 
                     </ul>
-                    @guest()
-                        <a class="nav-link  border-bottom" href="{{ route('login') }}"> @lang('site.login')</a>
 
-                    @else
-
-                        <a class="nav-link  border-bottom" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
-                            <div><span> log out</span></div>
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    @endguest
 
                     <div class="nav-link relative ul1">
                         <a style="display: flex;justify-content: space-between;align-items: center">
@@ -541,7 +528,25 @@
 
                         </div>
                     </div>
+                    <a class="nav-link  border-bottom" href="{{ route('policy') }}">@lang('site.privacy_policy')</a>
+                    <a class="nav-link  border-bottom" href="{{ route('checkout') }}"> @lang('site.payment')</a>
+                    <a class="nav-link  border-bottom" href="{{ route('contact.us') }}">@lang('site.contact_us')</a>
+                    <a class="nav-link  border-bottom" href="{{ route('checkout') }}">@lang('site.checkout')</a>
+                    <a class="nav-link  border-bottom" href="{{ route('cart') }}">@lang('site.shopping_cart')</a>
+                    @guest()
+                    <a class="nav-link  border-bottom" href="{{ route('login') }}"> @lang('site.login')</a>
 
+                @else
+
+                    <a class="nav-link  border-bottom" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                        <div><span> log out</span></div>
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                @endguest
                 </div>
 
 

@@ -23,7 +23,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'AbatiSakbah') }}</title>
+    {{-- <title>{{ config('app.name', 'AbatiSakbah') }}</title> --}}
+    <title> @yield('page_title')</title>
+
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i" rel="stylesheet">
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -58,7 +60,6 @@
     <link id="pagestyle" href="{{asset('dashboard/assets/css/soft-ui-dashboard.css?v=1.0.1')}}" rel="stylesheet" />
 
     @yield('style')
-
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">

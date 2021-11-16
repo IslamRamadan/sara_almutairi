@@ -11,31 +11,31 @@
 @endsection
 @section('content')
 {{--    {{dd(count($height_products_array[0]))}}--}}
-    <form class="card col-md-6 col-12" style="margin: auto"
+    <form class="card col-md-12 col-12" style="margin: auto"
           action="{{route('products.update.product',$product->id)}}"
           method="post" enctype="multipart/form-data">
         @csrf
 
-        <div class="card-body">
+        <div class="card-body text-right">
 
-
+            <div class="d-flex justify-content-center">
 
             <div class="form-group">
-                <div class="col-md-6 ">
+                <div class="col-md-12 d-flex justify-content-center ">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="new" value="1" id="new"
                             @if($product->new == 1 )  {{ "checked" }} @endif
                             >
 
                         <label class="form-check-label" for="new">
-                            @lang('site.new')
+                            @lang('site.new_arrival')
                         </label>
                     </div>
                 </div>
             </div>
 
             <div class="form-group ">
-                <div class="col-md-6 ">
+                <div class="col-md-12 d-flex justify-content-center ">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="appearance" value="1" id="appearance"
                         @if($product->appearance == 1 )  {{ "checked" }} @endif
@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="form-group ">
-                <div class="col-md-6 ">
+                <div class="col-md-12 d-flex justify-content-center ">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="best_selling" value="1" id="best_selling"
                         @if($product->best_selling == 1 )  {{ "checked" }} @endif
@@ -62,22 +62,13 @@
                     </div>
                 </div>
             </div>
-
-            <div class="form-group">
-                <div class="col-md-6 ">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="featured" value="1" id="featured"
-                        @if($product->featured == 1 )  {{ "checked" }} @endif
-                        >
-
-                        <label class="form-check-label" for="featured">
-                            @lang('site.featured')
-                        </label>
-                    </div>
-                </div>
             </div>
 
-            <div class="form-group">
+
+
+            <div class="d-flex flex-wrap">
+
+            <div class="form-group col-6">
                 <label for="basic_category_id">
                     @lang('site.basic_cat')
                 </label>
@@ -100,7 +91,7 @@
                 </select>
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-6">
                 <label for="category_id">
                     @lang('site.cat')
                 </label>
@@ -120,7 +111,7 @@
                 </select>
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-6">
                 <label for="title_ar">
 
                     @lang('site.title_ar')
@@ -130,7 +121,7 @@
                        class="form-control @error('title_ar') is-invalid @enderror" id="title_ar">
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-6">
                 <label for="title_en">
 
                     @lang('site.title_en')
@@ -140,15 +131,15 @@
                        class="form-control @error('title_en') is-invalid @enderror" id="title_en">
             </div>
 
-            <div class="form-group">
-                <label for="name">
+            <div class="form-group col-12">
+                <label for="description_ar">
 
                     @lang('site.description_ar')
                 </label>
                 <textarea name="description_ar" class="form-control @error('description_ar') is-invalid @enderror" id="description_ar">{{$product->description_ar}}</textarea>
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-12">
                 <label for="name">
 
                     @lang('site.description_en')
@@ -157,7 +148,7 @@
 
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-6">
                 <label for="price">
 
                     @lang('site.price')
@@ -167,7 +158,7 @@
                        class="form-control @error('price') is-invalid @enderror" id="price">
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-6">
                 <label for="photo">
 
                     @lang('site.img')
@@ -175,26 +166,9 @@
                 <input type="file" name="photo"
                        class="form-control">
             </div>
-
-            {{--<div class="form-group">--}}
-                {{--<label for="size_photo">--}}
-
-                    {{--@lang('site.size_img')--}}
-                {{--</label>--}}
-                {{--<input type="file" name="size_photo"--}}
-                       {{--class="form-control">--}}
-            {{--</div>--}}
+            </div>
 
 
-{{--            <div class="form-group">--}}
-{{--                <label for="delivery_period">--}}
-
-{{--                    @lang('site.ship_period')--}}
-
-{{--                </label>--}}
-{{--                <input value="{{$product->delivery_period}}"  type="number" name="delivery_period"--}}
-{{--                       class="form-control @error('delivery_period') is-invalid @enderror" id="delivery_period">--}}
-{{--            </div>--}}
 
 
 
@@ -270,7 +244,7 @@
 
 </div>
 
-<button type="submit" class="btn btn-primary">
+<button type="submit" class="btn btn-primary col-6 m-auto mb-5">
 @lang('site.save')
 </button>
 

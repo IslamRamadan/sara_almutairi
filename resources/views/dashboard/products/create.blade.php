@@ -4,27 +4,27 @@
 
 @section('content')
 {{--    {{dd($sizes)}}--}}
-    <form class="card col-md-6 col-12" style="margin: auto" action="{{route('products.store')}}" method="post" enctype="multipart/form-data">
+    <form class="card col-md-12 col-12" style="margin: auto" action="{{route('products.store')}}" method="post" enctype="multipart/form-data">
         @csrf
 
-        <div class="card-body text-right">
+        <div class="card-body text-dir">
 
 
-
+            <div class="d-flex justify-content-center">
             <div class="form-group">
-                <div class="col-md-6 ">
+                <div class="col-md-12 d-flex justify-content-center ">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="new" value="1" id="new" >
 
                         <label class="form-check-label" for="new">
-                                          @lang('site.new')
+                                          @lang('site.new_arrival')
                         </label>
                     </div>
                 </div>
             </div>
 
             <div class="form-group ">
-                <div class="col-md-6 ">
+                <div class="col-md-12 d-flex justify-content-center ">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="appearance" value="1" id="appearance" {{ old('appearance') ? 'checked' : '' }}>
 
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="form-group ">
-                <div class="col-md-6 ">
+                <div class="col-md-12 d-flex justify-content-center ">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="best_selling" value="1" id="best_selling" {{ old('best_selling') ? 'checked' : '' }}>
 
@@ -45,21 +45,11 @@
                     </div>
                 </div>
             </div>
-
-            <div class="form-group">
-                <div class="col-md-6 ">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="featured" value="1" id="featured" {{ old('featured') ? 'checked' : '' }}>
-
-                        <label class="form-check-label" for="featured">
-                            @lang('site.featured')
-                        </label>
-                    </div>
-                </div>
-            </div>
+        </div>
 
 
-            <div class="form-group">
+            <div class="d-flex flex-wrap">
+            <div class="form-group col-6">
                 <label for="basic_category_id">
                     @lang('site.basic_cat')
 
@@ -81,7 +71,7 @@
                 </select>
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-6">
                 <label for="category_id">
                     @lang('site.cat')
                 </label>
@@ -98,7 +88,7 @@
             </div>
 
 
-            <div class="form-group">
+            <div class="form-group col-6">
                 <label for="title_ar">
                     @lang('site.title_ar')
 
@@ -107,7 +97,7 @@
                        class="form-control @error('title_ar') is-invalid @enderror" id="title_ar">
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-6">
                 <label for="title_en">
 
                     @lang('site.title_en')
@@ -117,7 +107,9 @@
                        class="form-control @error('title_en') is-invalid @enderror" id="title_en">
             </div>
 
-            <div class="form-group">
+
+
+            <div class="form-group col-12">
                 <label for="name">
 
                     @lang('site.description_ar')
@@ -126,7 +118,8 @@
             </div>
 
 
-            <div class="form-group">
+
+            <div class="form-group col-12">
                 <label for="name">
 
                     @lang('site.description_en')
@@ -135,7 +128,8 @@
 
             </div>
 
-            <div class="form-group">
+
+            <div class="form-group col-6">
                 <label for="price">
 
                     @lang('site.price')
@@ -146,7 +140,7 @@
                        class="form-control @error('price') is-invalid @enderror" id="price">
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-6">
                 <label for="photo">
 
                     @lang('site.img')
@@ -154,6 +148,8 @@
                 <input type="file" name="photo"
                        class="form-control">
             </div>
+        </div>
+
 
             {{--<div class="form-group">--}}
                 {{--<label for="size_photo">--}}
@@ -182,8 +178,8 @@
 
                     <div class="form-group">
 
-                        <div class="col-md-6 ">
-                            <div class="form-check">
+                        <div class="col-md-12 ">
+                            <div class="form-check d-flex justify-content-center">
 
                                 <label class="form-check-label" for="name" style="font-weight: bold">
                                     {{$size->name}}
@@ -221,7 +217,7 @@
 
         </div>
 
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary col-6 m-auto mb-5">
 @lang('site.save')
             </button>
 

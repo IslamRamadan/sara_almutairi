@@ -1,9 +1,8 @@
-<!--- end  --->
 <footer class="container-fluid dir-rtl">
     <div class="container">
         <div class="row res-mobile text-dir">
 
-            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="{{ asset('/storage/' . $my_setting->footer_logo) }}" style="mix-blend-mode: multiply;
+            <div class="col-lg-4 col-md-6 mb-6 col-sm-6 mb-lg-0"><img src="{{ asset('/storage/' . $my_setting->footer_logo) }}" style="mix-blend-mode: multiply;
                     " alt="" width="180" class="mb-3">
                 {{-- <p class="font-italic text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p> --}}
                 <ul class="list-inline mt-4" style="direction: ltr">
@@ -73,7 +72,7 @@
 
             </div> --}}
 
-            <div class="col-md-4">
+            <div class="col-lg-4 col-md-6 mb-6 col-sm-6 mb-lg-0">
                 <h5 class="font-weight-bold">@lang('site.contact_us')
                 </h5>
                 <p> <a href="{{ route('policy') }}"> @lang('site.privacy_policy') </a>

@@ -450,8 +450,11 @@
 
             {{--            {{\RealRashid\SweetAlert\Facades\Alert::error('error', 'Please Login first!')}}--}}
             Swal.fire({
-                icon: 'error',
+                icon: '?',
                 title:'Login first!',
+                confirmButtonColor: '#ec7d23',
+                position:'bottom-start',
+                showCloseButton: true,
             })
             @endguest
             @auth

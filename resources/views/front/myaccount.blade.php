@@ -134,15 +134,15 @@ Session::get('cart_details')['totalQty'] ." items":''}} @lang('site.cc')</p>
                                 <label class="type-text w-100">@lang('site.password') *
                                     <input class="form-control placeholder-fix" placeholder="   "
                                            name="password" id="Clients_password" type="password" maxlength="20"
-                                           value="{{Auth::user()->password_view}}">
+                                           value="{{Auth::user()->password_view}}" required>
                                 </label>
                             </div>
-                            {{--<div class="form-group ">--}}
-                                {{--<label class="type-text w-100">@lang('site.email') *--}}
-                                    {{--<input class="form-control placeholder-fix" placeholder="   "--}}
-                                           {{--name="email" id="Clients_email" type="text" value="{{Auth::user()->email}}">--}}
-                                {{--</label>--}}
-                            {{--</div>--}}
+                            <div class="form-group ">
+                                <label class="type-text w-100">@lang('site.email') *
+                                    <input class="form-control placeholder-fix" placeholder="   "
+                                           name="email" id="Clients_email" type="email" value="{{Auth::user()->email}}">
+                                </label>
+                            </div>
                             <div class="form-group ">
                                 <label for="country" class="type-text w-100">@lang('site.country') *</label>
 
@@ -173,7 +173,7 @@ Session::get('cart_details')['totalQty'] ." items":''}} @lang('site.cc')</p>
                             <div class="form-group">
                                 <label class="type-text w-100"> @lang('site.phone')
                                     <input type="text" class="form-control placeholder-fix"
-                                           value="{{Auth::user()->phone}}" name="phone">
+                                           value="{{Auth::user()->phone}}" name="phone" required>
                                 </label>
                             </div>
                             {{--                            <div class="form-group">--}}

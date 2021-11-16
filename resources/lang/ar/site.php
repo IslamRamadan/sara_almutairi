@@ -244,7 +244,7 @@ return [
     'new_post'=>'منشور جديد',
       'description_ar1'=>'محتوي الجزء الثاني بالعربيه',
       'description_en1'=>'محتوي الجزء الثاني بالانجليزيه',
-   //    'edit_page'=>'',
+      'have_acc'=>'امتلك حساب بالفعل',
    //    'edit_page'=>'',
    //    'edit_page'=>'',
    //    'edit_page'=>'',

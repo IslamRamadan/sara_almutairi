@@ -209,8 +209,8 @@ class homeController extends Controller
 
         $validator = Validator::make($request->all(), [
 
-            'name' => ['required', 'unique:users,name,' . $request['id']],
-            'phone' => ['required'],
+            'name' => ['required'],
+            'phone' => ['required','unique:users,phone,' . $request['id']],
             'country' => ['required'],
 
 //            'email' => ['required', 'email', 'unique:users,email,' . $request['id']],

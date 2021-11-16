@@ -378,7 +378,10 @@
                         if(!result.success)
                         {
                             Swal.fire({
-                                icon: 'error',
+                                icon: '?',
+                                confirmButtonColor: '#ec7d23',
+                                position:'bottom-start',
+                                showCloseButton: true,
                                 title: result.msg,
                             })
                         } else {
@@ -393,8 +396,11 @@
                     },
                     error:function (error) {
                         Swal.fire({
-                            icon: 'error',
                             title: 'لم تكتمل العمليه ',
+                            icon: '?',
+                            confirmButtonColor: '#ec7d23',
+                            position:'bottom-start',
+                            showCloseButton: true,
                         })
                     }
                 });
@@ -435,7 +441,10 @@
                         if(!result.success)
                         {
                             Swal.fire({
-                                icon: 'error',
+                                icon: '?',
+                                confirmButtonColor: '#ec7d23',
+                                position:'bottom-start',
+                                showCloseButton: true,
                                 title: result.msg,
                             })
                         } else {
@@ -451,8 +460,11 @@
                     },
                     error:function (error) {
                         Swal.fire({
-                            icon: 'error',
                             title: 'لم تكتمل العمليه ',
+                            icon: '?',
+                            confirmButtonColor: '#ec7d23',
+                            position:'bottom-start',
+                            showCloseButton: true,
                         })
                     }
                 });
