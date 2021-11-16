@@ -122,7 +122,7 @@ Route::group(
         Route::resource('products','Backend\ProductController');
         Route::resource('contact_us','Backend\ContactUsController');
         Route::resource('orders','Backend\OrderController');
-        Route::get('/order/notpaid','Backend\OrderController@not_paid')->name('orders.not_paid');
+        Route::get('/order/notpaid','Backend\OrderController@not_paid')->name('noorders');
         Route::resource('posts','Backend\PostController');
         Route::resource('news','Backend\NewsController');
 //islam 26 august
