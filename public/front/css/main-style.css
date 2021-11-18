@@ -768,7 +768,7 @@ p a {
         }
         
         .gq {
-            background-color: rgba(17, 17, 17, 1);
+            background-color: rgb(240, 16, 16);
         }
         
         .di {
@@ -924,10 +924,10 @@ p a {
         }
         
         .swiper-slide {
-            height: fit-content !important;
+            height: auto !important;
             text-align: center;
             font-size: 18px;
-            background: #fff;
+            background: #f8fafc;
             /* Center slide text vertically */
             display: -webkit-box;
             display: -ms-flexbox;
