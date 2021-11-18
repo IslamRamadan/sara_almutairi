@@ -128,6 +128,7 @@ Route::group(
         Route::get('/order/notpaid','Backend\OrderController@not_paid')->name('noorders');
         Route::resource('posts','Backend\PostController');
         Route::resource('news','Backend\NewsController');
+        Route::resource('coupons','Backend\CouponController');
 //islam 26 august
 
 
@@ -136,6 +137,7 @@ Route::group(
         Route::post('/product_galaries/store/{id}', 'Backend\productGalaryController@store')->name("product_galaries.store");
         Route::delete('/product_galaries/destroy/{id}', 'Backend\productGalaryController@destroy')->name("product_galaries.destroy");
         Route::get('/news/destroy/{id}', 'Backend\NewsController@destroy')->name("news.destroy");
+        Route::get('/coupons/destroy/{id}', 'Backend\CouponController@destroy')->name("coupons.destroy");
         Route::get('/posts/destroy/{id}', 'Backend\PostController@destroy')->name("posts.destroy");
 
 
