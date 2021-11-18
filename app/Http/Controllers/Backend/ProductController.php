@@ -109,7 +109,7 @@ class ProductController extends Controller
 //            "height.*" => "required",
 //            "quantity.*" => "required",
 //            'size' => 'required',
-            "price" => "required|Numeric",
+            "price" => "required|Numeric|between:0.1,999.99",
             'photo' => 'required|mimes:jpg,jpeg,png|max:4100',
 //            'size_photo' => 'required|mimes:jpg,jpeg,png|max:4100',
 

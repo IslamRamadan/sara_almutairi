@@ -136,7 +136,7 @@
 
 
                 </label>
-                <input value="{{ old('price') }}"  type="text" name="price"
+                <input value="{{ old('price') }}"  type="text" name="price" type="number" step=".01"
                        class="form-control @error('price') is-invalid @enderror" id="price">
             </div>
 

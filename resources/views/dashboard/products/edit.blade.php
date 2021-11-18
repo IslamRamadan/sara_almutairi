@@ -154,7 +154,7 @@
                     @lang('site.price')
 
                 </label>
-                <input value="{{$product->price}}"  type="text" name="price"
+                <input value="{{$product->price}}"  type="number" step=".01" name="price"
                        class="form-control @error('price') is-invalid @enderror" id="price">
             </div>
 
