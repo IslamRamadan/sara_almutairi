@@ -35,9 +35,9 @@ class CategoryController extends Controller
                 ->addColumn('action', function ($row) {
                     $action = '
                         <a class="btn btn-success"  href="'.route('categories.edit' , $row->id).'" >Edit </a>
-                        <meta name="csrf-token" content="{{ csrf_token() }}">                        ';
+                        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-//                        <a  href="'.route('categories.destroy' , $row->id).'" class="btn btn-danger">Delete</a>
+                       <a  href="'.route('categories.destroy' , $row->id).'" class="btn btn-danger">Delete</a>';
                     return $action;
                 })
                 ->rawColumns(['action'])
@@ -241,7 +241,17 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::where('id',$id)->first();
+        $products=Product::where('category_id',$id)->get();
 
+        if($products){
+            foreach($products as $prod){
+                if(file_exists(storage_path('app/public/'.$prod->img)))
+                {
+                    unlink(storage_path('app/public/'.$prod->img));
+                }
+                    $prod->delete();
+            }
+        }
 
         if($category){
             $category->delete();

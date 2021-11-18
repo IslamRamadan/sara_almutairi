@@ -924,6 +924,7 @@ p a {
         }
         
         .swiper-slide {
+            height: fit-content !important;
             text-align: center;
             font-size: 18px;
             background: #fff;

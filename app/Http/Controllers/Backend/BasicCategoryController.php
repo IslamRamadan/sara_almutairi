@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\BasicCategory;
+use App\Category;
+use App\Product;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -33,10 +35,10 @@ class BasicCategoryController extends Controller
                 ->addColumn('action', function ($row) {
 
                     $action = '
-<a class="btn btn-success"  href="' . route('basic_categories.edit', $row->id) . '" id="edit-user" >Edit </a>
+<a class="btn btn-success "  href="' . route('basic_categories.edit', $row->id) . '" id="edit-user" >Edit </a>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 ';
-$action.=' <a href="' . url('basic_categories/destroy', $row->id) . '" class="btn btn-danger">Delete</a>';
+$action.=' <a href="' . url('basic_categories/destroy', $row->id) . '" class="btn btn-danger test-form">Delete</a>';
 
 
                     return $action;
@@ -252,6 +254,25 @@ $action.=' <a href="' . url('basic_categories/destroy', $row->id) . '" class="bt
     {
 
         $cat = BasicCategory::findOrFail($id);
+        $sub_cat=Category::where('basic_category_id',$id)->get();
+        $products=Product::where('basic_category_id',$id)->get();
+        // dd($products);
+        if($sub_cat){
+            foreach($sub_cat as $sub){
+                    $sub->delete();
+            }
+        }
+        if($products){
+            foreach($products as $prod){
+                if(file_exists(storage_path('app/public/'.$prod->img)))
+                {
+                    unlink(storage_path('app/public/'.$prod->img));
+                }
+                    $prod->delete();
+            }
+        }
+
+
         if($cat){
 
             if(file_exists(storage_path('app/public/'.$cat->image_url)))
@@ -259,7 +280,9 @@ $action.=' <a href="' . url('basic_categories/destroy', $row->id) . '" class="bt
                 unlink(storage_path('app/public/'.$cat->image_url));
             }
 
+
             $cat->delete();
+
 
             session()->flash('success', "success");
             if (session()->has("success")) {

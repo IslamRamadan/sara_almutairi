@@ -764,9 +764,6 @@ $prod_height = ProdHeight::find($product_height_id);
             'total_quantity' => $cart_details['totalQty'],
             'phone' => $variation2
             ] );
-
-//        dd($request);
-
         //MAKE ORDER TABLE
 
         //ADD TO TABLE
@@ -776,7 +773,7 @@ $prod_height = ProdHeight::find($product_height_id);
 
         $order = Order::create($request->except('_token'));
 
-//        dd($order);
+    //    dd($order);
 
         if(!$order){
             Alert::error( 'Order Not Completed an error occur ','');
@@ -838,6 +835,7 @@ $prod_height = ProdHeight::find($product_height_id);
 
         Session::forget('cart');
         Session::forget('cart_details');
+        session()->forget('coupon');
 
 
         $data = $this->makePayment( \Illuminate\Support\Facades\Request::merge(['order_id' => $order->id]));
@@ -1016,7 +1014,7 @@ $prod_height = ProdHeight::find($product_height_id);
             'DisplayCurrencyIso' => 'KWD',
             'MobileCountryCode'  => $country_code,
             'CustomerMobile'     => $phone,
-            'CustomerEmail'      => $email,
+            'CustomerEmail'      => $email??"no@gmail.com",
             'CallBackUrl'        => 'http://127.0.0.1:8000/payment_callback',
             'ErrorUrl'           =>  'http://127.0.0.1:8000/payment_error', //or 'https://example.com/error.php'
             //'Language'           => 'en', //or 'ar'
@@ -1217,12 +1215,22 @@ $prod_height = ProdHeight::find($product_height_id);
     }
 
     public function errorUrl(Request $request){
-        dd($request->all());
+        // dd($request->all());
         $payment_id = $request->paymentId;
+
+
+
+        $invoice_data =  $this->getPaymentStatus($payment_id);
+//        return $invoice_data;
+        $invoice_id = $invoice_data->original->InvoiceId;
+        $invoice_status = $invoice_data->original->InvoiceStatus;
+
+        $order = Order::where('invoice_id' , $invoice_id)->first();
+        // dd($order);
 
         Alert::error('Payment Not Completed !' , '');
 
-        return redirect()->route('/');
+        return redirect()->route('/')->with(['order'=>$order]);
     }
 
 

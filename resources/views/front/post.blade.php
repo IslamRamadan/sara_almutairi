@@ -13,7 +13,7 @@
                 <div class="col-lg-9 col-md-8 m-auto">
                     <div class="blog-details-wrapper">
                         <div class="blog-img mb-20 text-center"><img alt="" src="{{ asset('/storage/' . $post->img1) }}">
-                            <div class="blog-date"><span>                                        26                                        <br>                                        JUNE</span></div>
+                            {{-- <div class="blog-date"><span>                                        26                                        <br>                                        JUNE</span></div> --}}
                         </div>
                         <div class="blog-content text-dir">
                             @if (app()->getLocale() == 'en')

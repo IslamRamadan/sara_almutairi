@@ -98,6 +98,9 @@ Route::group(
     Route::post('/order/store','front\CartController@store')->name('order.store');
     Route::get('payment_callback' , 'front\CartController@callBackUrl');
     Route::get('payment_error' , 'front\CartController@errorUrl');
+    Route::get('/coupon/store','front\CouponController@store')->name('coupon.store');
+    Route::delete('/coupon','front\CouponController@destroy')->name('coupon.destroy');
+
 
     Route::group(['middleware' => ['adminAuth' ,  'role:admin']], function () {
         Route::resource('users','Backend\UserController');

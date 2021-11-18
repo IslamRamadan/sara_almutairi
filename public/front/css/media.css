@@ -1,4 +1,4 @@
-    /*
+/*
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
 */
@@ -199,6 +199,12 @@
         }
     }
     
+    @media (min-width: 768px) and (max-width: 1024) {
+        .swiper-slide {
+            height: fit-content !important;
+        }
+    }
+    
     @media (min-width: 321px) and (max-width: 320px) {
         /* a#add_cart {
             width: 57%;
@@ -214,3 +220,4 @@
             align-items: center;
         }
     }
+}
