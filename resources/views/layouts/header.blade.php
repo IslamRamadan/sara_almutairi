@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{{ asset('front/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('front/css/main-style.css') }}">
     <link rel="stylesheet" href="{{ asset('front/css/media.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('front/css/owl.carousel.min.css') }}"> --}}
+
     <!-- slick css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('front/css/slick.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('front/css/slick-theme.css') }}" />
@@ -32,6 +34,14 @@
     <link href="{{ asset('front/img/logo1.PNG') }}" rel="icon" type="image/png">
     <link href="//db.onlinewebfonts.com/c/be395203fb38e2f170265aa2a9785467?family=M+Sung+PRC" rel="stylesheet"
         type="text/css" />
+         {{-- slider ismail start --}}
+    <link rel="stylesheet" href="{{ asset('front/assets/css/bootstrap..min.css')}}">
+    <link rel="stylesheet" href="{{ asset('front/assets/css/boxicons.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('front/assets/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('front/assets/css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('front/assets/css/style.css')}}">
+
+    {{-- slider ismail end --}}
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="

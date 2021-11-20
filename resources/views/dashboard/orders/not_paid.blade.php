@@ -32,7 +32,7 @@
 
         <div class="card-header pb-0">
             <h6>
-            @lang('site.not_paid')
+            @lang('site.not_paid_orders')
             </h6>
         </div>
         <div class="card-body px-0 pt-0 pb-2">
@@ -45,7 +45,6 @@
             <th width="10%">@lang('site.username')</th>
             <th width="10%">@lang('site.phone')</th>
             <th width="10%">@lang('site.email')</th>
-            <th width="10%">@lang('site.user_id')</th>
             <th width="10%">@lang('site.order_status')</th>
             <th width="10%">@lang('site.ttl_price')</th>
             <th width="10%">@lang('site.ttl_qut')</th>
@@ -76,7 +75,6 @@
                 {data: 'name', name: 'name'},
                 {data: 'phone', name: 'phone'},
                 {data: 'email', name: 'email'},
-                {data: 'national_id', name: 'national_id'},
                 {data: 'status', name: 'status'},
                 {data: 'total_price', name: 'total_price'},
                 {data: 'total_quantity', name: 'total_quantity'},

@@ -18,7 +18,7 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Order::where('status',1)->latest()->get();
+            $data = Order::where('status','!=',0)->latest()->get();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('status', function ($artist) {
@@ -27,7 +27,7 @@ class OrderController extends Controller
                         return 'لم يتم الدفع بعد';
                     }
                     if($artist->status == 1){
-                        return 'تم الدفع';
+                        return 'جاري الشحن';
                     }
                     if($artist->status == 2){
                         return 'تم الأستلام';
@@ -45,7 +45,12 @@ class OrderController extends Controller
                     if($row->status == 1){
                     $action .='         <a class="btn btn-success"
                       style="margin:5px"
-                    href="'.route('orders.received' , $row->id).'" id="edit-user" >Recevied </a>';
+                    href="'.route('orders.received' , $row->id).'" id="edit-user" >Switch to Recevied </a>';
+                    }
+                    if($row->status == 2){
+                    $action .='         <a class="btn btn-dark"
+                      style="margin:5px"
+                     id="edit-user" >Recevied Done </a>';
                     }
 
                     $action .='
@@ -126,11 +131,11 @@ class OrderController extends Controller
 
         //TODO :: MAIL IS HERE
 
-        Mail::send('email.doneDelivery',['name' => $order->name,'address' => $order->address1,'invoice_id' => $order->invoice_id], function($message) use($order){
-            $message->to($order->email)
-                ->from('sales@easyshop-qa.com', 'Abati sakbah')
-                ->subject('Pay done');
-        });
+        // Mail::send('email.doneDelivery',['name' => $order->name,'address' => $order->address1,'invoice_id' => $order->invoice_id], function($message) use($order){
+        //     $message->to($order->email)
+        //         ->from('sales@easyshop-qa.com', 'Abati sakbah')
+        //         ->subject('Pay done');
+        // });
 
 
         Alert::success('Order updated Successfully !' , '');
@@ -161,6 +166,13 @@ class OrderController extends Controller
                     $val .= ' ( '.$artist->product->category->name_en?:"" . ' - ' .$artist->product->category->name_ar?:"" .' ) ';
                     return $val;
 
+                })
+                ->addColumn('image', function ($artist) {
+                    $url = asset('/storage/' . $artist->product->img);
+                    return $url;
+                })
+                ->addColumn('price', function ($artist) {
+                    return $artist->product->price?:"";
                 })
                 ->addColumn('height', function ($artist) {
                     return $artist->height->height->name?:"";

@@ -20,7 +20,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">@lang('site.num_orders')</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        {{App\Order::count()}}
+                                        {{App\Order::where('status','!=',0)->count()}}
                                     </h5>
                                 </div>
                             </div>

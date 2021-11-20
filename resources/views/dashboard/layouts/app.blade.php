@@ -330,7 +330,7 @@
                         </svg>
                     </div>
                     <span class="nav-link-text ms-1">
-                                           @lang('site.orders')
+                                           @lang('site.paid_orders')
 
                     </span>
                 </a>
@@ -354,7 +354,7 @@
                         </svg>
                     </div>
                     <span class="nav-link-text ms-1">
-                                           @lang('site.not_paid')
+                                           @lang('site.not_paid_orders')
 
                     </span>
                 </a>

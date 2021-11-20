@@ -57,7 +57,7 @@
 
                         </tr>
                         <tr>
-                            <th scope="row" class="btn-dark">@lang('site.created_at')</th>
+                            <th scope="row" class="btn-dark">@lang('site.date_of_order')</th>
                             <td>{{ $invoice->created_at }}</td>
 
                         </tr>
@@ -156,51 +156,73 @@
 
         <div class="row">
 
-            <div class="col-12 m-auto pad-0">
-                <ul class="tablinks  row MyServices mr-0 pad-0 text-center swiper mySwiper"
-                    style="list-style-type: none;justify-content: center;flex-wrap:wrap">
-                    <div class="swiper-wrapper">
+
+
+            <div class="blog-slides owl-carousel owl-theme owl-loaded owl-drag">
+
+
+
+
+
+
+
+
+
+                <div class="owl-stage-outer">
+                    <div class="owl-stage"
+                        style="transform: translate3d(-2280px, 0px, 0px); transition: all 0.25s ease 0s; width: 4180px;">
                         @if ($system_basic_categories->count() > 0)
 
                             @foreach ($system_basic_categories as $b)
+                                <div class="owl-item active" style="width: 350px; margin-right: 30px;">
+                                    <div class="single-blog-post mb-30">
+                                        <div class="post-image">
+                                            <a href="{{ route('category', [1, $b->id]) }}" class="d-block">
+                                                <img src="{{ asset('/storage/' . $b->image_url) }}" alt="image">
+                                            </a>
 
+                                            <!-- <div class="tag">
+                                    <a href="#">Management</a>
+                                </div> -->
+                                        </div>
 
-                                <li class="swiper-slide in active col-md-4 col-6 col-lg-3 islam" >
-                                    <div class=" product relative" style="display:flex;flex-direction:column">
-                                        {{-- <div class="  heart "><i class="far fa-heart "></i></div> --}}
+                                        <div class="post-content text-center">
 
-                                        <a href="{{ route('category', [1, $b->id]) }}" class="">
-                                            <img src="{{ asset('/storage/' . $b->image_url) }}"
-                                                onerror="this.onerror=null;this.src='{{ asset('front/img/5.jpg') }}'"
-                                                width="100%" class="show-img">
-                                            <img src="{{ asset('/storage/' . $b->image_url) }}"
-                                                onerror="this.onerror=null;this.src='{{ asset('front/img/5.jpg') }}'"
-                                                width="100%" class="hide-img">
-
-                                        </a>
-                                        <div>
-                                            <h5 style="padding: 7px ;">
-                                                @if (app()->getLocale() == 'en')
-                                                    {{ $b->name_en }}
-                                                @else
-                                                    {{ $b->name_ar }}
-                                                @endif
-
-                                            </h5>
+                                            <h3 ><a href="single-blog.html" class="d-inline-block">
+                                                    @if (app()->getLocale() == 'en')
+                                                        {{ $b->name_en }}
+                                                    @else
+                                                        {{ $b->name_ar }}
+                                                    @endif
+                                                </a></h3>
+                                            {{-- <h6><a href="single-blog.html" class="d-inline-block">How to enhance education </a></h6> --}}
+                                            {{-- <h3><a href="single-blog.html" class="d-inline-block">120 KWD</a></h3> --}}
+                                            <!-- <a href="single-blog.html" class="read-more-btn">Read More <i class='bx bx-right-arrow-alt'></i></a> -->
                                         </div>
                                     </div>
-                                </li>
-
-
+                                </div>
                             @endforeach
 
                         @endif
+
+
                     </div>
-                </ul>
+                </div>
+                <div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><i
+                            class="bx bx-left-arrow-alt"></i></button><button type="button" role="presentation"
+                        class="owl-next"><i class="bx bx-right-arrow-alt"></i></button></div>
+                <div class="owl-dots disabled"></div>
             </div>
         </div>
-        <br><br>
+
+
     </div>
+    <br><br>
+    </div>
+
+
+
+
 
 
     <div class="container pad-0 ">
@@ -228,79 +250,62 @@
                 </button>
             </div>
 
+
             <div class="col-lg-8 col-md-8 col-sm-12   pad-0">
-
-                <div class="swiper mySwiper">
-                    <div class="swiper-wrapper">
-                        @foreach ($new_arrive as $p)
+                <div class="blog-slides owl-carousel owl-theme owl-loaded owl-drag">
 
 
-                            <div class="swiper-slide" data-swiper-autoplay="2000">
-                                <div class=" product relative">
-                                    <div class="  heart ">
-                                        <a href="#" class="addToWishList text-white" data-product-id="{{ $p->id }}">
-                                            <i class="far fa-heart "></i>
-                                        </a>
+                    <div class="owl-stage-outer">
 
-                                    </div>
-                                    <div style="flex-direction: column;display: flex">
-                                        <div>
-                                            <a href="{{ route('product', $p->id) }}" class="test">
+                        <div class="owl-stage"
+                            style="transform: translate3d(-2280px, 0px, 0px); transition: all 0.25s ease 0s; width: 4180px;">
 
-                                                <img src="{{ asset('/storage/' . $p->img) }}"
-                                                    onerror="this.onerror=null;this.src='{{ asset('front/img//3.jpg') }}'"
-                                                    width="100%" class="show-img">
-                                                @if ($img = App\ProdImg::where('product_id', $p->id)->first())
-                                                    <img src="{{ asset($img->img) }}" width="100%"
-                                                        class="hide-img">
-                                                @else
-                                                    <img src="{{ asset('/storage/' . $p->img) }}" width="100%"
-                                                        class="hide-img">
-                                                @endif
-                                            </a>
-                                        </div>
+                            @foreach ($new_arrive as $p)
+                                    <div class="owl-item active" style="width: 350px; margin-right: 30px;">
 
-                                        <div class="text-dir">
-                                            <p class="mr-0">
-                                                <a href="{{ route('product', $p->id) }}">
-                                                    @if (Lang::locale() == 'ar')
-                                                        {{ $p->title_ar }}
-
-                                                    @else
-
-                                                        {{ $p->title_en }}
-
-                                                    @endif
-
-
+                                        <div class="single-blog-post mb-30">
+                                            <div class="post-image">
+                                                <a href="{{ route('product', $p->id) }}" class="d-block">
+                                                    <img src="{{ asset('/storage/' . $p->img) }}" alt="image">
                                                 </a>
-                                            </p>
-                                            <h6><a href="{{ route('product', $p->id) }}">
 
+                                                <!-- <div class="tag">
+                                        <a href="#">Management</a>
+                                    </div> -->
+                                            </div>
 
+                                            <div class="post-content text-dir">
+
+                                                <h3 ><a href="{{ route('product', $p->id) }}" class="d-inline-block">
                                                     @if (Lang::locale() == 'ar')
-                                                        {{-- {{$p->basic_category->name_ar}}
-                                            -
-                                            {{$p->category->name_ar}} --}}
-                                                        <?php $pieces = explode(' ', $p->description_ar);
-                                                        $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
-                                                        {{ $first_part }}
-                                                    @else
+                                                    {{ $p->title_ar }}
 
-                                                        {{-- {{$p->basic_category->name_en}}
-                                            -
-                                            {{$p->category->name_en}} --}}
-                                                        <?php $pieces = explode(' ', $p->description_en);
-                                                        $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
-                                                        {{ $first_part }}
-                                                    @endif
+                                                @else
 
+                                                    {{ $p->title_en }}
 
+                                                @endif
+                                                    </a></h3>
+                                                <h6><a href="{{ route('product', $p->id) }}" class="d-inline-block">
+                                                    @if (Lang::locale() == 'ar')
+                                                    {{-- {{$p->basic_category->name_ar}}
+                                        -
+                                        {{$p->category->name_ar}} --}}
+                                                    <?php $pieces = explode(' ', $p->description_ar);
+                                                    $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
+                                                    {{ $first_part }}
+                                                @else
+
+                                                    {{-- {{$p->basic_category->name_en}}
+                                        -
+                                        {{$p->category->name_en}} --}}
+                                                    <?php $pieces = explode(' ', $p->description_en);
+                                                    $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
+                                                    {{ $first_part }}
+                                                @endif
                                                 </a></h6>
-                                            <h5>
-
-
-                                                @auth()
+                                                <h3><a href="{{ route('product', $p->id) }}" class="d-inline-block">
+                                                    @auth()
                                                     {{ Auth::user()->getPrice($p->price) }}
                                                     {{ Auth::user()->country->currency->code }}
                                                 @endauth
@@ -313,32 +318,26 @@
                                                         @lang('site.kwd')
                                                     @endif
                                                 @endguest
-
-                                            </h5>
-                                            </h5>
+                                                </a></h3>
+                                                <!-- <a href="single-blog.html" class="read-more-btn">Read More <i class='bx bx-right-arrow-alt'></i></a> -->
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                        @endforeach
+                                    </div>
+                                    @endforeach
+
+
+
+                        </div>
 
                     </div>
-
+                    <div class="owl-nav"><button type="button" role="presentation" class="owl-prev">
+                        <i class="fas fa-arrow-left"></i></button><button type="button" role="presentation"
+                            class="owl-next"><i class="fas fa-arrow-right"></i></i></button></div>
+                    <div class="owl-dots disabled"></div>
                 </div>
 
-
-
-
-
-
-
-
-
-
-
             </div>
-
         </div>
         <br><br>
     </div>

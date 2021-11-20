@@ -29,14 +29,16 @@ class CouponController extends Controller
 
         $session=session()->put('coupon',[
             'name'=> $coupon->code,
+            'percentage'=>$coupon->percentage,
             'discount'=>$coupon->discount($cart_details['totalPrice'])
         ]);
         // dd($session['discount']);
 
 
+        // dd(Session::get('coupon'));
+        // dd($request->coupon,$coupon);
         return back()->with('success_message', 'Coupon has been applied!');
 
-        // dd($request->coupon,$coupon);
     }
 
     /**

@@ -112,6 +112,8 @@
 <script src="{{ asset('front/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('front/js/all.min.js') }}"></script>
 <script src="{{ asset('front/js/wow.min.js') }}"></script>
+{{-- <script src="{{ asset('front/js/owl.carousel.min.js') }}"></script> --}}
+
 <script>
     new WOW().init();
 </script>
@@ -121,8 +123,6 @@
 <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-
 
 <script>
     $(document).ready(function() {
@@ -223,6 +223,15 @@
         },
     });
 </script>
+
+{{-- slider ismail start --}}
+<script src="{{asset('front/assets/js/jquery.min.js')}}"></script>
+<script src="{{asset('front/assets/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('front/assets/js/owl.carousel.min.js')}}"></script>
+<script src="{{asset('front/assets/js/mixitup.min.js')}}"></script>
+<script src="{{asset('front/assets/js/meanmenu.min.js')}}"></script>
+<script src="{{asset('front/assets/js/main.js')}}"></script>
+{{-- slider ismail end --}}
 
 @yield('script')
 </body>
