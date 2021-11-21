@@ -261,7 +261,7 @@ return [
     'invoice_id'=>'Invoice id',
     'new_coupon'=>'New coupon',
     'print_page'=>'Print Order',
-    // 'content_ar'=>'KWD',
+    'footer_logo'=>'Footer logo',
     // 'content_ar'=>'KWD',
     // 'content_ar'=>'KWD',
     // 'content_ar'=>'KWD',

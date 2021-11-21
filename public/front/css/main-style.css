@@ -355,8 +355,10 @@
         }
         
         footer {
-            background: url(../img/footer.png);
+            background: #ffffff;
+            /* background: url(../img/footer.png); */
             padding: 30px 0px;
+            border-top: 0.5px solid rgb(196, 188, 188);
         }
         
         .h-img {
@@ -1084,6 +1086,10 @@ p a {
             text-align: center;
         }
         
+        a.image-hover:hover .middle {
+            opacity: 1;
+        }
+        
         .img-hover:hover .middle {
             opacity: 1;
         }
@@ -1101,4 +1107,8 @@ p a {
         .swal-button {
             background-color: #ff2600;
             color: #ffffff;
+        }
+        
+        img:hover {
+            opacity: 0.5;
         }

@@ -260,7 +260,7 @@ return [
       'print_page'=>'اطبع الطلب',
     'item_price' => 'سعر القطعه',
 
-   //    'edit_page'=>'',
+      'footer_logo'=>'لوجو الفوتر',
    //    'edit_page'=>'',
    //    'edit_page'=>'',
    //    'edit_page'=>'',

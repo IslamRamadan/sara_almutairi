@@ -13,27 +13,27 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active ">
-                <img class=" w-100 h " src="{{asset('front/img/11.jpg')}}" alt="1 slide">
+                <img class=" w-100 h " src="{{ asset('front/img/11.jpg') }}" alt="1 slide">
                 <div class="abs w-100">
                     <p class="c-w mr-0">it has finally started</p>
                     <h1 class=""> Sara Almutairi</h1>
-                    <button class=" btn btn-danger">shop now  <i class="far fa-heart"></i> </button>
+                    <button class=" btn btn-danger">shop now <i class="far fa-heart"></i> </button>
                 </div>
             </div>
             <div class="carousel-item  ">
-                <img class=" w-100 h " src="{{asset('front/img/5.jpg')}}" alt="1 slide">
+                <img class=" w-100 h " src="{{ asset('front/img/5.jpg') }}" alt="1 slide">
                 <div class="abs w-100">
                     <p class="c-w mr-0">it has finally started</p>
                     <h1 class=""> Sara Almutairi</h1>
-                    <button class=" btn btn-danger">shop now  <i class="far fa-heart"></i> </button>
+                    <button class=" btn btn-danger">shop now <i class="far fa-heart"></i> </button>
                 </div>
             </div>
             <div class="carousel-item  ">
-                <img class=" w-100 h " src="{{asset('front/img/8.jpg')}}" alt="1 slide">
+                <img class=" w-100 h " src="{{ asset('front/img/8.jpg') }}" alt="1 slide">
                 <div class="abs w-100">
                     <p class="c-w mr-0">it has finally started</p>
                     <h1 class=""> Sara Almutairi</h1>
-                    <button class=" btn btn-danger">shop now  <i class="far fa-heart"></i> </button>
+                    <button class=" btn btn-danger">shop now <i class="far fa-heart"></i> </button>
                 </div>
             </div>
 
@@ -52,173 +52,173 @@
         <div class="row dir-rtl text-dir">
             <div class="col-md-4 center">
                 <h2 style="margin-top: 20px">
-                    @if(app()->getLocale() == 'en')
-                        {{$category->name_en}}
+                    @if (app()->getLocale() == 'en')
+                        {{ $category->name_en }}
                     @else
-                        {{$category->name_ar}}
+                        {{ $category->name_ar }}
                     @endif
                 </h2>
                 <nav class="navbar navbar-expand pad-0 center">
                     <ul class="navbar-nav center" style="padding-inline-start: 0px">
-                        <li class="nav-item "><a class="nav-link c-light" href="{{route('/')}}">
+                        <li class="nav-item "><a class="nav-link c-light" href="{{ route('/') }}">
 
-                                @if(app()->getLocale() == 'en')
-                                    HOME  /
+                                @if (app()->getLocale() == 'en')
+                                    HOME /
                                 @else
-                                    الرئيسيه  /
+                                    الرئيسيه /
                                 @endif
                             </a></li>
                         {{-- <li class="nav-item "> --}}
 
-                            @if($type == 1)
+                        @if ($type == 1)
                             <li class="nav-item ">
 
-                                @if(app()->getLocale() == 'en')
-                                    <a class="nav-link " href="{{route('category' , [$type , $category->id ])}}">
+                                @if (app()->getLocale() == 'en')
+                                    <a class="nav-link " href="{{ route('category', [$type, $category->id]) }}">
 
-                                        {{$category->name_en}}
+                                        {{ $category->name_en }}
                                     </a>
                                 @else
-                                    <a class="nav-link " href="{{route('category' , [$type , $category->id ])}}">
+                                    <a class="nav-link " href="{{ route('category', [$type, $category->id]) }}">
 
-                                        {{$category->name_ar}}
+                                        {{ $category->name_ar }}
                                     </a>
                                 @endif
 
                             </li>
 
+                        @else
+
+                            @if (app()->getLocale() == 'en')
+                                <li class="nav-item ">
+
+                                    <a class="nav-link c-light"
+                                        href="{{ route('category', [1, $category->basicCategory->id]) }}">
+                                        {{ $category->basicCategory->name_en }} /
+                                    </a>
+                                </li>
+
+                                <li class="nav-item ">
+
+                                    <a class="nav-link " href="{{ route('category', [$type, $category->id]) }}">
+                                        {{ $category->name_en }}
+                                    </a>
+                                </li>
+
                             @else
-
-                                @if(app()->getLocale() == 'en')
                                 <li class="nav-item ">
 
                                     <a class="nav-link c-light"
-                                       href="{{route('category' , [1 , $category->basicCategory->id ])}}">
-                                        {{$category->basicCategory->name_en}} /
+                                        href="{{ route('category', [1, $category->basicCategory->id]) }}">
+                                        {{ $category->basicCategory->name_ar }} /
                                     </a>
                                 </li>
 
-                                    <li class="nav-item ">
-
-                                    <a class="nav-link " href="{{route('category' , [$type , $category->id ])}}">
-                                        {{$category->name_en}}
-                                    </a>
-                                </li>
-
-                                @else
                                 <li class="nav-item ">
 
-                                    <a class="nav-link c-light"
-                                       href="{{route('category' , [1 , $category->basicCategory->id ])}}">
-                                        {{$category->basicCategory->name_ar}} /
+                                    <a class="nav-link " href="{{ route('category', [$type, $category->id]) }}">
+                                        {{ $category->name_ar }}
                                     </a>
                                 </li>
-
-                                    <li class="nav-item ">
-
-                                    <a class="nav-link " href="{{route('category' , [$type , $category->id ])}}">
-                                        {{$category->name_ar}}
-                                    </a>
-                                </li>
-
-                                @endif
 
                             @endif
+
+                        @endif
 
                         {{-- </li> --}}
                     </ul>
                 </nav>
             </div>
-{{--            <div class="d-md-none d-block w-100">--}}
-{{--                <div class="text-center">--}}
-{{--                    <div class="toggler1   ">--}}
-{{--                        <i class=" fas fa-bars" style="font-size: 18px"></i> filtter--}}
-{{--                    </div>--}}
-{{--                    <br>--}}
-{{--                    <select class=" border">--}}
-{{--                        <option>--}}
-{{--                            Default sorting--}}
-{{--                        </option>--}}
-{{--                        <option>--}}
-{{--                            Sort by popularity--}}
-{{--                        </option>--}}
-{{--                        <option>sort by latest</option>--}}
-{{--                        <option>sort by price : low to high</option>--}}
-{{--                        <option>sort by price : high to low</option>--}}
-{{--                    </select>--}}
-{{--                    <br><br> <br></div>--}}
-{{--                <div class="sidbar1">--}}
-{{--                    <div class="close-sidbar1">--}}
-{{--                        <i class=" fas fa-times" style="font-size: 18px"></i>--}}
-{{--                    </div>--}}
-{{--                    <h3>CATEGORIES</h3>--}}
-{{--                    <div class="is-divider"></div>--}}
-{{--                    <a href="category.html" class="nav-link border-bottom pad-0"> abayat--}}
-{{--                        <div class="float-right c-light">(103)</div>--}}
-{{--                    </a>--}}
-{{--                    <a href="category.html" class="nav-link border-bottom pad-0"> bisht abaya--}}
-{{--                        <div class="float-right c-light">(43)</div>--}}
-{{--                    </a>--}}
-{{--                    <a href="category.html" class="nav-link border-bottom pad-0"> blazer abaya--}}
-{{--                        <div class="float-right c-light">(103)</div>--}}
-{{--                    </a>--}}
-{{--                    <a href="category.html" class="nav-link border-bottom pad-0"> outfit--}}
-{{--                        <div class="float-right c-light">(103)</div>--}}
-{{--                    </a>--}}
-{{--                    <a href="category.html" class="nav-link border-bottom pad-0"> summer abaya--}}
-{{--                        <div class="float-right c-light">(103)</div>--}}
-{{--                    </a>--}}
-{{--                    <a href="category.html" class="nav-link border-bottom pad-0"> winter abaya--}}
-{{--                        <div class="float-right c-light">(103)</div>--}}
-{{--                    </a>--}}
-{{--                    <br>--}}
-{{--                    <h4>RECENTLY VIEWED--}}
-{{--                    </h4>--}}
-{{--                    <div class="is-divider"></div>--}}
-{{--                    <div class=" row">--}}
-{{--                        <div class="col-3 pad-0">--}}
-{{--                            <img src="{{asset('front/img/11.jpg')}}" width="50">--}}
-{{--                        </div>--}}
-{{--                        <div class="col-9">--}}
-{{--                            <h6><a href="product.html" class="main-color">CH-L1 </a></h6>--}}
-{{--                            <h5>30.000 @lang('site.kwd')--}}
-{{--                            </h5></div>--}}
-{{--                    </div>--}}
-{{--                    <hr>--}}
-{{--                    <div class="  row">--}}
-{{--                        <div class="col-3 pad-0">--}}
-{{--                            <img src="{{asset('front/img/11.jpg')}}" width="50"><br><br>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-9">--}}
-{{--                            <h6><a href="product.html" class="main-color">CH-L1 </a></h6>--}}
-{{--                            <h5>30.000 @lang('site.kwd')--}}
-{{--                            </h5></div>--}}
+            {{-- <div class="d-md-none d-block w-100"> --}}
+            {{-- <div class="text-center"> --}}
+            {{-- <div class="toggler1   "> --}}
+            {{-- <i class=" fas fa-bars" style="font-size: 18px"></i> filtter --}}
+            {{-- </div> --}}
+            {{-- <br> --}}
+            {{-- <select class=" border"> --}}
+            {{-- <option> --}}
+            {{-- Default sorting --}}
+            {{-- </option> --}}
+            {{-- <option> --}}
+            {{-- Sort by popularity --}}
+            {{-- </option> --}}
+            {{-- <option>sort by latest</option> --}}
+            {{-- <option>sort by price : low to high</option> --}}
+            {{-- <option>sort by price : high to low</option> --}}
+            {{-- </select> --}}
+            {{-- <br><br> <br></div> --}}
+            {{-- <div class="sidbar1"> --}}
+            {{-- <div class="close-sidbar1"> --}}
+            {{-- <i class=" fas fa-times" style="font-size: 18px"></i> --}}
+            {{-- </div> --}}
+            {{-- <h3>CATEGORIES</h3> --}}
+            {{-- <div class="is-divider"></div> --}}
+            {{-- <a href="category.html" class="nav-link border-bottom pad-0"> abayat --}}
+            {{-- <div class="float-right c-light">(103)</div> --}}
+            {{-- </a> --}}
+            {{-- <a href="category.html" class="nav-link border-bottom pad-0"> bisht abaya --}}
+            {{-- <div class="float-right c-light">(43)</div> --}}
+            {{-- </a> --}}
+            {{-- <a href="category.html" class="nav-link border-bottom pad-0"> blazer abaya --}}
+            {{-- <div class="float-right c-light">(103)</div> --}}
+            {{-- </a> --}}
+            {{-- <a href="category.html" class="nav-link border-bottom pad-0"> outfit --}}
+            {{-- <div class="float-right c-light">(103)</div> --}}
+            {{-- </a> --}}
+            {{-- <a href="category.html" class="nav-link border-bottom pad-0"> summer abaya --}}
+            {{-- <div class="float-right c-light">(103)</div> --}}
+            {{-- </a> --}}
+            {{-- <a href="category.html" class="nav-link border-bottom pad-0"> winter abaya --}}
+            {{-- <div class="float-right c-light">(103)</div> --}}
+            {{-- </a> --}}
+            {{-- <br> --}}
+            {{-- <h4>RECENTLY VIEWED --}}
+            {{-- </h4> --}}
+            {{-- <div class="is-divider"></div> --}}
+            {{-- <div class=" row"> --}}
+            {{-- <div class="col-3 pad-0"> --}}
+            {{-- <img src="{{asset('front/img/11.jpg')}}" width="50"> --}}
+            {{-- </div> --}}
+            {{-- <div class="col-9"> --}}
+            {{-- <h6><a href="product.html" class="main-color">CH-L1 </a></h6> --}}
+            {{-- <h5>30.000 @lang('site.kwd') --}}
+            {{-- </h5></div> --}}
+            {{-- </div> --}}
+            {{-- <hr> --}}
+            {{-- <div class="  row"> --}}
+            {{-- <div class="col-3 pad-0"> --}}
+            {{-- <img src="{{asset('front/img/11.jpg')}}" width="50"><br><br> --}}
+            {{-- </div> --}}
+            {{-- <div class="col-9"> --}}
+            {{-- <h6><a href="product.html" class="main-color">CH-L1 </a></h6> --}}
+            {{-- <h5>30.000 @lang('site.kwd') --}}
+            {{-- </h5></div> --}}
 
 
-{{--                    </div>--}}
+            {{-- </div> --}}
 
 
-{{--                </div>--}}
+            {{-- </div> --}}
 
-{{--            </div>--}}
+            {{-- </div> --}}
 
-{{--            <div class="col-md-8 text-left  d-md-block d-none ">--}}
-{{--                <br>--}}
-{{--                <span class="">--}}
-{{--Showing all 5 results</span>--}}
-{{--                <select class=" border">--}}
-{{--                    <option>--}}
-{{--                        Default sorting--}}
-{{--                    </option>--}}
-{{--                    <option>--}}
-{{--                        Sort by popularity--}}
-{{--                    </option>--}}
-{{--                    <option>sort by latest</option>--}}
-{{--                    <option>sort by price : low to high</option>--}}
-{{--                    <option>sort by price : high to low</option>--}}
-{{--                </select>--}}
+            {{-- <div class="col-md-8 text-left  d-md-block d-none "> --}}
+            {{-- <br> --}}
+            {{-- <span class=""> --}}
+            {{-- Showing all 5 results</span> --}}
+            {{-- <select class=" border"> --}}
+            {{-- <option> --}}
+            {{-- Default sorting --}}
+            {{-- </option> --}}
+            {{-- <option> --}}
+            {{-- Sort by popularity --}}
+            {{-- </option> --}}
+            {{-- <option>sort by latest</option> --}}
+            {{-- <option>sort by price : low to high</option> --}}
+            {{-- <option>sort by price : high to low</option> --}}
+            {{-- </select> --}}
 
-{{--            </div>--}}
+            {{-- </div> --}}
         </div>
     </div>
 
@@ -227,35 +227,33 @@
 
 
             <div class="col-lg-3 col-md-4 d-md-block d-none ">
-                @if($type == 1)
-                    <a
-                        style="font-size: 20px;display: flex;
-                    justify-content: space-between;align-items: center;flex-direction:row-reverse"
-                        data-toggle="collapse" href="#collapseExample"
-                        aria-expanded="false" aria-controls="collapseExample">
+                @if ($type == 1)
+                    <a style="font-size: 20px;display: flex;
+                        justify-content: space-between;align-items: center;flex-direction:row-reverse"
+                        data-toggle="collapse" href="#collapseExample" aria-expanded="false"
+                        aria-controls="collapseExample">
 
                         <i class="fas fa-chevron-down"></i>
 
                         <span>
-                        @lang('site.categories')
-                    </span>
+                            @lang('site.categories')
+                        </span>
                     </a>
 
                     <div class="collapse" id="collapseExample">
 
                         <div class="is-divider"></div>
 
-                        @if($category->categories->count() > 0)
-                            @foreach($category->categories as $c)
-                                <a href="{{route('category' , [2 , $c->id])}}"
-                                   class="nav-link border-bottom pad-0">
-                                    @if(app()->getLocale() == 'en')
-                                        {{$c->name_en}}
+                        @if ($category->categories->count() > 0)
+                            @foreach ($category->categories as $c)
+                                <a href="{{ route('category', [2, $c->id]) }}" class="nav-link border-bottom pad-0">
+                                    @if (app()->getLocale() == 'en')
+                                        {{ $c->name_en }}
                                     @else
-                                        {{$c->name_ar}}
+                                        {{ $c->name_ar }}
                                     @endif
                                     <div class="float-right c-light">(
-                                        {{$c->products->count()}}
+                                        {{ $c->products->count() }}
                                         )
                                     </div>
                                 </a>
@@ -269,25 +267,26 @@
                 <h4 class="text-dir">@lang('site.best_selling')
                 </h4>
                 <div class="is-divider"></div>
-                @if($last_views->count()  > 0)
+                @if ($last_views->count() > 0)
 
-                    @foreach($last_views as $b)
+                    @foreach ($last_views as $b)
 
-                        @if($b)
-                                {{-- @if($b->product) --}}
+                        @if ($b)
+                            {{-- @if ($b->product) --}}
                             <div class=" row text-dir">
                                 <div class="col-3 pad-0">
-                                    <a href="{{route('product' , $b->id)}}"><img src="{{asset('/storage/'.$b->img)}}"
-                                         onerror="this.onerror=null;this.src='{{asset('front/img/5.jpg')}}'"
-                                         style="width: 100%"></a>
+                                    <a href="{{ route('product', $b->id) }}"><img src="{{ asset('/storage/' . $b->img) }}"
+                                            onerror="this.onerror=null;this.src='{{ asset('front/img/5.jpg') }}'"
+                                            style="width: 100%"></a>
                                 </div>
                                 <div class="col-9">
-                                    <h6 style="font-weight:bold"><a href="{{route('product' , $b->id)}}" class="main-color">
-                                            @if(Lang::locale()=='ar')
-                                                {{$b->title_ar}}
+                                    <h6 style="font-weight:bold"><a href="{{ route('product', $b->id) }}"
+                                            class="main-color">
+                                            @if (Lang::locale() == 'ar')
+                                                {{ $b->title_ar }}
 
                                             @else
-                                                {{$b->title_en}}
+                                                {{ $b->title_en }}
 
 
                                             @endif
@@ -297,22 +296,24 @@
                                     <h5>
 
                                         @auth()
-                                            {{Auth::user()->getPrice($b->price )}} {{ Auth::user()->country->currency->code}}
+                                            {{ Auth::user()->getPrice($b->price) }}
+                                            {{ Auth::user()->country->currency->code }}
                                         @endauth
                                         @guest()
-                                            @if(Cookie::get('name') )
-                                                {{number_format($b->price / App\Country::find(Cookie::get('name'))->currency->rate,2) }}
-                                                {{App\Country::find(Cookie::get('name'))->currency->code}}
+                                            @if (Cookie::get('name'))
+                                                {{ number_format($b->price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
+                                                {{ App\Country::find(Cookie::get('name'))->currency->code }}
                                             @else
-                                                {{$b->price}} @lang('site.kwd')
+                                                {{ $b->price }} @lang('site.kwd')
 
                                             @endif
                                         @endguest
-                                    </h5></div>
+                                    </h5>
+                                </div>
                             </div>
                             <hr>
-                                {{-- @endif --}}
-                            @endif
+                            {{-- @endif --}}
+                        @endif
 
 
                     @endforeach
@@ -320,182 +321,190 @@
             </div>
             <div class="col-lg-9 col-md-8 pad-0 ">
                 <div class="row text-center">
-                    @if($category->products->count() > 0)
-                        @foreach($category->products as $p)
-@if($p)
-                            @if($p->appearance == 1)
+                    @if ($category->products->count() > 0)
+                        @foreach ($category->products as $p)
+                            @if ($p)
+                                @if ($p->appearance == 1)
 
-                            <div class="col-6 col-md-4">
-                                <div class=" product relative text-dir">
+                                    <div class="col-6 col-md-4">
+                                        <div class=" product relative text-dir mb-3">
 
-                                    {{-- <div class="  heart ">
+                                            {{-- <div class="  heart ">
                                         <a href="#" class="addToWishList text-white" data-product-id="{{$p->id}}">
                                             <i class="far fa-heart "></i>
                                         </a>
 
                                     </div> --}}
 
-                                    <a href="{{route('product',$p->id)}}" class="test">
+                                            <a href="{{ route('product', $p->id) }}" class="image-hover ">
+                                                <div style="position: relative">
+                                                <img src="{{ asset('/storage/' . $p->img) }}"
+                                                    onerror="this.onerror=null;this.src='{{ asset('front/img/3.jpg') }}'"
+                                                    width="100%" class="show-img image">
+                                                <div class="middle">
+                                                    <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                                                </div>
+                                                @if ($img = App\ProdImg::where('product_id', $p->id)->first())
+                                                    <img src="{{ asset($img->img) }}" width="100%" class="hide-img image">
+                                                    <div class="middle">
+                                                        <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                                                    </div>
+                                                @else
+                                                    <img src="{{ asset('/storage/' . $p->img) }}" width="100%"
+                                                        class="hide-img image">
+                                                        <div class="middle">
+                                                            <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                                                        </div>
+                                                @endif
+                                            </div>
+                                            </a>
+                                            <p class="mr-0">
+                                                <a href="{{ route('product', $p->id) }}">
+                                                    @if (Lang::locale() == 'ar')
+                                                        {{ $p->title_ar }}
 
-                                        <img src="{{ asset(  '/storage/'.$p->img)}}"
-                                             onerror="this.onerror=null;this.src='{{asset('front/img//3.jpg')}}'"
-                                             width="100%" class="show-img">
-                                       @if( $img= App\ProdImg::where('product_id',$p->id)->first() )
-                                            <img src="{{asset($img->img)}}"
-                                                 width="100%" class="hide-img">
-                                        @else
-                                            <img src="{{asset('/storage/'.$p->img)}}"
-                                                 width="100%" class="hide-img">
-                                        @endif
-                                    </a>
-                                    <p class="mr-0">
-                                        <a href="{{route('product' , $p->id)}}">
-                                            @if(Lang::locale()=='ar')
-                                                {{$p->title_ar}}
+                                                    @else
 
-                                            @else
+                                                        {{ $p->title_en }}
 
-                                                {{$p->title_en}}
-
-                                            @endif
+                                                    @endif
 
 
-                                        </a>
-                                    </p>
-                                    <h6><a href="{{route('product' ,$p->id)}}">
+                                                </a>
+                                            </p>
+                                            <h6><a href="{{ route('product', $p->id) }}">
 
 
-                                            @if(Lang::locale()=='ar')
-                                                {{-- {{$p->basic_category->name_ar}}
+                                                    @if (Lang::locale() == 'ar')
+                                                        {{-- {{$p->basic_category->name_ar}}
                                                 -
                                                 {{$p->category->name_ar}} --}}
-                                                <?php $pieces = explode(" ", $p->description_ar);
-                                                  $first_part = implode(" ", array_splice($pieces, 0, 4));  ?>
-                                        {{$first_part}}
-                                            @else
+                                                        <?php $pieces = explode(' ', $p->description_ar);
+                                                        $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
+                                                        {{ $first_part }}
+                                                    @else
 
-                                                {{-- {{$p->basic_category->name_en}}
+                                                        {{-- {{$p->basic_category->name_en}}
                                                 -
                                                 {{$p->category->name_en}} --}}
-                                                <?php $pieces = explode(" ", $p->description_en);
-                                                  $first_part = implode(" ", array_splice($pieces, 0, 4));  ?>
-                                        {{$first_part}}
-                                            @endif
+                                                        <?php $pieces = explode(' ', $p->description_en);
+                                                        $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
+                                                        {{ $first_part }}
+                                                    @endif
 
 
-                                        </a></h6>
-                                    <h5>
+                                                </a></h6>
+                                            <h5>
 
 
-                                        @auth()
-                                            {{Auth::user()->getPrice($p->price )}} {{ Auth::user()->country->currency->code}}
-                                        @endauth
-                                        @guest()
-                                            @if(Cookie::get('name') )
-                                                {{number_format($p->price / App\Country::find(Cookie::get('name'))->currency->rate,2) }}
-                                                {{App\Country::find(Cookie::get('name'))->currency->code}}
-                                            @else
-                                                {{$p->price}}
-                                                @lang('site.kwd')
-                                            @endif
-                                        @endguest
+                                                @auth()
+                                                    {{ Auth::user()->getPrice($p->price) }}
+                                                    {{ Auth::user()->country->currency->code }}
+                                                @endauth
+                                                @guest()
+                                                    @if (Cookie::get('name'))
+                                                        {{ number_format($p->price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
+                                                        {{ App\Country::find(Cookie::get('name'))->currency->code }}
+                                                    @else
+                                                        {{ $p->price }}
+                                                        @lang('site.kwd')
+                                                    @endif
+                                                @endguest
 
-                                    </h5>
-                                </div>
+                                            </h5>
+                                        </div>
 
-                            </div>
+                                    </div>
 
-                            @endif
+                                @endif
 
                             @endif
                         @endforeach
 
                     @else
                         <h5 style="text-align: center;margin: auto">
-                           @lang('site.no_data')
+                            @lang('site.no_data')
                         </h5>
                     @endif
 
                 </div>
                 <br><br>
 
-                {{--<nav aria-label="Page navigation example  ">--}}
-                    {{--<ul class="pagination justify-content-center">--}}
-                        {{--<li class="page-item">--}}
-                            {{--<a class="page-link"><i class="fas fa-angle-right  main-color" style="font-size: 20px;"></i>--}}
-                            {{--</a>--}}
-                        {{--</li>--}}
-                        {{--<li class="page-item"><a class="page-link">1</a></li>--}}
-                        {{--<li class="page-item"><a class="page-link">2</a></li>--}}
-                        {{--<li class="page-item"><a class="page-link">3</a></li>--}}
+                {{-- <nav aria-label="Page navigation example  "> --}}
+                {{-- <ul class="pagination justify-content-center"> --}}
+                {{-- <li class="page-item"> --}}
+                {{-- <a class="page-link"><i class="fas fa-angle-right  main-color" style="font-size: 20px;"></i> --}}
+                {{-- </a> --}}
+                {{-- </li> --}}
+                {{-- <li class="page-item"><a class="page-link">1</a></li> --}}
+                {{-- <li class="page-item"><a class="page-link">2</a></li> --}}
+                {{-- <li class="page-item"><a class="page-link">3</a></li> --}}
 
 
-                        {{--<li class="page-item ">--}}
-                            {{--<a class="page-link"> <i class="fas fa-angle-left main-color" style="font-size: 20px;"></i></a>--}}
-                        {{--</li>--}}
-                    {{--</ul>--}}
-                {{--</nav>--}}
+                {{-- <li class="page-item "> --}}
+                {{-- <a class="page-link"> <i class="fas fa-angle-left main-color" style="font-size: 20px;"></i></a> --}}
+                {{-- </li> --}}
+                {{-- </ul> --}}
+                {{-- </nav> --}}
             </div>
         </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        $(document).on('click', '.addToWishList', function (e) {
+        $(document).on('click', '.addToWishList', function(e) {
 
             e.preventDefault();
             @guest()
-            //                    $('.not-loggedin-modal').css('display','block');
-            //                    console.log('You are guest'
+                // $('.not-loggedin-modal').css('display','block');
+                // console.log('You are guest'
 
-            {{--            {{\RealRashid\SweetAlert\Facades\Alert::error('error', 'Please Login first!')}}--}}
-            Swal.fire({
+                {{-- {{\RealRashid\SweetAlert\Facades\Alert::error('error', 'Please Login first!')}} --}}
+                Swal.fire({
                 icon: '?',
                 title:'Login first!',
                 confirmButtonColor: '#ec7d23',
                 position:'bottom-start',
                 showCloseButton: true,
-            })
+                })
             @endguest
             @auth
-            $.ajax({
+                $.ajax({
                 type: 'get',
-                url: "{{route('wishlist.store')}}",
+                url: "{{ route('wishlist.store') }}",
                 data: {
-                    'productId': $(this).attr('data-product-id'),
+                'productId': $(this).attr('data-product-id'),
                 },
                 success: function (data) {
-                    if (data.message) {
-                        Swal.fire({
-                            position: 'center',
-                            icon: 'success',
-                            title: 'Added successfully!',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                        {{--{{\RealRashid\SweetAlert\Facades\Alert::error('ok', 'ok!')}}--}}
+                if (data.message) {
+                Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Added successfully!',
+                showConfirmButton: false,
+                timer: 1500
+                })
+                {{-- {{\RealRashid\SweetAlert\Facades\Alert::error('ok', 'ok!')}} --}}
 
-                    } else {
-//                        alert('This product already in you wishlist');
-                        Swal.fire({
-                            position: 'center',
-                            icon: 'info',
-                            title: 'This product already in you wishlist',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
+                } else {
+                // alert('This product already in you wishlist');
+                Swal.fire({
+                position: 'center',
+                icon: 'info',
+                title: 'This product already in you wishlist',
+                showConfirmButton: false,
+                timer: 1500
+                })
 
-                        {{--                        {{\RealRashid\SweetAlert\Facades\Alert::error('no', 'this product added already!')}}--}}
+                {{-- {{\RealRashid\SweetAlert\Facades\Alert::error('no', 'this product added already!')}} --}}
 
-                    }
                 }
-            });
+                }
+                });
             @endauth
 
 
         });
-
-
     </script>
 
 @endsection

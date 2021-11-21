@@ -283,17 +283,24 @@
                                                 </div> --}}
                                                 <div style="flex-direction: column;display: flex">
                                                     <div>
-                                                        <a href="{{ route('product', $p->id) }}" class="test">
+                                                        <a href="{{ route('product', $p->id) }}" class="test image-hover">
 
                                                             <img src="{{ asset('/storage/' . $p->img) }}"
-                                                                onerror="this.onerror=null;this.src='{{ asset('front/img//3.jpg') }}'"
-                                                                width="100%" class="show-img">
+                                                                onerror="this.onerror=null;this.src='{{ asset('front/img/3.jpg') }}'"
+                                                                width="100%" class="show-img ">
+
                                                             @if ($img = App\ProdImg::where('product_id', $p->id)->first())
                                                                 <img src="{{ asset($img->img) }}" width="100%"
                                                                     class="hide-img">
+                                                                    <div class="middle">
+                                                                        <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                                                                    </div>
                                                             @else
                                                                 <img src="{{ asset('/storage/' . $p->img) }}" width="100%"
                                                                     class="hide-img">
+                                                                    <div class="middle">
+                                                                        <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                                                                    </div>
                                                             @endif
                                                         </a>
                                                     </div>
