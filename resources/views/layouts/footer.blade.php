@@ -222,15 +222,40 @@
             clickable: true,
         },
     });
+
 </script>
+
 
 {{-- slider ismail start --}}
 <script src="{{asset('front/assets/js/jquery.min.js')}}"></script>
-<script src="{{asset('front/assets/js/bootstrap.min.js')}}"></script>
+{{-- <script src="{{asset('front/assets/js/bootstrap.min.js')}}"></script> --}}
 <script src="{{asset('front/assets/js/owl.carousel.min.js')}}"></script>
 <script src="{{asset('front/assets/js/mixitup.min.js')}}"></script>
 <script src="{{asset('front/assets/js/meanmenu.min.js')}}"></script>
 <script src="{{asset('front/assets/js/main.js')}}"></script>
+<script>
+    $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:2,
+            nav:true
+        },
+        600:{
+            items:3,
+            nav:false
+        },
+        1080:{
+            items:4,
+            nav:true,
+            loop:false
+        }
+    }
+});
+
+</script>
 {{-- slider ismail end --}}
 
 @yield('script')

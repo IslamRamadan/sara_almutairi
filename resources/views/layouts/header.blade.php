@@ -35,7 +35,7 @@
     <link href="//db.onlinewebfonts.com/c/be395203fb38e2f170265aa2a9785467?family=M+Sung+PRC" rel="stylesheet"
         type="text/css" />
          {{-- slider ismail start --}}
-    <link rel="stylesheet" href="{{ asset('front/assets/css/bootstrap..min.css')}}">
+    {{-- <link rel="stylesheet" href="{{ asset('front/assets/css/bootstrap..min.css')}}"> --}}
     <link rel="stylesheet" href="{{ asset('front/assets/css/boxicons.min.css')}}">
     <link rel="stylesheet" href="{{ asset('front/assets/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{ asset('front/assets/css/animate.min.css')}}">

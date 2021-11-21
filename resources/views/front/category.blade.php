@@ -328,12 +328,12 @@
                             <div class="col-6 col-md-4">
                                 <div class=" product relative text-dir">
 
-                                    <div class="  heart ">
+                                    {{-- <div class="  heart ">
                                         <a href="#" class="addToWishList text-white" data-product-id="{{$p->id}}">
                                             <i class="far fa-heart "></i>
                                         </a>
 
-                                    </div>
+                                    </div> --}}
 
                                     <a href="{{route('product',$p->id)}}" class="test">
 

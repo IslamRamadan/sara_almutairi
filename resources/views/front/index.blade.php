@@ -158,7 +158,7 @@
 
 
 
-            <div class="blog-slides owl-carousel owl-theme owl-loaded owl-drag">
+            <div class="blog-slides owl-carousel test owl-theme owl-loaded owl-drag">
 
 
 
@@ -208,9 +208,9 @@
 
                     </div>
                 </div>
-                <div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><i
-                            class="bx bx-left-arrow-alt"></i></button><button type="button" role="presentation"
-                        class="owl-next"><i class="bx bx-right-arrow-alt"></i></button></div>
+                <div class="owl-nav"><button type="button" role="presentation" class="owl-prev">
+                    <span aria-label="Previous">‹</span></button><button type="button" role="presentation"
+                        class="owl-next"><span aria-label="Next">›</span></button></div>
                 <div class="owl-dots disabled"></div>
             </div>
         </div>
@@ -238,9 +238,9 @@
         <br class="d-none d-md-block">
         <br class="d-none d-md-block">
 
-        <div class="row dir-rtl">
+        <div class="row justify-content-between">
 
-            <div class="col-lg-4 col-md-4 col-sm-12 pad-0 fashion text-dir">
+            <div class="col-lg-3 col-md-3 col-sm-12 pad-0 fashion text-dir">
                 <br>
                 <h1>@lang('site.new_arrival')</h1>
 
@@ -265,8 +265,11 @@
 
                                         <div class="single-blog-post mb-30">
                                             <div class="post-image">
-                                                <a href="{{ route('product', $p->id) }}" class="d-block">
-                                                    <img src="{{ asset('/storage/' . $p->img) }}" alt="image">
+                                                <a href="{{ route('product', $p->id) }}" class="d-block img-hover">
+                                                    <img src="{{ asset('/storage/' . $p->img) }}" alt="image" class="image">
+                                                    <div class="middle">
+                                                        <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                                                      </div>
                                                 </a>
 
                                                 <!-- <div class="tag">
@@ -332,8 +335,8 @@
 
                     </div>
                     <div class="owl-nav"><button type="button" role="presentation" class="owl-prev">
-                        <i class="fas fa-arrow-left"></i></button><button type="button" role="presentation"
-                            class="owl-next"><i class="fas fa-arrow-right"></i></i></button></div>
+                        <span aria-label="Previous">‹</span></button><button type="button" role="presentation"
+                            class="owl-next"><span aria-label="Next">›</span></button></div>
                     <div class="owl-dots disabled"></div>
                 </div>
 

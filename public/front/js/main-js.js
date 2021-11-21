@@ -11,10 +11,10 @@
                     $(".country").addClass("display-none");
                 });
 
-                $(".heart").click(function() {
-                    $(this).toggleClass("heart-hover");
+                // $(".heart").click(function() {
+                //     $(this).toggleClass("heart-hover");
 
-                });
+                // });
                 $(".toggler1").click(function() {
                     $(".sidbar1").toggleClass("open-sidbar");
 

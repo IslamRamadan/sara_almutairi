@@ -10,7 +10,7 @@
     @endif
     <div class="container p-0 mt-5">
             <div class="row m-auto">
-                <div class="col-lg-9 col-md-8 m-auto">
+                <div class="col-lg-12 col-md-12 m-auto">
                     <div class="blog-details-wrapper">
                         <div class="blog-img mb-20 text-center"><img alt="" src="{{ asset('/storage/' . $post->img1) }}">
                             {{-- <div class="blog-date"><span>                                        26                                        <br>                                        JUNE</span></div> --}}
@@ -33,9 +33,9 @@
                             @else
                             <p>{{$post->description_ar}}</p>
                             @endif
-                            <div class="text-content-img">
+                            <div class="text-content-img mb-3">
                                 <div class="row dir-rtl">
-                                    <div class="col-lg-8">
+                                    <div class="col-md-8">
                                         <div class="text-single">
                                             @if (app()->getLocale() == 'en')
                                             <p>{{$post->description_en1}}</p>
@@ -44,7 +44,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-md-4">
                                         <div class="content-img"><img alt="" src="{{ asset('/storage/' . $post->img2) }}"></div>
                                     </div>
                                 </div>
