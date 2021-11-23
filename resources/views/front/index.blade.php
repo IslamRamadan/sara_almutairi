@@ -289,7 +289,7 @@
 
                                                 @endif
                                                     </a></h3>
-                                                <h6><a href="{{ route('product', $p->id) }}" class="d-inline-block">
+                                                <h6 ><a href="{{ route('product', $p->id) }}" class="d-inline-block main-color">
                                                     @if (Lang::locale() == 'ar')
                                                     {{-- {{$p->basic_category->name_ar}}
                                         -

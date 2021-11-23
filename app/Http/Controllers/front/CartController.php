@@ -1043,8 +1043,8 @@ class CartController extends Controller
             'MobileCountryCode'  => $country_code,
             'CustomerMobile'     => $phone,
             'CustomerEmail'      => $email ?? "no@gmail.com",
-            'CallBackUrl'        => 'https://saramerdas.shop/payment_callback',
-            'ErrorUrl'           =>  'https://saramerdas.shop/payment_error', //or 'https://example.com/error.php'
+            'CallBackUrl'        => 'http://127.0.0.1:8000/payment_callback',
+            'ErrorUrl'           =>  'http://127.0.0.1:8000/payment_error', //or 'https://example.com/error.php'
             //'Language'           => 'en', //or 'ar'
             //            'CustomerReference'  => $order->id,
             //            'CustomerCivilId'    => $order->national_id,

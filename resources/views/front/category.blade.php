@@ -326,7 +326,7 @@
                             @if ($p)
                                 @if ($p->appearance == 1)
 
-                                    <div class="col-6 col-md-4">
+                                    <div class="col-6 col-md-6 col-lg-4">
                                         <div class=" product relative text-dir mb-3">
 
                                             {{-- <div class="  heart ">
