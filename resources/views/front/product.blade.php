@@ -175,12 +175,7 @@
                     @endguest
                 </h6>
 
-                <br>
-                <div class="text-dir">
-                <button type="button" class="btn bg-main mb-4" data-toggle="modal" data-target="#exampleModalCenter">
-                    @lang('site.size_guide')
-                  </button>
-                </div>
+
                   <br>
                 <div id="colors">
                     <div id="s" class="color-blocks" style="">
@@ -225,8 +220,10 @@
                     <a rel="nofollow" class="btn btn-default btn-plus" href="#" title="Add" style="margin: -9px;">+</a>
                 </form>
 
+                <a class="btn bg-main "data-toggle="modal" data-target="#exampleModalCenter"
+                    style="width: 100%;background: #ec7d23 !important;">@lang('site.size_guide')</a>
                 <a id="add_cart" class="btn bg-main "
-                    style="width: 100%;background: #000000 !important;">@lang('site.add_to_cart')</a>
+                    style="width: 100%;background: #000000 !important;margin-top:10px">@lang('site.add_to_cart')</a>
                 <a class="btn bg-main addToWishList" data-product-id="{{ $product->id }}"
                     style="margin:10px 0px;width: 100%;background: #ec7d23 !important;">@lang('site.add_to_wishlist')</a>
 
