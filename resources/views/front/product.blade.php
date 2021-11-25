@@ -176,9 +176,11 @@
                 </h6>
 
                 <br>
+                <div class="text-dir">
                 <button type="button" class="btn bg-main mb-4" data-toggle="modal" data-target="#exampleModalCenter">
                     @lang('site.size_guide')
                   </button>
+                </div>
                   <br>
                 <div id="colors">
                     <div id="s" class="color-blocks" style="">
