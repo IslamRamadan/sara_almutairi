@@ -11,6 +11,7 @@ use App\ProdImg;
 use App\ProdSize;
 use App\Product;
 use App\Size;
+use App\SizeGuide;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
@@ -61,6 +62,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $size_guides=SizeGuide::all();
         $sizes = Size::all();
         $heights = Height::all();
         $basic_categories = BasicCategory::all();
@@ -68,7 +70,7 @@ class ProductController extends Controller
 //        $categories=Category::all();
 
 
-        return view('dashboard.products.create', compact('basic_categories', 'sizes', 'heights'));
+        return view('dashboard.products.create', compact('basic_categories', 'sizes', 'heights','size_guides'));
 
     }
 
@@ -93,6 +95,7 @@ class ProductController extends Controller
 
 
             'photo.required' => "صورة المنتج مطلوبة",
+            'size_guide_id.required' => "برجاء اختيار دليل المقاسات المناسب",
             'photo.mimes' => " يجب ان تكون الصورة jpg او jpeg او png  ",
             'photo.max' => " الحد الاقصي للصورة 4 ميجا ",
 //            'size_photo.required' => "صورة المقاسات مطلوبة",
@@ -106,6 +109,7 @@ class ProductController extends Controller
         $validator = Validator::make($request->all(), [
             "basic_category_id" => "required",
             "category_id" => "required",
+            "size_guide_id" => "required",
 //            "height.*" => "required",
 //            "quantity.*" => "required",
 //            'size' => 'required',
@@ -175,6 +179,7 @@ class ProductController extends Controller
             'featured' => $request['featured']?:0,
             'basic_category_id' => $request['basic_category_id'],
             'category_id' => $request['category_id'],
+            'size_guide_id' => $request['size_guide_id'],
             'title_ar' => $request['title_ar'] ? :'',
             'title_en' => $request['title_en'] ? :'',
             'description_en' => $request['description_en'] ? :'',
@@ -302,6 +307,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $basic_categories = BasicCategory::all();
         $sizes = Size::all();
+        $size_guides = SizeGuide::all();
         $heights = Height::all();
         $product = Product::findOrFail($id);
 ////        $products=Product::all();
@@ -341,7 +347,7 @@ class ProductController extends Controller
 
         return view('/dashboard/products/edit', compact('basic_categories', 'sizes', 'heights', 'product', 'categories', 'height_products'
 
-            , 'height_products_array', 'size_products'));
+            , 'height_products_array', 'size_products','size_guides'));
     }
 
 
@@ -355,16 +361,29 @@ class ProductController extends Controller
     public function updateProduct(Request $request, $id)
     {
 //        dd($request->all());
+$messeges = [
+
+
+    'size_guide_id.required' => "برجاء اختيار دليل المقاسات المناسب",
+    'photo.mimes' => " يجب ان تكون الصورة jpg او jpeg او png  ",
+    'photo.max' => " الحد الاقصي للصورة 4 ميجا ",
+//            'size_photo.required' => "صورة المقاسات مطلوبة",
+//            'size_photo.mimes' => " يجب ان تكون الصورة jpg او jpeg او png  ",
+//            'size_photo.max' => " الحد الاقصي للصورة 4 ميجا ",
+
+
+];
 
         $validator = Validator::make($request->all(), [
             "basic_category_id" => "required",
             "category_id" => "required",
+            "size_guide_id" => "required",
 //            "height.*" => "required",
 //            "quantity.*" => "required",
 //            'size' => 'required',
             "price" => "required|Numeric",
 
-        ]);
+        ],$messeges);
 
 
         if ($validator->fails()) {
@@ -403,6 +422,7 @@ class ProductController extends Controller
                 'featured' => $request['featured']?:0,
                 'basic_category_id' => $request['basic_category_id'],
                 'category_id' => $request['category_id'],
+                'size_guide_id' => $request['size_guide_id'],
                 'title_ar' => $request['title_ar'] ? :'',
                 'title_en' => $request['title_en'] ? :'',
                 'description_en' => $request['description_en'] ? :'',
@@ -460,6 +480,7 @@ class ProductController extends Controller
                 'featured' => $request['featured']?:0,
                 'basic_category_id' => $request['basic_category_id'],
                 'category_id' => $request['category_id'],
+                'size_guide_id' => $request['size_guide_id'],
                 'title_ar' => $request['title_ar'] ? :'',
                 'title_en' => $request['title_en'] ? :'',
                 'description_en' => $request['description_en'] ? :'',

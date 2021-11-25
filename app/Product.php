@@ -11,7 +11,7 @@ class Product extends Model
     protected $fillable = [
         'title_en'  , 'title_ar' , 'description_en','description_ar',
         'appearance','best_selling','featured','new','price','delivery_period','img','height_img',
-        'basic_category_id','category_id'
+        'basic_category_id','category_id','size_guide_id'
 
     ];
     protected $guarded=[];
@@ -24,6 +24,9 @@ class Product extends Model
 
     public function basic_category(){
         return $this->belongsTo('App\BasicCategory' , 'basic_category_id' , 'id');
+    }
+    public function size_guide(){
+        return $this->belongsTo('App\SizeGuide' , 'size_guide_id' , 'id');
     }
 
 

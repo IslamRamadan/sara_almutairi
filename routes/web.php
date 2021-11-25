@@ -108,6 +108,7 @@ Route::group(
         Route::get('admins/destroy/{id}','Backend\AdminController@destroy');
 //        Route::get('users/destroy/{id}','Backend\UserController@destroy')->name('users.destroy');
         Route::get('basic_categories/destroy/{id}','Backend\BasicCategoryController@destroy');
+        Route::get('size_guides/destroy/{id}','Backend\SizeGuideController@destroy');
         Route::get('countries/destroy/{id}','Backend\CountryController@destroy');
         Route::get('cities/destroy/{id}','Backend\CityController@destroy');
         Route::get('cities/view/{country_id}','Backend\CountryController@cities')->name('cities.view');
@@ -115,6 +116,7 @@ Route::group(
         Route::resource('admins','Backend\AdminController');
         Route::resource('settings','Backend\SettingsController');
         Route::resource('basic_categories','Backend\BasicCategoryController');
+        Route::resource('size_guides','Backend\SizeGuideController');
         Route::resource('categories','Backend\CategoryController');
         Route::resource('currencies','Backend\CurrencyController');
         Route::resource('countries','Backend\CountryController');
@@ -154,6 +156,7 @@ Route::group(
         Route::post('custom_cities/update/{id}','Backend\CityController@updateCity')->name('cities.update.city');
         Route::post('custom_pages/update/{id}','Backend\PagesController@updatePage')->name('pages.update.page');
         Route::post('custom_basic_categories/update/{id}','Backend\BasicCategoryController@updateBasicCategory')->name('basic_categories.update.basic_category');
+        Route::post('custom_sizes_guide/update/{id}','Backend\SizeGuideController@updateSizeGuide')->name('size_guides.update.size_guide');
         Route::post('custom_categories/update/{id}','Backend\CategoryController@updateCategory')->name('categories.update.category');
         Route::post('custom_settings/update/{id}','Backend\SettingsController@updateSetting')->name('settings.update.setting');
         Route::post('custom_sliders/update/{id}','Backend\sliderController@updateSlider')->name('sliders.update.slider');

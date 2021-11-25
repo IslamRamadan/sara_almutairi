@@ -176,6 +176,10 @@
                 </h6>
 
                 <br>
+                <button type="button" class="btn bg-main mb-4" data-toggle="modal" data-target="#exampleModalCenter">
+                    @lang('site.size_guide')
+                  </button>
+                  <br>
                 <div id="colors">
                     <div id="s" class="color-blocks" style="">
                         <span>@lang('site.size') :</span>
@@ -365,6 +369,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                     @endif
                                 @endforeach
                         </div>
@@ -380,7 +385,22 @@
         <br><br>
     </div>
 
+<!-- Button trigger modal -->
 
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+
+        <div class="modal-body">
+            <img src="{{ asset('/storage/' . $product->size_guide->image_url) }}" class="d-block w-100 h-img" style="object-fit: contain" alt="..."
+            data-toggle="modal" data-target="#staticBackdrop">
+        </div>
+
+      </div>
+    </div>
+  </div>
     <!--- end  --->
 
 @endsection

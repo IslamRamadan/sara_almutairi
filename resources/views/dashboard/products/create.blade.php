@@ -129,7 +129,7 @@
             </div>
 
 
-            <div class="form-group col-6">
+            <div class="form-group col-4">
                 <label for="price">
 
                     @lang('site.price')
@@ -139,8 +139,29 @@
                 <input value="{{ old('price') }}"  type="text" name="price" type="number" step=".01"
                        class="form-control @error('price') is-invalid @enderror" id="price">
             </div>
+            <div class="form-group col-4">
+                <label for="basic_category_id">
+                    @lang('site.size_guid')
 
-            <div class="form-group col-6">
+                </label>
+
+                <select name="size_guide_id"    class="form-control @error('size_guide_id') is-invalid @enderror" id="size_guide_id">
+                    <option value="">
+                        @lang('site.size_guid')
+                    </option>
+                    @foreach($size_guides as $size_guide)
+
+
+                        <option value="{{$size_guide->id}}">
+                            {{$size_guide->name_en}} &nbsp; - &nbsp; {{$size_guide->name_ar}}
+                        </option>
+
+
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group col-4">
                 <label for="photo">
 
                     @lang('site.img')
