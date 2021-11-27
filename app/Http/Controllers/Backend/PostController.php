@@ -136,13 +136,15 @@ class PostController extends Controller
             if (!Storage::exists($path)) {
                 Storage::disk('public')->makeDirectory($path);
             }
+            $img = \Image::make($image);
+            $img->save(public_path('storage/'.$path.$file_name),30);
 //
 //            if(file_exists(storage_path('app/public/'.$path.$file_name)))
 //            {
 //                unlink(storage_path('app/public/'.$path.$file_name));
 //            }
 
-            $country->img1 = $image->storeAs($path, $file_name, 'public');
+            $country->img1 = $path.$file_name;
             $country->save();
 
         } else {
@@ -160,13 +162,15 @@ class PostController extends Controller
             if (!Storage::exists($path)) {
                 Storage::disk('public')->makeDirectory($path);
             }
+            $img = \Image::make($image)->resize(320,400);
+            $img->save(public_path('storage/'.$path.$file_name),60);
 //
 //            if(file_exists(storage_path('app/public/'.$path.$file_name)))
 //            {
 //                unlink(storage_path('app/public/'.$path.$file_name));
 //            }
 
-            $country->img2 = $image->storeAs($path, $file_name, 'public');
+            $country->img2 = $path.$file_name;
             $country->save();
 
         } else {
@@ -272,8 +276,11 @@ class PostController extends Controller
             {
                 unlink(storage_path('app/public/'.$post->img1));
             }
+            $img = \Image::make($image);
+            $img->save(public_path('storage/'.$path.$file_name),30);
 
-            $post->img1 = $image->storeAs($path, $file_name, 'public');
+
+            $post->img1 = $path.$file_name;
             $post->save();
 
         }
@@ -295,8 +302,10 @@ class PostController extends Controller
             {
                 unlink(storage_path('app/public/'.$post->img2));
             }
+            $img = \Image::make($image)->resize(320,400);
+            $img->save(public_path('storage/'.$path.$file_name),60);
 
-            $post->img2 = $image->storeAs($path, $file_name, 'public');
+            $post->img2 = $path.$file_name;
             $post->save();
 
         }
