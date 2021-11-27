@@ -104,6 +104,8 @@ class sliderController extends Controller
             if (!Storage::exists($path)) {
                 Storage::disk('public')->makeDirectory($path);
             }
+            $img = \Image::make($image);
+            $img->save(public_path('storage/'.$path.$file_name),30);
 //
 //            if(file_exists(storage_path('app/public/'.$path.$file_name)))
 //            {
@@ -117,7 +119,7 @@ class sliderController extends Controller
                     'description_en' => $request['description_en'],
                     'name_ar' => $request['name_ar'],
                     'name_en' => $request['name_en'],
-                    'img' => $image->storeAs($path, $file_name, 'public')
+                    'img' => $path.$file_name
                 ]
             );
 
@@ -203,6 +205,8 @@ class sliderController extends Controller
             {
                 unlink(storage_path('app/public/'.$cat->img));
             }
+            $img = \Image::make($image);
+            $img->save(public_path('storage/'.$path.$file_name),30);
 
 
             $cat = $cat->update([
@@ -210,7 +214,7 @@ class sliderController extends Controller
                 'name_en' => $request['name_en'],
                 'description_ar' => $request['description_ar'],
                 'description_en' => $request['description_ar'],
-                'img' => $image->storeAs($path, $file_name, 'public')
+                'img' => $path.$file_name
             ]);
 
         } else {

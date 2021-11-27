@@ -231,10 +231,10 @@
 
 
 {{-- slider ismail start --}}
-<script src="{{asset('front/assets/js/jquery.min.js')}}"></script>
+{{-- <script src="{{asset('front/assets/js/jquery.min.js')}}"></script> --}}
 {{-- <script src="{{asset('front/assets/js/bootstrap.min.js')}}"></script> --}}
 <script src="{{asset('front/assets/js/owl.carousel.min.js')}}"></script>
-<script src="{{asset('front/assets/js/mixitup.min.js')}}"></script>
+{{-- <script src="{{asset('front/assets/js/mixitup.min.js')}}"></script> --}}
 <script src="{{asset('front/assets/js/meanmenu.min.js')}}"></script>
 <script src="{{asset('front/assets/js/main.js')}}"></script>
 <script>
