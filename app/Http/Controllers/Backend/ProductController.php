@@ -162,6 +162,8 @@ class ProductController extends Controller
         if (!Storage::exists($path)) {
             Storage::disk('public')->makeDirectory($path);
         }
+        $img = \Image::make($image)->resize(320,400);
+        $img->save(public_path('storage/'.$path.$file_name),60);
 //dd($request->all());
 //        $image2 = $request->size_photo;
 //        $original_name2 = strtolower(trim($image2->getClientOriginalName()));
@@ -185,7 +187,7 @@ class ProductController extends Controller
             'description_en' => $request['description_en'] ? :'',
             'description_ar' => $request['description_ar'] ? :'',
             'price' => $request['price'],
-            'img' => $image->storeAs($path, $file_name, 'public'),
+            'img' => $path.$file_name,
         ]);
 
         if($request->has('size')){
@@ -412,6 +414,8 @@ $messeges = [
             if (file_exists(storage_path('app/public/' . $product->img))) {
                 unlink(storage_path('app/public/' . $product->img));
             }
+            $img = \Image::make($image)->resize(512,640);
+            $img->save(public_path('storage/'.$path.$file_name),60);
 
 
 
@@ -428,7 +432,7 @@ $messeges = [
                 'description_en' => $request['description_en'] ? :'',
                 'description_ar' => $request['description_ar'] ? :'',
                 'price' => $request['price'],
-                'img' => $image->storeAs($path, $file_name, 'public'),
+                'img' => $path.$file_name,
 
             ]);
 

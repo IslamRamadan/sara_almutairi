@@ -95,9 +95,19 @@ $action.=' <a href="' . url('basic_categories/destroy', $row->id) . '" class="bt
             $file_name = time() . rand(100, 999) . $original_name;
             $path = 'uploads/basic_categories/images/';
 
+
             if (!Storage::exists($path)) {
                 Storage::disk('public')->makeDirectory($path);
             }
+            // dd(storage_path($path.$file_name));
+            // dd(public_path('storage/'.$path.$file_name));
+            // dd($path.$file_name);
+            $img = \Image::make($image)->resize(512,640);
+            $img->save(public_path('storage/'.$path.$file_name),60);
+            // dd(public_path('storage/'.$path.$file_name));
+
+            // $image->storeAs($path, $file_name, 'public');
+
 //
 //            if(file_exists(storage_path('app/public/'.$path.$file_name)))
 //            {
@@ -108,7 +118,7 @@ $action.=' <a href="' . url('basic_categories/destroy', $row->id) . '" class="bt
             $cat = BasicCategory::create([
                 'name_ar' => $request['name_ar'],
                 'name_en' => $request['name_en'],
-                'image_url' => $image->storeAs($path, $file_name, 'public')
+                'image_url' => $path.$file_name
             ]);
 
         } else {
@@ -184,12 +194,14 @@ $action.=' <a href="' . url('basic_categories/destroy', $row->id) . '" class="bt
             {
                 unlink(storage_path('app/public/'.$cat->image_url));
             }
+            $img = \Image::make($image)->resize(512,640);
+            $img->save(public_path('storage/'.$path.$file_name),60);
 
 
             $cat = $cat->update([
                 'name_ar' => $request['name_ar'],
                 'name_en' => $request['name_en'],
-                'image_url' => $image->storeAs($path, $file_name, 'public')
+                'image_url' => $path.$file_name
             ]);
 
         } else {
