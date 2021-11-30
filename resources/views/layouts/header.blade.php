@@ -21,8 +21,8 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> --}}
+    {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
 
     <link rel="stylesheet" href="{{ asset('front/css/animate.css') }}">
     <!-- Styles -->
@@ -32,8 +32,8 @@
     {{-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css"
         integrity="sha384-eHoocPgXsiuZh+Yy6+7DsKAerLXyJmu2Hadh4QYyt+8v86geixVYwFqUvMU8X90l" crossorigin="anonymous" /> --}}
     <link href="{{ asset('front/img/logo1.PNG') }}" rel="icon" type="image/png">
-    <link href="//db.onlinewebfonts.com/c/be395203fb38e2f170265aa2a9785467?family=M+Sung+PRC" rel="stylesheet"
-        type="text/css" />
+    {{-- <link href="//db.onlinewebfonts.com/c/be395203fb38e2f170265aa2a9785467?family=M+Sung+PRC" rel="stylesheet" --}}
+        {{-- type="text/css" /> --}}
          {{-- slider ismail start --}}
     {{-- <link rel="stylesheet" href="{{ asset('front/assets/css/bootstrap..min.css')}}"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('front/assets/css/boxicons.min.css')}}"> --}}

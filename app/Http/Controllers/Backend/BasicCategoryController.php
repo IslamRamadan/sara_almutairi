@@ -82,7 +82,7 @@ $action.=' <a href="' . url('basic_categories/destroy', $row->id) . '" class="bt
 
         if ($validator->fails()) {
             Alert::error('خطأ', $validator->errors()->first());
-            return back();
+            return back()->withInput();;
         }
 
         $cat = null;
@@ -123,7 +123,7 @@ $action.=' <a href="' . url('basic_categories/destroy', $row->id) . '" class="bt
 
         } else {
             Alert::error('خطأ', 'برجاء اختيار صورة القسم');
-            return back();
+            return back()->withInput();;
         }
 
         if ($cat) {

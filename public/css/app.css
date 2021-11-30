@@ -1,4 +1,10 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);
+/* @import url(https://fonts.googleapis.com/css?family=Nunito); */
+
+@font-face {
+    font-family: "Nunito";
+    src: url('/fonts/Nunito-Regular.ttf');
+}
+
 @charset "UTF-8";
 
 /*!
@@ -36,7 +42,7 @@
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1200px;
     --font-family-sans-serif: "Nunito", sans-serif;
-    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --font-family-monospace: "Nunito", sans-serif;
 }
 
 *,

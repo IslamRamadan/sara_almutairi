@@ -117,7 +117,7 @@ class PostController extends Controller
 
         if ($validator->fails()) {
             Alert::error('خطأ', $validator->errors()->first());
-            return back();
+            return back()->withInput();;
         }
 
 
@@ -149,7 +149,7 @@ class PostController extends Controller
 
         } else {
             Alert::error('خطأ', 'برجاء اختيار صورة الخبر');
-            return back();
+            return back()->withInput();;
         }
         if ($request->hasfile('img2')) {
             // $images .= 'yes';
@@ -175,7 +175,7 @@ class PostController extends Controller
 
         } else {
             Alert::error('خطأ', 'برجاء اختيار صورة الخبر ');
-            return back();
+            return back()->withInput();;
         }
 
         if ($country){

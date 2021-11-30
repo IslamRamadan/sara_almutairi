@@ -207,7 +207,9 @@
                                 </label>
                                 <input class="form-check-input" type="checkbox" value="{{$size->id}}"
                                        style="margin-left: 15px"
-                                       name="size[]">
+                                       name="size[]"
+                                       {{-- {{ old('size',$size->id) ? 'checked' : '' }} --}}
+                                       >
                             </div>
                         </div>
                     </div>
@@ -223,7 +225,9 @@
 
                             <input type="number"
                                    style="border: 1px solid rgba(0,0,0,0.1) ; border-radius: 10px;padding: 5px;width: 70px" placeholder="الكميه"
-                                   name="{{$size->id}}{{$height->id}}quantity" value="" >
+                                   name="{{$size->id}}{{$height->id}}quantity" value=""
+
+                                   >
 
                         </div>
                             @endforeach

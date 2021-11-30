@@ -97,6 +97,8 @@
                 </label>
 
                 <select name="category_id"    class="form-control @error('category_id') is-invalid @enderror" id="category_id" >
+                    @if ($product->category_id != 0)
+
                     @foreach($categories as $category)
 
 
@@ -108,6 +110,8 @@
 
 
                     @endforeach
+                    @endif
+
                 </select>
             </div>
 

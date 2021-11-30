@@ -6,6 +6,7 @@
 @section('content')
     <!-----start  --->
     <br><br>
+
     <div class="container">
         <div class="row dir-rtl">
             <div class="col-md-6 product pad-0">
@@ -22,10 +23,10 @@
                 <div id="carouselExampleIndicators" class="carousel slide carousel1 " data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <div class="  zoom "><a href="" data-toggle="modal" data-target="#zoom"><i
-                                        class="fas fa-expand-alt"></i></a></div>
+                            {{-- <div class="  zoom "><a href="" data-toggle="modal" data-target="#zoom"><i
+                                        class="fas fa-expand-alt"></i></a></div> --}}
 
-                            <img src="{{ asset('/storage/' . $product->img) }}" class="d-block w-100 h-img" alt="..."
+                            <img data-enlargeable src="{{ asset('/storage/' . $product->img) }}" class="d-block w-100 h-img" alt="..."
                                 data-toggle="modal" data-target="#staticBackdrop">
                         </div>
                         {{-- <div class="carousel-item"> --}}
@@ -37,10 +38,10 @@
                         @if ($product->images->count() > 0)
                             @foreach ($product->images as $img)
                                 <div class="carousel-item">
-                                    <img src="{{ asset($img->img) }}" class="d-block w-100 h-img" alt="..."
+                                    <img data-enlargeable src="{{ asset($img->img) }}" class="d-block w-100 h-img" alt="..."
                                         data-toggle="modal" data-target="#staticBackdrop">
-                                    <div class="  zoom "><a href="" data-toggle="modal" data-target="#zoom3"><i
-                                                class="fas fa-expand-alt"></i></a></div>
+                                    {{-- <div class="  zoom "><a href="" data-toggle="modal" data-target="#zoom3"><i
+                                                class="fas fa-expand-alt"></i></a></div> --}}
 
                                 </div>
 
@@ -77,7 +78,7 @@
                     @if ($product->images->count() > 0)
                         @foreach ($product->images as $img)
 
-                            <li data-target="#carouselExampleIndicators" data-slide-to="{{ $loop->index + 2 }}"
+                            <li data-target="#carouselExampleIndicators" data-slide-to="{{ $loop->index + 1 }}"
                                 class="">
                                 <img src="{{ asset($img->img) }}" class="img">
                             </li><br>
@@ -85,6 +86,20 @@
                         @endforeach
                     @endif
                 </ol>
+
+                {{-- <div class="owl-carousel owl-theme">
+                    <div class="item" data-target="#carouselExampleIndicators" data-slide-to="0"><h4>
+                        <img src=" {{ asset('/storage/' . $product->img) }}" class="img">
+                        </h4></div>
+                        @if ($product->images->count() > 0)
+                        @foreach ($product->images as $img)
+                    <div class="item" data-target="#carouselExampleIndicators" data-slide-to="{{ $loop->index + 1 }}"><h4>
+                        <img src="{{ asset($img->img) }}" class="img">
+                                            </h4></div>
+                                            @endforeach
+                                            @endif
+
+                </div> --}}
 
             </div>
 
@@ -121,13 +136,18 @@
 
                         @if (Lang::locale() == 'ar')
                             {{ $product->basic_category->name_ar }}
-                            -
-                            {{ $product->category->name_ar }}
+                            @if ($product->category_id != 0)
+                                -
+                                {{ $product->category->name_ar }}
+                            @endif
                         @else
-                            {{ $product->basic_category->name_en }}
-                            -
-                            {{ $product->category->name_en }}
 
+                            {{ $product->basic_category->name_en }}
+
+                            @if ($product->category_id != 0)
+                                -
+                                {{ $product->category->name_en }}
+                            @endif
                         @endif
 
                     </a></h2>
@@ -176,7 +196,7 @@
                 </h6>
 
 
-                  <br>
+                <br>
                 <div id="colors">
                     <div id="s" class="color-blocks" style="">
                         <span>@lang('site.size') :</span>
@@ -220,7 +240,7 @@
                     <a rel="nofollow" class="btn btn-default btn-plus" href="#" title="Add" style="margin: -9px;">+</a>
                 </form>
 
-                <a class="btn bg-main "data-toggle="modal" data-target="#exampleModalCenter"
+                <a class="btn bg-main " data-toggle="modal" data-target="#exampleModalCenter"
                     style="width: 100%;background: #ec7d23 !important;">@lang('site.size_guide')</a>
                 <a id="add_cart" class="btn bg-main "
                     style="width: 100%;background: #000000 !important;margin-top:10px">@lang('site.add_to_cart')</a>
@@ -274,7 +294,7 @@
                         <div class="swiper-wrapper">
                             @if (\App\BasicCategory::find($product->basic_category_id)->products->count() > 0)
                                 @foreach (\App\BasicCategory::find($product->basic_category_id)->products as $p)
-                                    @if ($p->id != $product->id)
+                                    @if ($p->id != $product->id && $p->appearance == 1)
                                         <div class="swiper-slide" data-swiper-autoplay="2000">
                                             <div class=" product relative">
                                                 {{-- <div class="  heart ">
@@ -286,7 +306,8 @@
                                                 </div> --}}
                                                 <div style="flex-direction: column;display: flex">
                                                     <div>
-                                                        <a href="{{ route('product', $p->id) }}" class="test image-hover">
+                                                        <a href="{{ route('product', $p->id) }}"
+                                                            class="test image-hover">
 
                                                             <img src="{{ asset('/storage/' . $p->img) }}"
                                                                 onerror="this.onerror=null;this.src='{{ asset('front/img/3.jpg') }}'"
@@ -295,15 +316,17 @@
                                                             @if ($img = App\ProdImg::where('product_id', $p->id)->first())
                                                                 <img src="{{ asset($img->img) }}" width="100%"
                                                                     class="hide-img">
-                                                                    <div class="middle">
-                                                                        <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                                                                <div class="middle">
+                                                                    <div class="btn btn-danger">@lang('site.add_to_cart')
                                                                     </div>
+                                                                </div>
                                                             @else
-                                                                <img src="{{ asset('/storage/' . $p->img) }}" width="100%"
-                                                                    class="hide-img">
-                                                                    <div class="middle">
-                                                                        <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                                                                <img src="{{ asset('/storage/' . $p->img) }}"
+                                                                    width="100%" class="hide-img">
+                                                                <div class="middle">
+                                                                    <div class="btn btn-danger">@lang('site.add_to_cart')
                                                                     </div>
+                                                                </div>
                                                             @endif
                                                         </a>
                                                     </div>
@@ -384,22 +407,23 @@
         <br><br>
     </div>
 
-<!-- Button trigger modal -->
+    <!-- Button trigger modal -->
 
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
 
-        <div class="modal-body">
-            <img src="{{ asset('/storage/' . $product->size_guide->image_url) }}" class="d-block w-100 h-img" style="object-fit: contain" alt="..."
-            data-toggle="modal" data-target="#staticBackdrop">
+                <div class="modal-body">
+                    <img src="{{ asset('/storage/' . $product->size_guide->image_url) }}" class="d-block w-100 h-img"
+                        style="object-fit: contain" alt="..." data-toggle="modal" data-target="#staticBackdrop">
+                </div>
+
+            </div>
         </div>
-
-      </div>
     </div>
-  </div>
     <!--- end  --->
 
 @endsection
@@ -613,6 +637,36 @@
             @endauth
 
 
+        });
+    </script>
+    <script>
+        $('img[data-enlargeable]').addClass('img-enlargeable').click(function() {
+            var src = $(this).attr('src');
+            var modal;
+
+            function removeModal() {
+                modal.remove();
+                $('body').off('keyup.modal-close');
+            }
+            modal = $('<div>').css({
+                background: 'RGBA(0,0,0,.5) url(' + src + ') no-repeat center',
+                backgroundSize: 'contain',
+                width: '100%',
+                height: '100%',
+                position: 'fixed',
+                zIndex: '10000',
+                top: '0',
+                left: '0',
+                cursor: 'zoom-out'
+            }).click(function() {
+                removeModal();
+            }).appendTo('body');
+            //handling ESC
+            $('body').on('keyup.modal-close', function(e) {
+                if (e.key === 'Escape') {
+                    removeModal();
+                }
+            });
         });
     </script>
 @endsection

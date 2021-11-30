@@ -50,7 +50,7 @@ class homeController extends Controller
 
 //        return  $request->paymentId;
         $sliders = Slider::all();
-        $new_arrive = Product::orderBy('created_at', 'desc')->where('new', 1)
+        $new_arrive = Product::orderBy('created_at', 'desc')->where('new', 1)->where('appearance', 1)
             ->offset(0)->limit(6)->get();
         $posts = Post::orderBy('created_at', 'desc')->where('appearance', 1)
             ->offset(0)->limit(3)->get();
@@ -129,11 +129,14 @@ class homeController extends Controller
     {
 //        $prod_img=ProdImg::where('product_id',$id)->first()->img;
 //        dd($prod_img);
-        $last_views = Product::where('best_selling',1)->orderBy('updated_at' ,  'DESC')->take(3)->get();
         if ($type == 1) {
+        $last_views = Product::where('best_selling',1)->where('basic_category_id',$id)->where('appearance', 1)->orderBy('updated_at' ,  'DESC')->take(3)->get();
+
             $category = BasicCategory::findOrFail($id);
 
         } else {
+        $last_views = Product::where('best_selling',1)->where('category_id',$id)->where('appearance', 1)->orderBy('updated_at' ,  'DESC')->take(3)->get();
+
             $category = Category::findOrFail($id);
         }
 
@@ -307,7 +310,7 @@ class homeController extends Controller
 
                 $items = Product::where(function ($q) use ($request) {
                     if ($request->search) {
-                        $q->where('title_en', 'LIKE', '%' . $request->search . '%')->orWhere('title_ar', 'LIKE', '%' . $request->search . '%');
+                        $q->where('title_en', 'LIKE', '%' . $request->search . '%')->where('appearance', 1)->orWhere('title_ar', 'LIKE', '%' . $request->search . '%');
                     }
 
                     if ($request->id) {
@@ -321,7 +324,7 @@ class homeController extends Controller
             if ($cat_or_sub == 2) {
                 $items = Product::where(function ($q) use ($request) {
                     if ($request->search) {
-                        $q->where('title_en', 'LIKE', '%' . $request->search . '%')->orWhere('title_ar', 'LIKE', '%' . $request->search . '%');
+                        $q->where('title_en', 'LIKE', '%' . $request->search . '%')->where('appearance', 1)->orWhere('title_ar', 'LIKE', '%' . $request->search . '%');
                     }
                     if ($request->id) {
                         //    $q->where('category_id', $request->id);
@@ -332,7 +335,7 @@ class homeController extends Controller
         } else {
             $items = Product::where(function ($q) use ($request) {
                 if ($request->search) {
-                    $q->where('title_ar', 'LIKE', '%' . $request->search . '%')->orWhere('title_en', 'LIKE', '%' . $request->search . '%');
+                    $q->where('title_ar', 'LIKE', '%' . $request->search . '%')->where('appearance', 1)->orWhere('title_en', 'LIKE', '%' . $request->search . '%');
                 }
                 if ($request->id) {
                     // $q->where('category_id', $request->id);

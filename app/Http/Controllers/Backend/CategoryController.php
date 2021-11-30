@@ -89,7 +89,7 @@ class CategoryController extends Controller
 
         if ($validator->fails()) {
             Alert::error('خطأ', $validator->errors()->first());
-            return back();
+            return back()->withInput();;
         }
 
 

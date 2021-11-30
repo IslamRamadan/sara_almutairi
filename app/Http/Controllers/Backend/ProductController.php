@@ -108,7 +108,7 @@ class ProductController extends Controller
 
         $validator = Validator::make($request->all(), [
             "basic_category_id" => "required",
-            "category_id" => "required",
+            // "category_id" => "required",
             "size_guide_id" => "required",
 //            "height.*" => "required",
 //            "quantity.*" => "required",
@@ -122,7 +122,7 @@ class ProductController extends Controller
 
         if ($validator->fails()) {
             Alert::error('error', $validator->errors()->first());
-            return back();
+            return back()->withInput();
         }
 
 //        $img =  $request->photo ;
@@ -162,7 +162,7 @@ class ProductController extends Controller
         if (!Storage::exists($path)) {
             Storage::disk('public')->makeDirectory($path);
         }
-        $img = \Image::make($image)->resize(320,400);
+        $img = \Image::make($image)->resize(512,640);
         $img->save(public_path('storage/'.$path.$file_name),60);
 //dd($request->all());
 //        $image2 = $request->size_photo;
@@ -180,7 +180,7 @@ class ProductController extends Controller
             'best_selling' => $request['best_selling']?:0,
             'featured' => $request['featured']?:0,
             'basic_category_id' => $request['basic_category_id'],
-            'category_id' => $request['category_id'],
+            'category_id' => $request['category_id']?:0,
             'size_guide_id' => $request['size_guide_id'],
             'title_ar' => $request['title_ar'] ? :'',
             'title_en' => $request['title_en'] ? :'',
@@ -378,7 +378,7 @@ $messeges = [
 
         $validator = Validator::make($request->all(), [
             "basic_category_id" => "required",
-            "category_id" => "required",
+            // "category_id" => "required",
             "size_guide_id" => "required",
 //            "height.*" => "required",
 //            "quantity.*" => "required",
@@ -425,7 +425,7 @@ $messeges = [
                 'best_selling' => $request['best_selling']?:0,
                 'featured' => $request['featured']?:0,
                 'basic_category_id' => $request['basic_category_id'],
-                'category_id' => $request['category_id'],
+                'category_id' => $request['category_id']?:0,
                 'size_guide_id' => $request['size_guide_id'],
                 'title_ar' => $request['title_ar'] ? :'',
                 'title_en' => $request['title_en'] ? :'',
@@ -483,7 +483,7 @@ $messeges = [
                 'best_selling' => $request['best_selling']?:0,
                 'featured' => $request['featured']?:0,
                 'basic_category_id' => $request['basic_category_id'],
-                'category_id' => $request['category_id'],
+                'category_id' => $request['category_id']?:0,
                 'size_guide_id' => $request['size_guide_id'],
                 'title_ar' => $request['title_ar'] ? :'',
                 'title_en' => $request['title_en'] ? :'',
