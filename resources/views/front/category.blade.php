@@ -13,7 +13,7 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active ">
-                <img class=" w-100 h " src="{{ asset('front/img/11.jpg') }}" alt="1 slide">
+                <img class=" w-100 h " src="{{ asset('front/img/11.jpeg') }}" alt="1 slide">
                 <div class="abs w-100">
                     <p class="c-w mr-0">it has finally started</p>
                     <h1 class=""> Sara Almutairi</h1>
@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="carousel-item  ">
-                <img class=" w-100 h " src="{{ asset('front/img/5.jpg') }}" alt="1 slide">
+                <img class=" w-100 h " src="{{ asset('front/img/5.jpeg') }}" alt="1 slide">
                 <div class="abs w-100">
                     <p class="c-w mr-0">it has finally started</p>
                     <h1 class=""> Sara Almutairi</h1>
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="carousel-item  ">
-                <img class=" w-100 h " src="{{ asset('front/img/8.jpg') }}" alt="1 slide">
+                <img class=" w-100 h " src="{{ asset('front/img/8.jpeg') }}" alt="1 slide">
                 <div class="abs w-100">
                     <p class="c-w mr-0">it has finally started</p>
                     <h1 class=""> Sara Almutairi</h1>
@@ -229,7 +229,7 @@
             <div class="col-lg-3 col-md-4 d-md-block d-none ">
                 @if ($type == 1)
                     <a style="font-size: 20px;display: flex;
-                        justify-content: space-between;align-items: center;flex-direction:row-reverse"
+                            justify-content: space-between;align-items: center;flex-direction:row-reverse"
                         data-toggle="collapse" href="#collapseExample" aria-expanded="false"
                         aria-controls="collapseExample">
 
@@ -275,7 +275,8 @@
                             {{-- @if ($b->product) --}}
                             <div class=" row text-dir">
                                 <div class="col-3 pad-0">
-                                    <a href="{{ route('product', $b->id) }}"><img src="{{ asset('/storage/' . $b->img) }}"
+                                    <a href="{{ route('product', $b->id) }}"><img
+                                            src="{{ asset('/storage/' . $b->img) }}"
                                             onerror="this.onerror=null;this.src='{{ asset('front/img/5.jpg') }}'"
                                             style="width: 100%"></a>
                                 </div>
@@ -338,25 +339,26 @@
 
                                             <a href="{{ route('product', $p->id) }}" class="image-hover ">
                                                 <div style="position: relative">
-                                                <img src="{{ asset('/storage/' . $p->img) }}"
-                                                    onerror="this.onerror=null;this.src='{{ asset('front/img/3.jpg') }}'"
-                                                    width="100%" class="show-img image">
-                                                <div class="middle">
-                                                    <div class="btn btn-danger">@lang('site.add_to_cart')</div>
-                                                </div>
-                                                @if ($img = App\ProdImg::where('product_id', $p->id)->first())
-                                                    <img src="{{ asset($img->img) }}" width="100%" class="hide-img image">
+                                                    <img src="{{ asset('/storage/' . $p->img) }}"
+                                                        onerror="this.onerror=null;this.src='{{ asset('front/img/3.jpg') }}'"
+                                                        width="100%" class="show-img image">
                                                     <div class="middle">
                                                         <div class="btn btn-danger">@lang('site.add_to_cart')</div>
                                                     </div>
-                                                @else
-                                                    <img src="{{ asset('/storage/' . $p->img) }}" width="100%"
-                                                        class="hide-img image">
+                                                    @if ($img = App\ProdImg::where('product_id', $p->id)->first())
+                                                        <img src="{{ asset($img->img) }}" width="100%"
+                                                            class="hide-img image">
                                                         <div class="middle">
                                                             <div class="btn btn-danger">@lang('site.add_to_cart')</div>
                                                         </div>
-                                                @endif
-                                            </div>
+                                                    @else
+                                                        <img src="{{ asset('/storage/' . $p->img) }}" width="100%"
+                                                            class="hide-img image">
+                                                        <div class="middle">
+                                                            <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                                                        </div>
+                                                    @endif
+                                                </div>
                                             </a>
                                             <p class="mr-0">
                                                 <a href="{{ route('product', $p->id) }}">
@@ -463,7 +465,7 @@
                 Swal.fire({
                 icon: '?',
                 title:'Login first!',
-                confirmButtonColor: '#ec7d23',
+                confirmButtonColor: '#d76797',
                 position:'bottom-start',
                 showCloseButton: true,
                 })

@@ -170,25 +170,25 @@
 
                 <div class="owl-stage-outer">
                     <div class="owl-stage"
-                        style="transform: translate3d(-2280px, 0px, 0px); transition: all 0.25s ease 0s; width: 4180px;">
+                        style="transform: translate3d(-2280px, 0px, 0px); transition: all 0.25s ease 0s; width: 3000px;">
                         @if ($system_basic_categories->count() > 0)
 
                             @foreach ($system_basic_categories as $b)
-                                <div class="owl-item active" style="width: 350px; margin-right: 30px;">
-                                    <div class="single-blog-post mb-30">
+                                <div class="owl-item active" style="width:200px; margin-right: 30px;">
+                                    <div class="single-blog-post mb-30" style="width: 250px">
                                         <div class="post-image">
                                             <a href="{{ route('category', [1, $b->id]) }}" class="d-block">
                                                 <img src="{{ asset('/storage/' . $b->image_url) }}" alt="image">
                                             </a>
 
                                             <!-- <div class="tag">
-                                    <a href="#">Management</a>
-                                </div> -->
+                                        <a href="#">Management</a>
+                                    </div> -->
                                         </div>
 
                                         <div class="post-content text-center">
 
-                                            <h3 ><a href="single-blog.html" class="d-inline-block">
+                                            <h3><a href="single-blog.html" class="d-inline-block">
                                                     @if (app()->getLocale() == 'en')
                                                         {{ $b->name_en }}
                                                     @else
@@ -209,7 +209,7 @@
                     </div>
                 </div>
                 <div class="owl-nav"><button type="button" role="presentation" class="owl-prev">
-                    <span aria-label="Previous">‹</span></button><button type="button" role="presentation"
+                        <span aria-label="Previous">‹</span></button><button type="button" role="presentation"
                         class="owl-next"><span aria-label="Next">›</span></button></div>
                 <div class="owl-dots disabled"></div>
             </div>
@@ -225,125 +225,387 @@
 
 
 
+
     <div class="container pad-0 ">
 
         <br>
         <h2 class="text-center  d-flex justify-content-between">
             <b></b>
-            <span class="d-none d-md-block">@lang('site.fashion_world')
+            <span class="">@lang('site.new_arrival')
 
             </span>
             <b></b>
         </h2>
-        <br class="d-none d-md-block">
-        <br class="d-none d-md-block">
+        <br>
+        <br>
+        {{-- <br class="d-none d-md-block">
+        <br class="d-none d-md-block"> --}}
 
-        <div class="row justify-content-between">
+        {{-- <div class="col-lg-9 col-md-8 pad-0 "> --}}
+        <div class="row text-center dir-rtl">
+            @foreach ($new_arrive as $p)
 
-            <div class="col-lg-3 col-md-3 col-sm-12 pad-0 fashion text-dir">
-                <br>
-                <h1>@lang('site.new_arrival')</h1>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class=" product relative text-dir mb-3">
 
-                <p>@lang('site.discover_new') </p>
-                <button class="gq gr gs dg ck dh di cn gt c gu gv cq p cr gw gx gy">
-                    <div class="text-center">@lang('site.new_in')</div>
-                </button>
+                        {{-- <div class="  heart ">
+                                    <a href="#" class="addToWishList text-white" data-product-id="{{$p->id}}">
+                                        <i class="far fa-heart "></i>
+                                    </a>
+
+                                </div> --}}
+
+                        <a href="{{ route('product', $p->id) }}" class="image-hover ">
+                            <div style="position: relative">
+                                <img src="{{ asset('/storage/' . $p->img) }}"
+                                    onerror="this.onerror=null;this.src='{{ asset('front/img/3.jpg') }}'" width="100%"
+                                    class="show-img image">
+                                <div class="middle">
+                                    <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                                </div>
+                                @if ($img = App\ProdImg::where('product_id', $p->id)->first())
+                                    <img src="{{ asset($img->img) }}" width="100%" class="hide-img image">
+                                    <div class="middle">
+                                        <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                                    </div>
+                                @else
+                                    <img src="{{ asset('/storage/' . $p->img) }}" width="100%" class="hide-img image">
+                                    <div class="middle">
+                                        <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                                    </div>
+                                @endif
+                            </div>
+                        </a>
+                        <p class="mr-0">
+                            <a href="{{ route('product', $p->id) }}">
+                                @if (Lang::locale() == 'ar')
+                                    {{ $p->title_ar }}
+
+                                @else
+
+                                    {{ $p->title_en }}
+
+                                @endif
+
+
+                            </a>
+                        </p>
+                        <h6><a href="{{ route('product', $p->id) }}">
+
+
+                                @if (Lang::locale() == 'ar')
+                                    {{-- {{$p->basic_category->name_ar}}
+                                            -
+                                            {{$p->category->name_ar}} --}}
+                                    <?php $pieces = explode(' ', $p->description_ar);
+                                    $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
+                                    {{ $first_part }}
+                                @else
+
+                                    {{-- {{$p->basic_category->name_en}}
+                                            -
+                                            {{$p->category->name_en}} --}}
+                                    <?php $pieces = explode(' ', $p->description_en);
+                                    $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
+                                    {{ $first_part }}
+                                @endif
+
+
+                            </a></h6>
+                        <h5>
+
+
+                            @auth()
+                                {{ Auth::user()->getPrice($p->price) }}
+                                {{ Auth::user()->country->currency->code }}
+                            @endauth
+                            @guest()
+                                @if (Cookie::get('name'))
+                                    {{ number_format($p->price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
+                                    {{ App\Country::find(Cookie::get('name'))->currency->code }}
+                                @else
+                                    {{ $p->price }}
+                                    @lang('site.kwd')
+                                @endif
+                            @endguest
+
+                        </h5>
+                    </div>
+
+                </div>
+            @endforeach
+
+
+            {{-- @else
+                    <h5 style="text-align: center;margin: auto">
+                        @lang('site.no_data')
+                    </h5> --}}
+            {{-- @endif --}}
+
+        </div>
+        <div class="text-center m-auto gq gr gs dg ck dh di cn gt c1 gu gv cq p cr gw gx gy">
+            <a href="{{ route('new') }}" class="">
+                <div class="text-center text-light">@lang('site.new_in')</div>
+            </a>
+        </div>
+        <br><br>
+
+        {{-- </div> --}}
+        <br><br>
+    </div>
+
+    <div class="container-fluid">
+        <br>
+        <h2 class="text-center  d-flex justify-content-between">
+            <b></b>
+            <span class="">@lang('site.best_selling')
+
+            </span>
+            <b></b>
+        </h2>
+        <br>
+        <br>
+        <div class="owl-carousel islam owl-theme" id="one">
+            <div class="item best-sell">
+                <div class="row dir-rtl" style="height:45vh">
+                    <div class="col-6 p-0 res-wid">
+                        <a href="">
+                            <img src="{{ asset('front/img/11.jpeg') }}" style="width: 100%;height:100%">
+                        </a>
+                    </div>
+                    <div class=" col-6 p-2 text-dir m-auto">
+                        <h5 class="font-weight-bold">Woman jacket</h5>
+                        <p>Woman jacket Woman jacket</p>
+                        <div class="d-flex justify-content-between">
+                            <h5 class="font-weight-bold  ">50KD</h5>
+                            <h5 class="font-weight-bold  " style="text-decoration: line-through">50KD</h5>
+                        </div>
+                        <a class="btn btn-dark text-light font-weight-bold" style="background: #f13582;border:none">Add to
+                            cart</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="item best-sell">
+                <div class="row dir-rtl" style="height:45vh">
+                    <div class="col-6 p-0 res-wid">
+                        <a href="">
+                            <img src="{{ asset('front/img/5.jpeg') }}" style="width: 100%;height:100%">
+                        </a>
+                    </div>
+                    <div class=" col-6 p-2 text-dir m-auto">
+                        <h5 class="font-weight-bold">Woman jacket Woman </h5>
+                        <p>Woman jacket Woman jacket</p>
+                        <div class="d-flex justify-content-between">
+                            <h5 class="font-weight-bold  ">50KD</h5>
+                            <h5 class="font-weight-bold  " style="text-decoration: line-through">50KD</h5>
+                        </div>
+                        <a class="btn btn-dark text-light font-weight-bold" style="background: #f13582;border:none">Add to
+                            cart</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="item best-sell">
+                <div class="row dir-rtl" style="height:45vh">
+                    <div class="col-6 p-0 res-wid">
+                        <a href="">
+                            <img src="{{ asset('front/img/11.jpeg') }}" style="width: 100%;height:100%">
+                        </a>
+                    </div>
+                    <div class=" col-6 p-2 text-dir m-auto">
+                        <h5 class="font-weight-bold">Woman jacket</h5>
+                        <p>Woman jacket Woman jacket</p>
+                        <div class="d-flex justify-content-between">
+                            <h5 class="font-weight-bold  ">50KD</h5>
+                            <h5 class="font-weight-bold  " style="text-decoration: line-through">50KD</h5>
+                        </div> <a class="btn btn-dark text-light font-weight-bold"
+                            style="background: #f13582;border:none">Add to cart</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="item best-sell">
+                <div class="row dir-rtl" style="height:45vh">
+                    <div class="col-6 p-0 res-wid">
+                        <a href="">
+                            <img src="{{ asset('front/img/8.jpeg') }}" style="width: 100%;height:100%">
+                        </a>
+                    </div>
+                    <div class=" col-6 p-2 text-dir m-auto">
+                        <h5 class="font-weight-bold">Woman jacket</h5>
+                        <p>Woman jacket Woman jacket</p>
+                        <div class="d-flex justify-content-between">
+                            <h5 class="font-weight-bold  ">50KD</h5>
+                            <h5 class="font-weight-bold  " style="text-decoration: line-through">50KD</h5>
+                        </div> <a class="btn btn-dark text-light font-weight-bold"
+                            style="background: #f13582;border:none">Add to cart</a>
+                    </div>
+
+                </div>
             </div>
 
+        </div>
+    </div>
 
-            <div class="col-lg-8 col-md-8 col-sm-12   pad-0">
-                <div class="blog-slides owl-carousel owl-theme owl-loaded owl-drag">
 
 
-                    <div class="owl-stage-outer">
 
-                        <div class="owl-stage"
-                            style="transform: translate3d(-2280px, 0px, 0px); transition: all 0.25s ease 0s; width: 4180px;">
+    @if ($offers->count() > 0)
 
-                            @foreach ($new_arrive as $p)
-                                    <div class="owl-item active" style="width: 350px; margin-right: 30px;">
+        <div class="container pad-0 ">
 
-                                        <div class="single-blog-post mb-30">
-                                            <div class="post-image">
-                                                <a href="{{ route('product', $p->id) }}" class="d-block img-hover">
-                                                    <img src="{{ asset('/storage/' . $p->img) }}" alt="image" class="image">
-                                                    <div class="middle">
-                                                        <div class="btn btn-danger">@lang('site.add_to_cart')</div>
-                                                      </div>
-                                                </a>
+            <br>
+            <h2 class="text-center  d-flex justify-content-between">
+                <b></b>
+                <span class="">@lang('site.offer')
 
-                                                <!-- <div class="tag">
-                                        <a href="#">Management</a>
-                                    </div> -->
-                                            </div>
+                </span>
+                <b></b>
+            </h2>
+            <br>
+            <br>
+            {{-- <br class="d-none d-md-block">
+        <br class="d-none d-md-block"> --}}
 
-                                            <div class="post-content text-dir">
+            {{-- <div class="col-lg-9 col-md-8 pad-0 "> --}}
+            <div class="row text-center dir-rtl">
+                @foreach ($offers as $p)
 
-                                                <h3 ><a href="{{ route('product', $p->id) }}" class="d-inline-block">
-                                                    @if (Lang::locale() == 'ar')
-                                                    {{ $p->title_ar }}
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class=" product relative text-dir mb-3">
 
-                                                @else
+                            {{-- <div class="  heart ">
+                                    <a href="#" class="addToWishList text-white" data-product-id="{{$p->id}}">
+                                        <i class="far fa-heart "></i>
+                                    </a>
 
-                                                    {{ $p->title_en }}
+                                </div> --}}
 
-                                                @endif
-                                                    </a></h3>
-                                                <h6 ><a href="{{ route('product', $p->id) }}" class="d-inline-block main-color">
-                                                    @if (Lang::locale() == 'ar')
-                                                    {{-- {{$p->basic_category->name_ar}}
-                                        -
-                                        {{$p->category->name_ar}} --}}
-                                                    <?php $pieces = explode(' ', $p->description_ar);
-                                                    $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
-                                                    {{ $first_part }}
-                                                @else
-
-                                                    {{-- {{$p->basic_category->name_en}}
-                                        -
-                                        {{$p->category->name_en}} --}}
-                                                    <?php $pieces = explode(' ', $p->description_en);
-                                                    $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
-                                                    {{ $first_part }}
-                                                @endif
-                                                </a></h6>
-                                                <h3><a href="{{ route('product', $p->id) }}" class="d-inline-block">
-                                                    @auth()
-                                                    {{ Auth::user()->getPrice($p->price) }}
-                                                    {{ Auth::user()->country->currency->code }}
-                                                @endauth
-                                                @guest()
-                                                    @if (Cookie::get('name'))
-                                                        {{ number_format($p->price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                                                        {{ App\Country::find(Cookie::get('name'))->currency->code }}
-                                                    @else
-                                                        {{ $p->price }}
-                                                        @lang('site.kwd')
-                                                    @endif
-                                                @endguest
-                                                </a></h3>
-                                                <!-- <a href="single-blog.html" class="read-more-btn">Read More <i class='bx bx-right-arrow-alt'></i></a> -->
-                                            </div>
-                                        </div>
-
+                            <a href="{{ route('product', $p->id) }}" class="image-hover ">
+                                <div style="position: relative">
+                                    <img src="{{ asset('/storage/' . $p->img) }}"
+                                        onerror="this.onerror=null;this.src='{{ asset('front/img/3.jpg') }}'"
+                                        width="100%" class="show-img image">
+                                    <div class="middle">
+                                        <div class="btn btn-danger">@lang('site.add_to_cart')</div>
                                     </div>
-                                    @endforeach
+                                    @if ($img = App\ProdImg::where('product_id', $p->id)->first())
+                                        <img src="{{ asset($img->img) }}" width="100%" class="hide-img image">
+                                        <div class="middle">
+                                            <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                                        </div>
+                                    @else
+                                        <img src="{{ asset('/storage/' . $p->img) }}" width="100%"
+                                            class="hide-img image">
+                                        <div class="middle">
+                                            <div class="btn btn-danger">@lang('site.add_to_cart')</div>
+                                        </div>
+                                    @endif
+                                </div>
+                            </a>
+                            <p class="mr-0">
+                                <a href="{{ route('product', $p->id) }}">
+                                    @if (Lang::locale() == 'ar')
+                                        {{ $p->title_ar }}
+
+                                    @else
+
+                                        {{ $p->title_en }}
+
+                                    @endif
 
 
+                                </a>
+                            </p>
+                            <h6><a href="{{ route('product', $p->id) }}">
 
+
+                                    @if (Lang::locale() == 'ar')
+                                        {{-- {{$p->basic_category->name_ar}}
+                                            -
+                                            {{$p->category->name_ar}} --}}
+                                        <?php $pieces = explode(' ', $p->description_ar);
+                                        $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
+                                        {{ $first_part }}
+                                    @else
+
+                                        {{-- {{$p->basic_category->name_en}}
+                                            -
+                                            {{$p->category->name_en}} --}}
+                                        <?php $pieces = explode(' ', $p->description_en);
+                                        $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
+                                        {{ $first_part }}
+                                    @endif
+
+
+                                </a></h6>
+                            <div class="d-flex justify-content-between">
+                                <h5>
+
+
+                                    @auth()
+                                        {{ Auth::user()->getPrice($p->price) }}
+                                        {{ Auth::user()->country->currency->code }}
+                                    @endauth
+                                    @guest()
+                                        @if (Cookie::get('name'))
+                                            {{ number_format($p->price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
+                                            {{ App\Country::find(Cookie::get('name'))->currency->code }}
+                                        @else
+                                            {{ $p->price }}
+                                            @lang('site.kwd')
+                                        @endif
+                                    @endguest
+
+                                </h5>
+                                <h5 style="text-decoration: line-through">
+
+
+                                    @auth()
+                                        {{ Auth::user()->getPrice($p->before_price) }}
+                                        {{ Auth::user()->country->currency->code }}
+                                    @endauth
+                                    @guest()
+                                        @if (Cookie::get('name'))
+                                            {{ number_format($p->before_price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
+                                            {{ App\Country::find(Cookie::get('name'))->currency->code }}
+                                        @else
+                                            {{ $p->before_price }}
+                                            @lang('site.kwd')
+                                        @endif
+                                    @endguest
+
+                                </h5>
+                            </div>
                         </div>
 
                     </div>
-                    <div class="owl-nav"><button type="button" role="presentation" class="owl-prev">
-                        <span aria-label="Previous">‹</span></button><button type="button" role="presentation"
-                            class="owl-next"><span aria-label="Next">›</span></button></div>
-                    <div class="owl-dots disabled"></div>
-                </div>
+                @endforeach
+
+
+                {{-- @else
+                    <h5 style="text-align: center;margin: auto">
+                        @lang('site.no_data')
+                    </h5> --}}
+                {{-- @endif --}}
 
             </div>
+            <div class="text-center m-auto gq gr gs dg ck dh di cn gt c1 gu gv cq p cr gw gx gy">
+                <a href="{{ route('offer') }}" class="">
+                    <div class="text-center text-light">@lang('site.more')</div>
+                </a>
+            </div>
+            <br><br>
+
+            {{-- </div> --}}
+            <br><br>
         </div>
-        <br><br>
-    </div>
+
+    @endif
+
+
+
     <div class="container pad-0 d-md-none">
         <h2 class="text-center  d-flex justify-content-between">
             <b></b>
@@ -359,8 +621,8 @@
         <div class="container dir-rtl" style="max-width: 1000px">
 
             <div class="row">
-                <div class="col-md-6 ml-auto order-md-2 align-self-center">
-                    <div class="site-block-cover-content text-center">
+                <div class="col-md-12 ml-auto order-md-2 align-self-center">
+                    <div class="site-block-cover-content text-center mt-2">
                         <!-- <h2 class="sub-title">#The world talk about fasion</h2> -->
                         <a href="{{ route('post', $post->id) }}">
                             @if (app()->getLocale() == 'en')
@@ -370,10 +632,10 @@
                             @endif
                         </a>
 
-                        <a href="{{ route('post', $post->id) }}" class="btn bg-main mt-5">@lang('site.read_more')</a>
+                        <a href="{{ route('post', $post->id) }}" class="btn bg-main mt-1">@lang('site.read_more')</a>
                     </div>
                 </div>
-                <div class="col-md-6 order-1 align-self-end">
+                <div class="col-md-12 order-1 align-self-end">
                     <a href="{{ route('post', $post->id) }}"><img src="{{ asset('/storage/' . $post->img1) }}"
                             alt="Image" class="img-fluid" data-pagespeed-url-hash="799042288"
                             onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
@@ -421,7 +683,7 @@
 
                 icon: '?',
                 title:'Login first!',
-                confirmButtonColor: '#ec7d23',
+                confirmButtonColor: '#d76797',
                 position:'bottom-start',
                 showCloseButton: true,
                 })
@@ -437,7 +699,7 @@
                 if (data.message){
                 Swal.fire({
                 icon: '?',
-                confirmButtonColor: '#ec7d23',
+                confirmButtonColor: '#d76797',
                 position:'bottom-start',
                 showCloseButton: true,
                 title: 'Added successfully!',
@@ -451,7 +713,7 @@
                 // alert('This product already in you wishlist');
                 Swal.fire({
                 icon: '?',
-                confirmButtonColor: '#ec7d23',
+                confirmButtonColor: '#d76797',
                 position:'bottom-start',
                 showCloseButton: true,
                 title: 'This product already in you wishlist',

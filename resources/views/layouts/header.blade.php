@@ -609,12 +609,12 @@
                 @auth()
                     <li class="nav-item ">
                         <a class="nav-link " href="{{ route('myaccount') }}"> <i class="fas fa-user sml-fa"
-                                style="color:#ec7d23"></i> </a>
+                                style="color:#d76797"></i> </a>
                     </li>
                 @endauth
 
                 <li class="nav-item"><a class="nav-link " href="{{ route('cart') }}"><i
-                            class="fas fa-shopping-cart sml-fa" style="font-size: 25px;color:#ec7d23"></i><span
+                            class="fas fa-shopping-cart sml-fa" style="font-size: 25px;color:#d76797"></i><span
                             class='badge badge-warning' id='lblCartCount'>
                             {{ Session::has('cart_details') ? Session::get('cart_details')['totalQty'] : '0' }}
                         </span>

@@ -241,11 +241,11 @@
                 </form>
 
                 <a class="btn bg-main " data-toggle="modal" data-target="#exampleModalCenter"
-                    style="width: 100%;background: #ec7d23 !important;">@lang('site.size_guide')</a>
+                    style="width: 100%;background: #d76797 !important;">@lang('site.size_guide')</a>
                 <a id="add_cart" class="btn bg-main "
                     style="width: 100%;background: #000000 !important;margin-top:10px">@lang('site.add_to_cart')</a>
                 <a class="btn bg-main addToWishList" data-product-id="{{ $product->id }}"
-                    style="margin:10px 0px;width: 100%;background: #ec7d23 !important;">@lang('site.add_to_wishlist')</a>
+                    style="margin:10px 0px;width: 100%;background: #d76797 !important;">@lang('site.add_to_wishlist')</a>
 
 
             </div>
@@ -474,7 +474,7 @@
                     Swal.fire({
                         icon: '?',
                         title: 'يرجي تحديد الخيارات ',
-                        confirmButtonColor: '#ec7d23',
+                        confirmButtonColor: '#d76797',
                         position: 'bottom-start',
                         showCloseButton: true,
                     })
@@ -531,7 +531,7 @@
                         Swal.fire({
                             title: 'لم تكتمل العمليه ',
                             icon: '?',
-                            confirmButtonColor: '#ec7d23',
+                            confirmButtonColor: '#d76797',
                             position: 'bottom-start',
                             showCloseButton: true,
                         })
@@ -585,7 +585,7 @@
                 Swal.fire({
                 icon: '?',
                 title:'Login first!',
-                confirmButtonColor: '#ec7d23',
+                confirmButtonColor: '#d76797',
                 position:'bottom-start',
                 showCloseButton: true,
                 })
@@ -602,7 +602,7 @@
                 Swal.fire({
                 icon: '?',
                 title: 'Added successfully!',
-                confirmButtonColor: '#ec7d23',
+                confirmButtonColor: '#d76797',
                 position:'bottom-start',
                 showCloseButton: true,
                 showConfirmButton: false,
@@ -619,7 +619,7 @@
                 Swal.fire({
                 title: 'This product already in you wishlist',
                 icon: '?',
-                confirmButtonColor: '#ec7d23',
+                confirmButtonColor: '#d76797',
                 position:'bottom-start',
                 showCloseButton: true,
                 showConfirmButton: false,

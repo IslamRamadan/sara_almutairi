@@ -351,7 +351,7 @@
                     Swal.fire({
                         title: 'لم تكتمل العمليه ',
                         icon: '?',
-                        confirmButtonColor: '#ec7d23',
+                        confirmButtonColor: '#d76797',
                         position:'bottom-start',
                         showCloseButton: true,
                     })

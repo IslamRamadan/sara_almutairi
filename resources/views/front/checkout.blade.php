@@ -456,7 +456,7 @@
                         if (!result.success) {
                             Swal.fire({
                                 icon: '?',
-                                confirmButtonColor: '#ec7d23',
+                                confirmButtonColor: '#d76797',
                                 position: 'bottom-start',
                                 showCloseButton: true,
                                 title: result.msg,
@@ -475,7 +475,7 @@
                         Swal.fire({
                             title: 'لم تكتمل العمليه ',
                             icon: '?',
-                            confirmButtonColor: '#ec7d23',
+                            confirmButtonColor: '#d76797',
                             position: 'bottom-start',
                             showCloseButton: true,
                         })
@@ -518,7 +518,7 @@
                         if (!result.success) {
                             Swal.fire({
                                 icon: '?',
-                                confirmButtonColor: '#ec7d23',
+                                confirmButtonColor: '#d76797',
                                 position: 'bottom-start',
                                 showCloseButton: true,
                                 title: result.msg,
@@ -538,7 +538,7 @@
                         Swal.fire({
                             title: 'لم تكتمل العمليه ',
                             icon: '?',
-                            confirmButtonColor: '#ec7d23',
+                            confirmButtonColor: '#d76797',
                             position: 'bottom-start',
                             showCloseButton: true,
                         })

@@ -43,6 +43,8 @@ Route::group(
     Route::get('/cart','front\homeController@cart')->name('cart');
     Route::get('/post/{id}','front\homeController@post')->name('post');
     Route::get('/category/{type}/{id}','front\homeController@category')->name('category');
+    Route::get('/new_arrive','front\homeController@new_arrive')->name('new');
+    Route::get('/offers','front\homeController@offers')->name('offer');
     Route::get('/checkout','front\homeController@checkout')->name('checkout');
     Route::group(['middleware' => ['auth']], function () {
         Route::get('/myaccount', 'front\homeController@myaccount')->name('myaccount');

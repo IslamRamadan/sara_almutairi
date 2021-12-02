@@ -89,7 +89,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->all());
+    //    dd($request->all());
 //        dd($request["4".'height']);
         $messeges = [
 
@@ -125,35 +125,6 @@ class ProductController extends Controller
             return back()->withInput();
         }
 
-//        $img =  $request->photo ;
-//        //add new name for img
-//        $new_name_img = time().uniqid().".".$img->getClientOriginalExtension();
-//
-//        //move img to folder
-//        $move = $img->move(public_path("upload/products"), $new_name_img);
-//        // dd(public_path("upload"));
-//        // $move2= move_uploaded_file( $_FILES["logo"]["tmp_name"],public_path("upload")."/".$new_name_img) ;
-//        // dd($move2);
-//
-//        $new = "upload/products/".$new_name_img ;
-//        $request->merge(['img' => $new]);
-//
-//        $img2 =  $request->size_photo ;
-//        //add new name for img
-//        $new_name_img2 = time().uniqid().".".$img2->getClientOriginalExtension();
-//
-//        //move img to folder
-//        $move2 = $img2->move(public_path("upload/products"), $new_name_img2);
-//        // dd(public_path("upload"));
-//        // $move2= move_uploaded_file( $_FILES["logo"]["tmp_name"],public_path("upload")."/".$new_name_img) ;
-//        // dd($move2);
-//
-//        $new2 = "upload/products/".$new_name_img2 ;
-//        $request->merge(['height_img' => $new2]);
-
-
-        // $images .= 'yes';
-
         $image = $request->photo;
         $original_name = strtolower(trim($image->getClientOriginalName()));
         $file_name = time() . rand(100, 999) . $original_name;
@@ -176,6 +147,7 @@ class ProductController extends Controller
 
         $product = Product::create([
             'new' => $request['new']?:0,
+            'has_offer' => $request['has_offer']?:0,
             'appearance' => $request['appearance']?:0,
             'best_selling' => $request['best_selling']?:0,
             'featured' => $request['featured']?:0,
@@ -186,6 +158,7 @@ class ProductController extends Controller
             'title_en' => $request['title_en'] ? :'',
             'description_en' => $request['description_en'] ? :'',
             'description_ar' => $request['description_ar'] ? :'',
+            'before_price' => $request['before_price']?:$request['price'],
             'price' => $request['price'],
             'img' => $path.$file_name,
         ]);
@@ -421,6 +394,7 @@ $messeges = [
 
             $product = $product->update([
                 'new' => $request['new']?:0,
+                'has_offer' => $request['has_offer']?:0,
                 'appearance' => $request['appearance']?:0,
                 'best_selling' => $request['best_selling']?:0,
                 'featured' => $request['featured']?:0,
@@ -432,6 +406,7 @@ $messeges = [
                 'description_en' => $request['description_en'] ? :'',
                 'description_ar' => $request['description_ar'] ? :'',
                 'price' => $request['price'],
+                'before_price' => $request['before_price']?:$request['price'],
                 'img' => $path.$file_name,
 
             ]);
@@ -479,6 +454,8 @@ $messeges = [
         else{
             $product = $product->update([
                 'new' => $request['new']?:0,
+                'has_offer' => $request['has_offer']?:0,
+
                 'appearance' => $request['appearance']?:0,
                 'best_selling' => $request['best_selling']?:0,
                 'featured' => $request['featured']?:0,
@@ -489,6 +466,8 @@ $messeges = [
                 'title_en' => $request['title_en'] ? :'',
                 'description_en' => $request['description_en'] ? :'',
                 'description_ar' => $request['description_ar'] ? :'',
+                'before_price' => $request['before_price']?:$request['price'],
+
                 'price' => $request['price'],
 
             ]);

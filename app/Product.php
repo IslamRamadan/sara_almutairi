@@ -11,7 +11,9 @@ class Product extends Model
     protected $fillable = [
         'title_en'  , 'title_ar' , 'description_en','description_ar',
         'appearance','best_selling','featured','new','price','delivery_period','img','height_img',
-        'basic_category_id','category_id','size_guide_id'
+        'basic_category_id','category_id','size_guide_id','has_offer','before_price'
+
+
 
     ];
     protected $guarded=[];
