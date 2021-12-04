@@ -182,7 +182,8 @@
                     @guest()
                         @if (Cookie::get('name'))
                             {{ number_format($product->price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                            {{ App\Country::find(Cookie::get('name'))->currency->code }}
+                            {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
+                            @lang('site.kwd')
 
                         @else
                             {{ $product->price }}

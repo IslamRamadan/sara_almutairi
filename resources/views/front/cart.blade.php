@@ -94,7 +94,8 @@
                                     @guest()
                                         @if(Cookie::get('name') )
                                             {{number_format(\App\Product::find($cart_child['product_id'])['price'] / App\Country::find(Cookie::get('name'))->currency->rate,2)}}
-                                            {{App\Country::find(Cookie::get('name'))->currency->code}}
+                                            {{-- {{App\Country::find(Cookie::get('name'))->currency->code}} --}}
+                                            @lang('site.kwd')
 
                                         @else
                                             {{  \App\Product::find($cart_child['product_id'])['price'] }}
@@ -147,7 +148,8 @@
                                     @guest()
                                         @if(Cookie::get('name') )
                                             {{number_format($cart_child['quantity']*  (\App\Product::find($cart_child['product_id'])['price']/ App\Country::find(Cookie::get('name'))->currency->rate),2)}}
-                                            {{App\Country::find(Cookie::get('name'))->currency->code}}
+                                            {{-- {{App\Country::find(Cookie::get('name'))->currency->code}} --}}
+                                            @lang('site.kwd')
 
                                         @else
                                             {{$cart_child['quantity']*  \App\Product::find($cart_child['product_id'])['price'] }}
@@ -256,7 +258,8 @@
 
                                     @if(Cookie::get('name') )
                                         {{Session::has('cart_details')?number_format(Session::get('cart_details')['totalPrice'] / App\Country::find(Cookie::get('name'))->currency->rate,2):0}}
-                                        {{App\Country::find(Cookie::get('name'))->currency->code}}
+                                        {{-- {{App\Country::find(Cookie::get('name'))->currency->code}} --}}
+                                        @lang('site.kwd')
 
                                     @else
                                         {{ Session::has('cart_details')?Session::get('cart_details')['totalPrice']:0 }} @lang('site.kwd')
@@ -276,7 +279,8 @@
                                 @guest()
                                     @if(Cookie::get('name') )
                                         {{Session::has('cart_details')?number_format(Session::get('cart_details')['totalPrice']/ App\Country::find(Cookie::get('name'))->currency->rate,2):0}}
-                                        {{App\Country::find(Cookie::get('name'))->currency->code}}
+                                        {{-- {{App\Country::find(Cookie::get('name'))->currency->code}} --}}
+                                        @lang('site.kwd')
                                     @else
                                         {{ Session::has('cart_details')?Session::get('cart_details')['totalPrice']:0 }} @lang('site.kwd')
 

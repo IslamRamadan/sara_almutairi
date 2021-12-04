@@ -54,10 +54,13 @@ class homeController extends Controller
             ->offset(0)->limit(8)->get();
         $offers = Product::orderBy('created_at', 'desc')->where('has_offer', 1)->where('appearance', 1)
             ->offset(0)->limit(8)->get();
+        $best_sell = Product::orderBy('created_at', 'desc')->where('best_selling', 1)->where('appearance', 1)
+            ->offset(0)->limit(5)->get();
         $posts = Post::orderBy('created_at', 'desc')->where('appearance', 1)
             ->offset(0)->limit(3)->get();
+
         // dd($new_arrive);
-        return view('front.index', compact('sliders', 'new_arrive', 'posts','offers'));
+        return view('front.index', compact('sliders', 'new_arrive', 'posts','offers','best_sell'));
     }
 
     public function account()
@@ -130,6 +133,8 @@ class homeController extends Controller
     {
         //        $prod_img=ProdImg::where('product_id',$id)->first()->img;
         //        dd($prod_img);
+        $sliders = Slider::all();
+
         if ($type == 1) {
             $last_views = Product::where('best_selling', 1)->where('basic_category_id', $id)->where('appearance', 1)->orderBy('updated_at',  'DESC')->take(3)->get();
 
@@ -144,7 +149,7 @@ class homeController extends Controller
             Alert::error('خطأ', 'هذا القسم غير متوفر حاليا');
             return back();
         }
-        return view('front.category', compact('category', 'type', 'last_views'));
+        return view('front.category', compact('category', 'type', 'last_views','sliders'));
     }
 
     public function new_arrive()

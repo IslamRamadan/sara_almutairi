@@ -7,6 +7,9 @@
     .res-wid {
         width: 200px !important;
     }
+    .max-width {
+        max-width: 700px !important
+    }
 }
 
 
@@ -18,6 +21,9 @@
 @media (min-width: 990px) and (max-width: 1200px) {
     .res-wid {
         width: 200px !important;
+    }
+    .max-width {
+        max-width: 700px !important
     }
 }
 
@@ -37,6 +43,9 @@
     .h-img {
         height: 60vh;
         object-fit: cover;
+    }
+    .max-width {
+        max-width: 700px !important
     }
 }
 
@@ -83,6 +92,9 @@
     }
     .left {
         text-align: left!important;
+    }
+    .max-width {
+        max-width: 700px !important
     }
 }
 
@@ -158,6 +170,9 @@
     .center {
         text-align: center!important;
         margin: auto!important;
+    }
+    .max-width {
+        max-width: 380px !important
     }
 }
 

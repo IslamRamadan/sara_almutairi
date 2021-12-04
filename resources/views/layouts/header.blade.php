@@ -223,7 +223,7 @@
 
         <div>
             <a class="nav-link " href="{{ route('/') }}" style="padding: 3px !important;"> <img
-                    src="{{ asset('/storage/' . $my_setting->logo) }}" width="100"></a>
+                    src="{{ asset('/storage/' . $my_setting->logo) }}" width="50"></a>
         </div>
 
         <div class="text-right align-self-center mr-4">

@@ -232,7 +232,8 @@
                                                     @guest()
                                                         @if (Cookie::get('name'))
                                                             {{ number_format(\App\Product::find($cart_child['product_id'])['price'] / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                                                            {{ App\Country::find(Cookie::get('name'))->currency->code }}
+                                                            {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
+                                                            @lang('site.kwd')
                                                         @else
                                                             {{ \App\Product::find($cart_child['product_id'])['price'] }}
                                                             @lang('site.kwd')
@@ -281,7 +282,8 @@
                                                     @guest()
                                                         @if (Cookie::get('name'))
                                                             {{ number_format(Session::get('cart_details')['totalPrice'] / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                                                            {{ App\Country::find(Cookie::get('name'))->currency->code }}
+                                                            {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
+                                                            @lang('site.kwd')
                                                         @else
                                                             {{ Session::get('cart_details')['totalPrice'] }}
                                                             @lang('site.kwd')
@@ -318,7 +320,8 @@
                                                         @guest()
                                                             @if (Cookie::get('name'))
                                                                 {{ number_format(Session::get('coupon')['discount'] / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                                                                {{ App\Country::find(Cookie::get('name'))->currency->code }}
+                                                                {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
+                                                                @lang('site.kwd')
                                                             @else
                                                                 {{ Session::get('coupon')['discount'] }} @lang('site.kwd')
                                                             @endif

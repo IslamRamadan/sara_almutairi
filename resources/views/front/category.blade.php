@@ -4,6 +4,7 @@
 
 @endsection
 @section('content')
+
     <!-----start carousel --->
     <div id="carouselExampleIndicators" class="carousel slide relative" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -11,31 +12,35 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
+
         <div class="carousel-inner">
-            <div class="carousel-item active ">
-                <img class=" w-100 h " src="{{ asset('front/img/11.jpeg') }}" alt="1 slide">
-                <div class="abs w-100">
-                    <p class="c-w mr-0">it has finally started</p>
-                    <h1 class=""> Sara Almutairi</h1>
-                    <button class=" btn btn-danger">shop now <i class="far fa-heart"></i> </button>
+            <?php
+            $i = 0;
+            ?>
+            @foreach ($sliders as $one)
+                <div class="carousel-item  @if ($i == 0) active @endif ">
+                    <img class=" w-100 h " src="{{ asset('storage/' . $one->img) }}" alt="1 slide"
+                        style="height: 70vh">
+                    @if (app()->getLocale() == 'en')
+                        <div class="abs w-100">
+                            <p class="c-w mr-0">{{ $one->description_en }}</p>
+                            <h1 class=""> {{ $one->name_en }}</h1>
+                            <button class=" btn btn-danger">@lang('site.shop_now') <i class="far fa-heart"></i></button>
+                    </div> @else
+                        <div class="abs w-100">
+                            <p class="c-w mr-0">{{ $one->description_ar }}</p>
+                            <h1 class=""> {{ $one->name_ar }}</h1>
+                            <button class=" btn btn-danger">@lang('site.shop_now') <i class="far fa-heart"></i></button>
+                        </div>
+                    @endif
+
+
                 </div>
-            </div>
-            <div class="carousel-item  ">
-                <img class=" w-100 h " src="{{ asset('front/img/5.jpeg') }}" alt="1 slide">
-                <div class="abs w-100">
-                    <p class="c-w mr-0">it has finally started</p>
-                    <h1 class=""> Sara Almutairi</h1>
-                    <button class=" btn btn-danger">shop now <i class="far fa-heart"></i> </button>
-                </div>
-            </div>
-            <div class="carousel-item  ">
-                <img class=" w-100 h " src="{{ asset('front/img/8.jpeg') }}" alt="1 slide">
-                <div class="abs w-100">
-                    <p class="c-w mr-0">it has finally started</p>
-                    <h1 class=""> Sara Almutairi</h1>
-                    <button class=" btn btn-danger">shop now <i class="far fa-heart"></i> </button>
-                </div>
-            </div>
+                <?php
+                $i++;
+                ?>
+            @endforeach
+
 
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -47,6 +52,8 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+    <!--- end head --->
+    <br>
     <!-----start  --->
     <div class="container ">
         <div class="row dir-rtl text-dir">
@@ -303,7 +310,8 @@
                                         @guest()
                                             @if (Cookie::get('name'))
                                                 {{ number_format($b->price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                                                {{ App\Country::find(Cookie::get('name'))->currency->code }}
+                                                {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
+                                                @lang('site.kwd')
                                             @else
                                                 {{ $b->price }} @lang('site.kwd')
 
@@ -328,7 +336,7 @@
                                 @if ($p->appearance == 1)
 
                                     <div class="col-6 col-md-6 col-lg-4">
-                                        <div class=" product relative text-dir mb-3">
+                                        <div class=" product relative text-dir mb-5">
 
                                             {{-- <div class="  heart ">
                                         <a href="#" class="addToWishList text-white" data-product-id="{{$p->id}}">
@@ -406,7 +414,8 @@
                                                 @guest()
                                                     @if (Cookie::get('name'))
                                                         {{ number_format($p->price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                                                        {{ App\Country::find(Cookie::get('name'))->currency->code }}
+                                                        {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
+                                                        @lang('site.kwd')
                                                     @else
                                                         {{ $p->price }}
                                                         @lang('site.kwd')

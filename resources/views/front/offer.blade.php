@@ -93,7 +93,7 @@
                             @if ($p->appearance == 1)
 
                                 <div class="col-6 col-md-4 col-lg-3">
-                                    <div class=" product relative text-dir mb-3">
+                                    <div class=" product relative text-dir mb-5">
 
                                         {{-- <div class="  heart ">
                                         <a href="#" class="addToWishList text-white" data-product-id="{{$p->id}}">
@@ -160,6 +160,26 @@
 
 
                                             </a></h6>
+                                            <div class="d-flex justify-content-between">
+                                        <h6 class="font-small" style="text-decoration: line-through">
+
+
+                                            @auth()
+                                                {{ Auth::user()->getPrice($p->before_price) }}
+                                                {{ Auth::user()->country->currency->code }}
+                                            @endauth
+                                            @guest()
+                                                @if (Cookie::get('name'))
+                                                    {{ number_format($p->before_price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
+                                                    {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
+                                                    @lang('site.kwd')
+                                                @else
+                                                    {{ $p->before_price }}
+                                                    @lang('site.kwd')
+                                                @endif
+                                            @endguest
+
+                                        </h6>
                                         <h5>
 
 
@@ -170,7 +190,8 @@
                                             @guest()
                                                 @if (Cookie::get('name'))
                                                     {{ number_format($p->price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                                                    {{ App\Country::find(Cookie::get('name'))->currency->code }}
+                                                    {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
+                                                    @lang('site.kwd')
                                                 @else
                                                     {{ $p->price }}
                                                     @lang('site.kwd')
@@ -178,6 +199,7 @@
                                             @endguest
 
                                         </h5>
+                                        </div>
                                     </div>
 
                                 </div>
