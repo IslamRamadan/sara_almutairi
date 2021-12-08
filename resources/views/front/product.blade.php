@@ -198,6 +198,8 @@
 
 
                 <br>
+                @if ($product->basic_category->type!= 1)
+
                 <div id="colors">
                     <div id="s" class="color-blocks" style="">
                         <span>@lang('site.size') :</span>
@@ -222,6 +224,8 @@
                 </div>
                 <br>
                 <br>
+                @endif
+
 
 
 
@@ -240,9 +244,11 @@
                         class="cart_quantity_input form-control grey count" value="1" name="quantity">
                     <a rel="nofollow" class="btn btn-default btn-plus" href="#" title="Add" style="margin: -9px;">+</a>
                 </form>
+                @if ($product->basic_category->type!= 1)
 
                 <a class="btn bg-main " data-toggle="modal" data-target="#exampleModalCenter"
                     style="width: 100%;background: #d76797 !important;">@lang('site.size_guide')</a>
+                    @endif
                 <a id="add_cart" class="btn bg-main "
                     style="width: 100%;background: #000000 !important;margin-top:10px">@lang('site.add_to_cart')</a>
                 <a class="btn bg-main addToWishList" data-product-id="{{ $product->id }}"
@@ -379,7 +385,9 @@
                                                             @guest()
                                                                 @if (Cookie::get('name'))
                                                                     {{ number_format($p->price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
-                                                                    {{ App\Country::find(Cookie::get('name'))->currency->code }}
+                                                                    {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
+                                                                    @lang('site.kwd')
+
                                                                 @else
                                                                     {{ $p->price }}
                                                                     @lang('site.kwd')
@@ -410,6 +418,7 @@
 
     <!-- Button trigger modal -->
 
+    @if ($product->basic_category->type!= 1)
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
@@ -426,6 +435,7 @@
         </div>
     </div>
     <!--- end  --->
+    @endif
 
 @endsection
 @section('script')
@@ -459,7 +469,9 @@
                 let size = 0;
                 let height = 0;
                 let product = '{{ $product->id }}';
-                let quantity = $("input[name=quantity]").val();;
+                let quantity = $("input[name=quantity]").val();
+                let basic_type = '{{ $product->basic_category->type }}';
+
 
                 //TODO :: IF NOT SELECTED HEIGHT OR SIZE ASK TO CHOOSE
 
@@ -471,7 +483,7 @@
                     height = $("input[name=height]:checked").val();
                 }
 
-                if ((size == 0) || (height == 0)) {
+                if ((basic_type !=1 && size == 0) || ( basic_type!=1 && height == 0)) {
                     Swal.fire({
                         icon: '?',
                         title: 'يرجي تحديد الخيارات ',
@@ -480,6 +492,7 @@
                         showCloseButton: true,
                     })
                 } else {
+                    // console.log("ok");
                     addToCart(product, quantity, height, size);
                 }
 

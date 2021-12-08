@@ -157,6 +157,7 @@ class OrderController extends Controller
             $data = OrderItem::where('order_id' , $order_id)->latest()->get();
             return Datatables::of($data)
                 ->addIndexColumn()
+
                 ->addColumn('product', function ($artist) {
                     return $artist->product->title_en?:'' . ' - ' . $artist->product->title_ar?:'' ;
                 })
@@ -175,10 +176,22 @@ class OrderController extends Controller
                     return $artist->product->price?:"";
                 })
                 ->addColumn('height', function ($artist) {
-                    return $artist->height->height->name?:"";
+                    if ($artist->product->basic_category->type == 1) {
+                        return "-";
+                    }
+                    else{
+                        return $artist->height->height->name?:"";
+
+                    }
                 })
                 ->addColumn('size', function ($artist) {
-                    return $artist->size->size->name?:"";
+                    if ($artist->product->basic_category->type == 1) {
+                        return "-";
+                    }
+                    else{
+
+                        return $artist->size->size->name?:"";
+                    }
                 })
 //                ->rawColumns(['action'])
                 ->make(true);

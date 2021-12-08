@@ -275,6 +275,7 @@ return [
       'customer_services'=>'خدمه العملاء',
       'branches'=>'فروعنا',
       'direct_contact'=>'تواصل مباشر',
+      'result'=>'نتيجه البحث',
    //    'edit_page'=>'',
    //    'edit_page'=>'',
    //    'edit_page'=>'',

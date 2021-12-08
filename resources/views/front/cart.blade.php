@@ -68,18 +68,39 @@
 
                             </td>
                                 <td >
+                                    <?php $id = (\App\Product::find($cart_child['product_id'])['basic_category_id']);
+                                           $category=\App\BasicCategory::find($id)->type;
+                                    ?>
+                                    {{-- {{dd($category)}} --}}
+                                    @if ($category !=1)
                                     <p class="">
                                         <br>
-                                        <a href="#" class="main-color">{{  \App\ProdSize::find($cart_child['product_size_id'])->size->name }} </a>
+                                        <a href="#" class="main-color">{{  \App\ProdSize::find($cart_child['product_size_id'])->size->name ? : 0 }} </a>
                                     </p>
+                                    @else
+                                    <p>
+                                        <br>
+                                        -</p>
+                                    @endif
 
 
                                 </td>
                                 <td >
+                                    @if ($category !=1)
+
                                     <p class="">
                                         <br>
-                                        <a href="#" class="main-color">{{  \App\ProdHeight::find($cart_child['product_height_id'])->height->name}} </a>
+                                        <a href="#" class="main-color">{{  \App\ProdHeight::find($cart_child['product_height_id'])->height->name ? :0}} </a>
                                     </p>
+                                    @else
+                                    <p>
+                                        <br>
+
+                                        -</p>
+
+
+                                    @endif
+
 
 
                                 </td>

@@ -96,6 +96,7 @@ Route::group(
     Route::get('/getHeights','front\CartController@getHeights')->name('get.heights');
     Route::post('/getCities','front\CartController@getCities')->name('get.cities');
     Route::post('/getDelivery','front\CartController@getDelivery')->name('get.delivery');
+    Route::post('/checkCategory','front\homeController@checkCat')->name('check.cat');
 
     Route::post('/order/store','front\CartController@store')->name('order.store');
     Route::get('payment_callback' , 'front\CartController@callBackUrl');

@@ -276,7 +276,8 @@ return [
     'customer_services'=>'Customer services',
     'branches'=>'Branches',
     'direct_contact'=>'Direct contact',
-    // 'content_ar'=>'KWD',
+
+    'result'=>'Search Result',
     // 'content_ar'=>'KWD',
     // 'content_ar'=>'KWD',
     // 'content_ar'=>'KWD',

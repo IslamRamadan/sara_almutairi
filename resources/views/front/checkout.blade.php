@@ -244,10 +244,17 @@
                                                     @lang('site.quantity')
                                                     : {{ $cart_child['quantity'] }}
                                                     <br>
+                                                    <?php $id = (\App\Product::find($cart_child['product_id'])['basic_category_id']);
+                                                    $category=\App\BasicCategory::find($id)->type;
+                                             ?>
+                                             {{-- {{dd($category)}} --}}
+                                                @if ($category !=1)
+
                                                     @lang('site.size'):
                                                     {{ \App\ProdSize::find($cart_child['product_size_id'])->size['name'] }}
                                                     <br>
                                                     @lang('site.code'): {{ $cart_child['product_id'] }} <br>
+                                                @endif
                                                 </p>
                                             </div>
                                         </div>

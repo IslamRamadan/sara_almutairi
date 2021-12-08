@@ -158,7 +158,7 @@
 
 
 
-            <div class="blog-slides owl-carousel test owl-theme owl-loaded owl-drag">
+            <div class="blog-slides owl-carousel owl-one owl-theme owl-loaded owl-drag">
 
 
 
@@ -367,7 +367,7 @@
         </h2>
         <br>
         <br>
-        <div class="owl-carousel islam owl-theme" id="one">
+        <div class="owl-carousel owl-two owl-theme" id="one">
             @if ($best_sell->count()>0)
                 @foreach ($best_sell as $b)
                 <div class="item best-sell">
@@ -390,14 +390,14 @@
                                 @endif
                                 </a>
                             </h5>
-                            <p><a href="{{ route('product', $p->id) }}">
+                            <p><a href="{{ route('product', $b->id) }}">
 
 
                                 @if (Lang::locale() == 'ar')
                                     {{-- {{$p->basic_category->name_ar}}
                                         -
                                         {{$p->category->name_ar}} --}}
-                                    <?php $pieces = explode(' ', $p->description_ar);
+                                    <?php $pieces = explode(' ', $b->description_ar);
                                     $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
                                     {{ $first_part }}
                                 @else
@@ -405,7 +405,7 @@
                                     {{-- {{$p->basic_category->name_en}}
                                         -
                                         {{$p->category->name_en}} --}}
-                                    <?php $pieces = explode(' ', $p->description_en);
+                                    <?php $pieces = explode(' ', $b->description_en);
                                     $first_part = implode(' ', array_splice($pieces, 0, 4)); ?>
                                     {{ $first_part }}
                                 @endif
@@ -416,16 +416,16 @@
                                 @if ($b->has_offer == 1)
                                 <h6 class="font-small" class="font-weight-bold  " style="text-decoration: line-through">
                                         @auth()
-                                        {{ Auth::user()->getPrice($p->before_price) }}
+                                        {{ Auth::user()->getPrice($b->before_price) }}
                                         {{ Auth::user()->country->currency->code }}
                                     @endauth
                                     @guest()
                                         @if (Cookie::get('name'))
-                                            {{ number_format($p->before_price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
+                                            {{ number_format($b->before_price / App\Country::find(Cookie::get('name'))->currency->rate, 2) }}
                                             {{-- {{ App\Country::find(Cookie::get('name'))->currency->code }} --}}
                                             @lang('site.kwd')
                                         @else
-                                            {{ $p->before_price }}
+                                            {{ $b->before_price }}
                                             @lang('site.kwd')
                                         @endif
                                     @endguest
@@ -636,39 +636,40 @@
         </h2>
         <br>
     </div>
-    <div class="owl-carousel owl-theme">
-    @foreach ($posts as $post)
-    <div class="item" >
-        <div class=" dir-rtl max-width" style="max-width: 700px" >
+    <div class="owl-carousel owl-three owl-theme">
+        @foreach ($posts as $post)
+        <div class="item" >
+            <div class=" dir-rtl max-width" style="max-width: 700px" >
 
-            <div class="row">
-                <div class="col-md-12 ml-auto order-md-2 align-self-center">
-                    <div class="site-block-cover-content text-center mt-2">
-                        <!-- <h2 class="sub-title">#The world talk about fasion</h2> -->
-                        <a href="{{ route('post', $post->id) }}">
-                            @if (app()->getLocale() == 'en')
-                                <h1>{{ $post->title_en }}</h1>
-                            @else
-                                <h1>{{ $post->title_ar }}</h1>
-                            @endif
-                        </a>
+                <div class="row">
+                    <div class="col-md-12 ml-auto order-md-2 align-self-center">
+                        <div class="site-block-cover-content text-center mt-2">
+                            <!-- <h2 class="sub-title">#The world talk about fasion</h2> -->
+                            <a href="{{ route('post', $post->id) }}">
+                                @if (app()->getLocale() == 'en')
+                                    <h1>{{ $post->title_en }}</h1>
+                                @else
+                                    <h1>{{ $post->title_ar }}</h1>
+                                @endif
+                            </a>
 
-                        <a href="{{ route('post', $post->id) }}" class="btn bg-main mt-1">@lang('site.read_more')</a>
+                            <a href="{{ route('post', $post->id) }}" class="btn bg-main mt-1">@lang('site.read_more')</a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-12 order-1 align-self-end">
-                    <a href="{{ route('post', $post->id) }}"><img src="{{ asset('/storage/' . $post->img1) }}"
-                            alt="Image" class="img-fluid" data-pagespeed-url-hash="799042288"
-                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
+                    <div class="col-md-12 order-1 align-self-end">
+                        <a href="{{ route('post', $post->id) }}"><img src="{{ asset('/storage/' . $post->img1) }}"
+                                alt="Image" class="img-fluid" data-pagespeed-url-hash="799042288"
+                                onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
+                    </div>
                 </div>
             </div>
         </div>
+
+            <br><br>
+
+        @endforeach
     </div>
-
-        <br><br>
-
-    @endforeach
-</div>
+<br> <br>
 
 
 

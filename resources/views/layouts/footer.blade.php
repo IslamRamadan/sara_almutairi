@@ -202,17 +202,42 @@
 <script src="{{asset('front/assets/js/meanmenu.min.js')}}"></script>
 <script src="{{asset('front/assets/js/main.js')}}"></script>
 <script>
-    $('.owl-carousel').owlCarousel({
+    $('.owl-one').owlCarousel({
     loop:true,
     margin:10,
     responsiveClass:true,
+    // autoplay:true,
     lazyLoad:true,
     autoWidth:true,
 
     responsive:{
         0:{
             items:1,
-            nav:true
+            nav:false
+        },
+        600:{
+            items:2,
+            nav:false
+        },
+        1080:{
+            items:6,
+            nav:true,
+            loop:true
+        }
+    }
+});
+    $('.owl-two').owlCarousel({
+    loop:true,
+    margin:10,
+    responsiveClass:true,
+    // autoplay:true,
+    lazyLoad:true,
+    // autoWidth:true,
+
+    responsive:{
+        0:{
+            items:1,
+            nav:false
         },
         600:{
             items:2,
@@ -226,6 +251,50 @@
     }
 });
 
+// $('.owl-slider').owlCarousel({
+//     loop: false,
+//         margin: 10,
+
+//         responsive: {
+//             0: {
+//                 items: 1,
+//                 nav: true
+//             },
+//             600: {
+//                 items: 1,
+//                 nav: false
+//             },
+//             1000: {
+//                 items: 3,
+//                 nav: true,
+//                 loop: false
+//             }
+//         }
+// });
+$('.owl-three').owlCarousel({
+    loop:true,
+    margin:10,
+    responsiveClass:true,
+    // autoplay:true,
+    lazyLoad:true,
+    autoWidth:true,
+
+    responsive:{
+        0:{
+            items:1,
+            nav:true
+        },
+        600:{
+            items:2,
+            nav:false
+        },
+        1080:{
+            items:1,
+            nav:true,
+            loop:true
+        }
+    }
+});
 </script>
 {{-- slider ismail end --}}
 

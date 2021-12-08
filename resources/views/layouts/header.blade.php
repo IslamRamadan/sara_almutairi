@@ -235,10 +235,11 @@
                         <div class=" ul2  bg-w  text-left "
                             style="padding: 10px;width: 200px;background: transparent !important;box-shadow: none;border: none;">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="search ">
+                                <input type="text" class="form-control" id="search-word" name="search"
+                                placeholder="search " value="islam two" >
                                 <div class="input-group-append">
                                     <button class="input-group-text bg-main"> <i
-                                            class="fas fa-search sml-fa"></i></button>
+                                            class="fas fa-search sml-fa" id="search-submit"></i></button>
                                 </div>
                             </div>
 
@@ -344,7 +345,7 @@
         </div>
     </div>
 
-    <nav class="d-md-none d-block bg-b " style="position: fixed;
+    <nav class="d-md-none d-block bg-white " style="position: fixed;
     top: 0;
     z-index: 3;
     width: -webkit-fill-available;">
@@ -353,7 +354,7 @@
             <div class="relative" style="align-self: center">
                 <div class="nav-link">
                     <button class="navbar-toggler  btn bg-none " type="button">
-                        <i class=" fas fa-bars c-w " style="font-size: 18px"></i>
+                        <i class=" fas fa-bars c-w " style="font-size: 18px;color:#0000"></i>
                     </button>
                 </div>
 
@@ -363,8 +364,8 @@
                     <div class="border-bottom">
                         <br>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="search-word2" name="search_3"
-                                placeholder="search ">
+                            <input type="text" class="form-control" id="search-word2" name="search"
+                                placeholder="search " value="" >
                             <div class="input-group-append">
                                 <button class="input-group-text bg-main" id="search-submit2"><i
                                         class="fas fa-search "></i>
@@ -609,12 +610,12 @@
                 @auth()
                     <li class="nav-item ">
                         <a class="nav-link " href="{{ route('myaccount') }}"> <i class="fas fa-user sml-fa"
-                                style="color:#d76797"></i> </a>
+                                style=""></i> </a>
                     </li>
                 @endauth
 
                 <li class="nav-item"><a class="nav-link " href="{{ route('cart') }}"><i
-                            class="fas fa-shopping-cart sml-fa" style="font-size: 25px;color:#d76797"></i><span
+                            class="fas fa-shopping-cart sml-fa" style="font-size: 25px"></i><span
                             class='badge badge-warning' id='lblCartCount'>
                             {{ Session::has('cart_details') ? Session::get('cart_details')['totalQty'] : '0' }}
                         </span>
@@ -632,6 +633,7 @@
     <script>
         $('#search-submit').on('click', function(e) {
             e.preventDefault();
+            console.log('xxx');
 
             //TODO :: CALL AJAX
 
@@ -663,6 +665,7 @@
 
         $('#search-submit2').on('click', function(e) {
             e.preventDefault();
+            console.log('clicked');
 
             //TODO :: CALL AJAX
 
